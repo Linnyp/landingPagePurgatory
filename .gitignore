@@ -1,0 +1,12 @@
+# Next.js
+landing-page-purgatory/.next/
+landing-page-purgatory/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env*.local
