@@ -13,6 +13,7 @@ This guide covers the full agent pipeline for generating a landing page, from ne
 ### Installed Skills
 
 **Project-level skills** (auto-loaded from `.agents/skills/`):
+
 - Marketing pipeline: `copywriting`, `copy-editing`, `marketing-psychology`, `page-cro`, `site-architecture`
 - Growth & post-launch: `analytics-tracking`, `ab-test-setup`, `seo-audit`, `ai-seo`, `schema-markup`, `launch-strategy`, `social-content`, `email-sequence`, `paid-ads`, `ad-creative`
 - Conversion: `form-cro`, `popup-cro`, `signup-flow-cro`, `onboarding-cro`, `paywall-upgrade-cro`, `pricing-strategy`
@@ -20,6 +21,7 @@ This guide covers the full agent pipeline for generating a landing page, from ne
 - Context: `product-marketing-context` ← **run this first for every new client**
 
 **Global Vercel skills** (installed via `npx skills`):
+
 - `vercel-react-best-practices` — Next.js/React patterns, App Router conventions
 - `web-design-guidelines` — Vercel design system, visual consistency rules
 - `vercel-composition-patterns` — Component composition patterns for scalable UI
@@ -52,12 +54,13 @@ landing-page-purgatory/generated/acme-corp/page.tsx
 mkdir -p context/clients/[slug] outputs/[slug]
 cp context/_template.md context/clients/[slug]/business-context.md
 # Edit the file, fill every field
-```
 
 **Then run the `product-marketing-context` skill** in Claude Code to generate `.agents/product-marketing-context.md`. This file is auto-read by every skill in the `.agents/skills/` library so you don't have to re-paste business context into downstream skill invocations.
 
 ```
+
 /product-marketing-context
+
 ```
 
 When prompted, choose "Auto-draft from codebase" — Claude will read your filled `business-context.md` and produce the PMC file. Review it, correct anything off, then save. Going forward every skill invocation automatically has full product/audience/positioning context.
@@ -70,7 +73,9 @@ When prompted, choose "Auto-draft from codebase" — Claude will read your fille
 
 **Skill augmentation (optional, run in Claude Code before the agent):**
 ```
+
 /marketing-psychology
+
 ```
 Ask it to summarize the psychological principles most relevant to your audience's decision-making style. Paste the summary into the agent prompt as additional context — it meaningfully improves color and emotional register decisions.
 
@@ -80,24 +85,31 @@ Ask it to summarize the psychological principles most relevant to your audience'
 3. Paste your prompt:
 
 ```
+
 [Paste full contents of .agents/01-brand-style-agent.md]
 
 ---
+
 BUSINESS CONTEXT:
 [Paste full contents of context/clients/[slug]/business-context.md]
 
 ---
+
 ARCHETYPE REFERENCE (optional):
 [Paste full contents of archetypes/[archetype].md if using one]
 
 ---
+
 PSYCHOLOGY NOTES (optional):
 [Paste marketing-psychology output if you ran it]
+
 ```
 
 **Save output:**
 ```
+
 outputs/[slug]/01-style-guide.md
+
 ```
 
 **Review checklist:**
@@ -114,7 +126,9 @@ outputs/[slug]/01-style-guide.md
 
 **Skill augmentation:** The `copywriting` and `copy-editing` skills are deeply wired into the copy agent's prompt — no pre-run needed. After saving output, run this to refine:
 ```
+
 /copy-editing
+
 ```
 Paste `02-copy.md` content and ask for a copy sweep — it catches wordiness, banned phrases, and weak CTAs. Save the refined version back to `outputs/[slug]/02-copy.md`.
 
@@ -123,20 +137,26 @@ Paste `02-copy.md` content and ask for a copy sweep — it catches wordiness, ba
 2. Prompt:
 
 ```
+
 [Paste full contents of .agents/02-copy-agent.md]
 
 ---
+
 BUSINESS CONTEXT:
 [Paste full contents of context/clients/[slug]/business-context.md]
 
 ---
+
 BRAND PERSONALITY (from style guide):
 [Paste ONLY the "Brand Personality" section from outputs/[slug]/01-style-guide.md]
+
 ```
 
 **Save output:**
 ```
+
 outputs/[slug]/02-copy.md
+
 ```
 
 **Review checklist:**
@@ -154,34 +174,44 @@ outputs/[slug]/02-copy.md
 
 **Skill augmentation:** Run `page-cro` in Claude Code before this step if you want a CRO pre-brief to anchor the layout agent's decisions:
 ```
+
 /page-cro
+
 ```
 Describe the page type and conversion goal. Paste the Quick Wins and High-Impact Changes sections from the output into the agent prompt as a "CRO Pre-Brief" block. The layout agent will use it to prioritize above-fold content and CTA placement.
 
 **Invoke:**
 ```
+
 [Paste full contents of .agents/03-layout-agent.md]
 
 ---
+
 BUSINESS CONTEXT:
 [Paste full contents of context/clients/[slug]/business-context.md]
 
 ---
+
 VISUAL RULES (from style guide):
 [Paste ONLY the "Visual Rules" section from outputs/[slug]/01-style-guide.md]
 
 ---
+
 COPY DECK:
 [Paste full contents of outputs/[slug]/02-copy.md]
 
 ---
+
 CRO PRE-BRIEF (optional):
 [Paste page-cro output if you ran it]
+
 ```
 
 **Save output:**
 ```
+
 outputs/[slug]/03-layout.md
+
 ```
 
 **Review checklist:**
@@ -199,36 +229,46 @@ outputs/[slug]/03-layout.md
 
 **Skill augmentation:** The three Vercel skills are wired directly into the component builder agent prompt. Claude Code will apply them automatically when building or editing generated page components. You can also invoke them explicitly for targeted guidance:
 ```
-/vercel-react-best-practices     ← App Router patterns, RSC vs client components, image optimization
-/web-design-guidelines           ← Spacing, typography, visual consistency rules
-/vercel-composition-patterns     ← Component structure, composition patterns, reuse strategy
+
+/vercel-react-best-practices ← App Router patterns, RSC vs client components, image optimization
+/web-design-guidelines ← Spacing, typography, visual consistency rules
+/vercel-composition-patterns ← Component structure, composition patterns, reuse strategy
+
 ```
 
 **Invoke:** This agent requires the most context — paste all four inputs in order.
 ```
+
 [Paste full contents of .agents/04-component-builder-agent.md]
 
 ---
+
 STYLE GUIDE:
 [Paste full contents of outputs/[slug]/01-style-guide.md]
 
 ---
+
 COPY DECK:
 [Paste full contents of outputs/[slug]/02-copy.md]
 
 ---
+
 LAYOUT BLUEPRINT:
 [Paste full contents of outputs/[slug]/03-layout.md]
 
 ---
+
 BUSINESS CONTEXT:
 [Paste full contents of context/clients/[slug]/business-context.md]
+
 ```
 
 **Save output:**
 ```
+
 outputs/[slug]/04-page.tsx
-```
+
+````
 
 **Review checklist:**
 - [ ] File starts with the file-level comment block (setup instructions)
@@ -246,14 +286,16 @@ outputs/[slug]/04-page.tsx
 1. Create the generated component directory:
    ```bash
    mkdir -p landing-page-purgatory/generated/[slug]
-   ```
+````
 
 2. Copy the TSX output:
+
    ```bash
    cp outputs/[slug]/04-page.tsx landing-page-purgatory/generated/[slug]/page.tsx
    ```
 
 3. Register in `landing-page-purgatory/generated/index.ts`:
+
    ```ts
    export const generatedPages: GeneratedPage[] = [
      {
@@ -264,12 +306,16 @@ outputs/[slug]/04-page.tsx
      },
    ];
 
-   export const pageComponents: Record<string, () => Promise<{ default: ComponentType }>> = {
+   export const pageComponents: Record<
+     string,
+     () => Promise<{ default: ComponentType }>
+   > = {
      "[slug]": () => import("./[slug]/page"),
    };
    ```
 
 4. If the page uses custom fonts, add the font `<link>` tags to `landing-page-purgatory/app/layout.tsx` inside the `<head>`:
+
    ```tsx
    // In layout.tsx, add inside <html><head>:
    <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -288,16 +334,17 @@ outputs/[slug]/04-page.tsx
 
 **Skill augmentation:** After the core audit, run these for deeper specialist analysis:
 
-| Skill | When to run |
-|---|---|
-| `/page-cro` | Always — deeper conversion analysis beyond the audit score table |
-| `/seo-audit` | If organic traffic is a goal |
-| `/schema-markup` | Add JSON-LD structured data (FAQ, Organization, WebPage schemas) to the TSX |
-| `/ai-seo` | If the client wants AI search visibility (Perplexity, ChatGPT citations) |
+| Skill                 | When to run                                                                  |
+| --------------------- | ---------------------------------------------------------------------------- |
+| `/page-cro`           | Always — deeper conversion analysis beyond the audit score table             |
+| `/seo-audit`          | If organic traffic is a goal                                                 |
+| `/schema-markup`      | Add JSON-LD structured data (FAQ, Organization, WebPage schemas) to the TSX  |
+| `/ai-seo`             | If the client wants AI search visibility (Perplexity, ChatGPT citations)     |
 | `/analytics-tracking` | Generate a tracking plan (GA4 events, GTM setup) to measure page performance |
-| `/ab-test-setup` | Turn High-Priority audit items into properly structured A/B test hypotheses |
+| `/ab-test-setup`      | Turn High-Priority audit items into properly structured A/B test hypotheses  |
 
 **Invoke:**
+
 ```
 [Paste full contents of .agents/05-ux-auditor-agent.md]
 
@@ -319,11 +366,13 @@ BUSINESS CONTEXT:
 ```
 
 **Save output:**
+
 ```
 outputs/[slug]/05-ux-audit.md
 ```
 
 **Action:**
+
 - Fix all Critical Issues in `landing-page-purgatory/generated/[slug]/page.tsx`
 - Decide which High-Priority items to address now vs. later
 - Note Low-Priority items for future iteration
@@ -334,14 +383,15 @@ outputs/[slug]/05-ux-audit.md
 
 After fixing audit issues, re-run only the affected agents:
 
-| What changed | Re-run |
-|---|---|
-| Copy tweaks only | Just fix in TSX directly |
-| Structural section changes | Agent 03 → Agent 04 → Agent 05 |
-| Brand direction pivot | All agents (01 → 05) |
-| New business context info | Update context file, re-run affected agents |
+| What changed               | Re-run                                      |
+| -------------------------- | ------------------------------------------- |
+| Copy tweaks only           | Just fix in TSX directly                    |
+| Structural section changes | Agent 03 → Agent 04 → Agent 05              |
+| Brand direction pivot      | All agents (01 → 05)                        |
+| New business context info  | Update context file, re-run affected agents |
 
 Keep outputs versioned by appending `-v2`, `-v3` to filenames:
+
 ```
 outputs/[slug]/04-page-v2.tsx
 outputs/[slug]/05-ux-audit-v2.md
@@ -352,26 +402,31 @@ outputs/[slug]/05-ux-audit-v2.md
 ## Tips for Better Agent Output
 
 **For Brand Style Agent (01):**
+
 - Providing the archetype reference file significantly improves output quality
 - If the client has existing colors or fonts, specify them explicitly — agents will respect constraints better than free-choice
 - If output colors feel generic, ask the agent to "push the palette more distinctly toward [vibe adjective]"
 
 **For Copy Agent (02):**
+
 - The more specific the "Most painful problem" and "Desired outcome" fields in the context, the sharper the copy
 - If headlines feel vague, ask agent to "rewrite the hero headline as a specific claim with a number or timeframe"
 - Placeholder testimonials from the agent are often surprisingly usable — review before replacing
 
 **For Layout Agent (03):**
+
 - If the agent includes too many sections, explicitly tell it: "The page should be medium length (6–8 sections) — cut the lowest-value sections"
 - If you want a specific layout pattern overridden, say so: "Use testimonial-featured instead of testimonial-3up"
 
 **For Component Builder (04):**
+
 - This is the longest context window — paste ALL four inputs, in order, without abbreviating
 - If the first output has TypeScript errors, paste the errors back and ask for a corrected version
 - If a section is missing or wrong, ask specifically: "The HeroSection is missing the secondary CTA from the copy deck. Add it."
 - Run `tsc --noEmit` in `landing-page-purgatory/` after saving — fix any type errors before moving to audit
 
 **For UX Auditor (05):**
+
 - The audit is most useful AFTER you've done a visual review yourself — the agent catches technical issues, you catch aesthetic ones
 - If critical issues feel overstated, they're usually right — trust the audit on CTA placement and above-fold clarity
 
@@ -380,12 +435,14 @@ outputs/[slug]/05-ux-audit-v2.md
 ## TypeScript Verification
 
 After registering a new page:
+
 ```bash
 cd landing-page-purgatory
 npx tsc --noEmit
 ```
 
 Common issues and fixes:
+
 - `Type '{}' is not assignable to React.CSSProperties` — ensure `brandTokens` is cast `as React.CSSProperties`
 - Missing `"use client"` — add to components using `useState`
 - Import errors — check `generated/index.ts` import path matches actual file location
@@ -397,6 +454,7 @@ Common issues and fixes:
 Once the page is live (or preview-ready), the `.agents/skills/` library covers the full growth stack. Invoke any of these directly in Claude Code — they auto-read `.agents/product-marketing-context.md` for context.
 
 ### Launch
+
 ```
 /launch-strategy        ← Product Hunt, announcement plan, GTM checklist
 /email-sequence         ← Launch email series, welcome sequence for new signups
@@ -404,12 +462,14 @@ Once the page is live (or preview-ready), the `.agents/skills/` library covers t
 ```
 
 ### Paid Acquisition
+
 ```
 /paid-ads               ← Campaign strategy, targeting, bidding
 /ad-creative            ← Bulk ad headline/description variations from the copy deck
 ```
 
 ### SEO & Discoverability
+
 ```
 /seo-audit              ← Technical SEO, on-page, meta tags
 /ai-seo                 ← Optimize for Perplexity/ChatGPT/Gemini citations
@@ -419,6 +479,7 @@ Once the page is live (or preview-ready), the `.agents/skills/` library covers t
 ```
 
 ### Conversion Optimization (post-launch)
+
 ```
 /ab-test-setup          ← Turn audit items into structured experiments
 /analytics-tracking     ← GA4 events, GTM, conversion tracking plan
@@ -430,6 +491,7 @@ Once the page is live (or preview-ready), the `.agents/skills/` library covers t
 ```
 
 ### Retention & Revenue
+
 ```
 /pricing-strategy       ← Pricing model, plan structure, value metric
 /churn-prevention       ← Cancel flows, save offers, dunning
@@ -438,6 +500,7 @@ Once the page is live (or preview-ready), the `.agents/skills/` library covers t
 ```
 
 ### Sales Support
+
 ```
 /cold-email             ← Outbound sequences using the page's messaging
 /sales-enablement       ← One-pagers, objection handling docs, demo scripts
