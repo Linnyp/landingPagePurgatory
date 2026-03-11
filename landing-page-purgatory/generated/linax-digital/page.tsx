@@ -18,6 +18,7 @@
 import React, { useState, useEffect } from "react";
 import ScrollFloat from "@/app/components/TextAnimations/ScrollFloat";
 import PixelBlast from "../../components/PixelBlast";
+import ScrollStack, { ScrollStackItem } from "../../components/ScrollStack";
 
 // ---------------------------------------------------------------------------
 // Swiss Design Tokens
@@ -1258,16 +1259,49 @@ function ProblemSection() {
           </p>
         </div>
 
-        {/* Right: problem cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-          {problems.map((problem, i) => (
-            <ProblemCard
-              key={problem.name}
-              problem={problem}
-              index={i}
-              total={problems.length}
-            />
-          ))}
+        {/* Right: problem cards — scroll stack */}
+        <div>
+          <style>{`
+            .problem-stack .scroll-stack-scroller {
+              overflow: visible !important;
+              height: auto !important;
+            }
+            .problem-stack .scroll-stack-inner {
+              padding: 0 !important;
+              min-height: auto !important;
+            }
+            .problem-card-item {
+              height: auto !important;
+              border-radius: 0 !important;
+              padding: 0 !important;
+              box-shadow: none !important;
+              background: transparent !important;
+              margin: 0 !important;
+            }
+          `}</style>
+          <ScrollStack
+            className="problem-stack"
+            useWindowScroll={true}
+            stackPosition="20%"
+            itemDistance={10}
+            itemStackDistance={14}
+            itemScale={0.02}
+            baseScale={0.94}
+            scaleEndPosition="10%"
+          >
+            {problems.map((problem, i) => (
+              <ScrollStackItem
+                key={problem.name}
+                itemClassName="problem-card-item"
+              >
+                <ProblemCard
+                  problem={problem}
+                  index={i}
+                  total={problems.length}
+                />
+              </ScrollStackItem>
+            ))}
+          </ScrollStack>
         </div>
       </div>
     </section>
