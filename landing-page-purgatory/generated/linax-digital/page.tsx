@@ -21,6 +21,7 @@ import CardNav from "../../components/CardNav";
 import Silk from "../../components/Silk";
 import PixelBlast from "../../components/PixelBlast";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStack";
+import linaxLogo from "./linax-logo.svg";
 
 // ---------------------------------------------------------------------------
 // Swiss Design Tokens
@@ -29,7 +30,7 @@ import ScrollStack, { ScrollStackItem } from "../../components/ScrollStack";
 const sw = {
   white: "#0A0A0A",
   black: "#F0F0F0",
-  muted: "#1A1A1A",
+  muted: "#2B2B2B",
   red: "#FF3000",
   font: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif",
   container: "1200px",
@@ -558,9 +559,7 @@ function SectionLabel({ number, text }: { number: string; text: string }) {
 // SiteNav — fixed, Swiss style
 // ---------------------------------------------------------------------------
 
-const linaxLogoSvg = `data:image/svg+xml,${encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 30"><text x="0" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" letter-spacing="-1.5" fill="#F0F0F0">LINAX</text><text x="114" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" fill="#FF3000">.</text></svg>',
-)}`;
+const linaxLogoSvg = "/linax-digital-logo.svg";
 
 const cardNavItems = [
   {
@@ -859,7 +858,7 @@ function HeroSection() {
               display: "flex",
               flexWrap: "wrap",
               gap: "0",
-              alignItems: "center",
+              alignItems: "stretch",
             }}
           >
             <a
@@ -871,6 +870,8 @@ function HeroSection() {
                 color: sw.white,
                 backgroundColor: sw.red,
                 padding: "16px 32px",
+                border: "2px solid transparent",
+                boxSizing: "border-box",
                 textDecoration: "none",
                 display: "inline-flex",
                 alignItems: "center",
@@ -895,6 +896,7 @@ function HeroSection() {
                 fontFamily: sw.font,
                 fontWeight: 700,
                 fontSize: "13px",
+                boxSizing: "border-box",
                 color: sw.black,
                 backgroundColor: "transparent",
                 padding: "16px 32px",
@@ -2552,7 +2554,7 @@ function SiteFooter() {
   return (
     <footer
       style={{
-        backgroundColor: sw.black,
+        backgroundColor: sw.muted,
         borderTop: `4px solid ${sw.white}`,
         paddingTop: "64px",
         paddingBottom: "40px",
@@ -2582,23 +2584,25 @@ function SiteFooter() {
               href="/"
               aria-label="Linax Digital home"
               style={{
-                fontFamily: sw.font,
-                fontWeight: 900,
-                fontSize: "28px",
-                color: sw.white,
-                textDecoration: "none",
-                letterSpacing: "-0.04em",
-                textTransform: "uppercase" as const,
                 display: "inline-block",
+                maxWidth: "110px",
               }}
             >
-              LINAX<span style={{ color: sw.red }}>.</span>
+              <img
+                src={linaxLogoSvg}
+                alt="Linax Digital"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
             </a>
             <p
               style={{
                 fontFamily: sw.font,
                 fontSize: "13px",
-                color: "rgba(0,0,0,0.5)",
+                color: "rgba(240,240,240,0.8)",
                 margin: 0,
                 lineHeight: 1.6,
                 maxWidth: "320px",
@@ -2610,7 +2614,7 @@ function SiteFooter() {
               style={{
                 fontFamily: sw.font,
                 fontSize: "11px",
-                color: "rgba(0,0,0,0.35)",
+                color: "rgba(240,240,240,0.6)",
                 margin: 0,
                 fontStyle: "italic",
               }}
@@ -2640,7 +2644,7 @@ function SiteFooter() {
                       fontFamily: sw.font,
                       fontWeight: 600,
                       fontSize: "11px",
-                      color: "rgba(0,0,0,0.45)",
+                      color: "rgba(240,240,240,0.7)",
                       textDecoration: "none",
                       textTransform: "uppercase" as const,
                       letterSpacing: "0.1em",
@@ -2648,7 +2652,7 @@ function SiteFooter() {
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = sw.red)}
                     onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "rgba(0,0,0,0.45)")
+                      (e.currentTarget.style.color = "rgba(240,240,240,0.7)")
                     }
                   >
                     {link.label}
@@ -2662,7 +2666,7 @@ function SiteFooter() {
         {/* Legal */}
         <div
           style={{
-            borderTop: `1px solid rgba(0,0,0,0.12)`,
+            borderTop: `1px solid rgba(240,240,240,0.18)`,
             paddingTop: "24px",
             display: "flex",
             justifyContent: "space-between",
@@ -2675,7 +2679,7 @@ function SiteFooter() {
             style={{
               fontFamily: sw.font,
               fontSize: "11px",
-              color: "rgba(0,0,0,0.35)",
+              color: "rgba(240,240,240,0.6)",
               margin: 0,
               letterSpacing: "0.08em",
               textTransform: "uppercase" as const,
@@ -2696,7 +2700,8 @@ function SiteFooter() {
                 style={{
                   width: i === 1 ? "16px" : "8px",
                   height: "2px",
-                  backgroundColor: i === 1 ? sw.red : "rgba(0,0,0,0.2)",
+                  backgroundColor:
+                    i === 1 ? sw.red : "rgba(240,240,240,0.4)",
                 }}
               />
             ))}

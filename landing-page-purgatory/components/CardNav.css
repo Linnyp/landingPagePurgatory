@@ -78,7 +78,8 @@
 }
 
 .logo {
-  height: 28px;
+  height: 40px;
+  max-height: 40px;
 }
 
 .card-nav-cta-button {
