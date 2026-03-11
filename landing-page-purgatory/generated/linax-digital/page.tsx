@@ -17,6 +17,7 @@
 
 import React, { useState, useEffect } from "react";
 import ScrollFloat from "@/app/components/TextAnimations/ScrollFloat";
+import PixelBlast from "../../components/PixelBlast";
 
 // ---------------------------------------------------------------------------
 // Swiss Design Tokens
@@ -871,8 +872,31 @@ function HeroSection() {
         paddingTop: "128px",
         paddingBottom: "0",
         ...gridPattern,
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <PixelBlast
+          variant="square"
+          pixelSize={4}
+          color="#3A3A3A"
+          patternScale={2}
+          patternDensity={1}
+          pixelSizeJitter={0}
+          enableRipples
+          rippleSpeed={0.4}
+          rippleThickness={0.12}
+          rippleIntensityScale={1.5}
+          liquid={false}
+          liquidStrength={0.12}
+          liquidRadius={1.2}
+          liquidWobbleSpeed={5}
+          speed={0.5}
+          edgeFade={0.25}
+          transparent
+        />
+      </div>
       <div
         style={{
           maxWidth: sw.container,
@@ -881,6 +905,8 @@ function HeroSection() {
           display: "grid",
           gap: "48px",
           alignItems: "center",
+          position: "relative",
+          zIndex: 1,
         }}
         className="grid-cols-1 lg:grid-cols-[7fr_5fr]"
       >
