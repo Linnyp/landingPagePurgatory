@@ -41,7 +41,8 @@ const gridPattern: React.CSSProperties = {
 };
 
 const dotsPattern: React.CSSProperties = {
-  backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)",
+  backgroundImage:
+    "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)",
   backgroundSize: "16px 16px",
 };
 
@@ -895,6 +896,8 @@ function HeroSection() {
           speed={0.5}
           edgeFade={0.25}
           transparent
+          className=""
+          style={{}}
         />
       </div>
       <div
