@@ -25,6 +25,21 @@
   margin-bottom: 8px;
 }
 
+/* Linax Digital method step numbers */
+.scroll-float-step-number {
+  margin-bottom: 24px;
+}
+
+.scroll-float-step-number .scroll-float-text {
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 80px;
+  color: #FF3000;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-align: left;
+}
+
 /* Linax Digital services heading lead line */
 .scroll-float-services-lead .scroll-float-text {
   font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;

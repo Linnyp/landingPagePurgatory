@@ -559,7 +559,7 @@ function SectionLabel({ number, text }: { number: string; text: string }) {
 // ---------------------------------------------------------------------------
 
 const linaxLogoSvg = `data:image/svg+xml,${encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 30"><text x="0" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" letter-spacing="-1.5" fill="#F0F0F0">LINAX</text><text x="114" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" fill="#FF3000">.</text></svg>'
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 30"><text x="0" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" letter-spacing="-1.5" fill="#F0F0F0">LINAX</text><text x="114" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" fill="#FF3000">.</text></svg>',
 )}`;
 
 const cardNavItems = [
@@ -569,7 +569,11 @@ const cardNavItems = [
     textColor: "#fff",
     links: [
       { label: "Services", ariaLabel: "Our Services", href: "#services" },
-      { label: "How It Works", ariaLabel: "How It Works", href: "#how-it-works" },
+      {
+        label: "How It Works",
+        ariaLabel: "How It Works",
+        href: "#how-it-works",
+      },
     ],
   },
   {
@@ -587,7 +591,11 @@ const cardNavItems = [
     textColor: "#fff",
     links: [
       { label: "FAQ", ariaLabel: "Frequently Asked Questions", href: "#faq" },
-      { label: "Book a Free Call", ariaLabel: "Book a Free Discovery Call", href: "#contact" },
+      {
+        label: "Book a Free Call",
+        ariaLabel: "Book a Free Discovery Call",
+        href: "#contact",
+      },
     ],
   },
 ];
@@ -619,7 +627,13 @@ function SiteNav() {
           overflow: "hidden",
         }}
       >
-        <Silk color={sw.muted} speed={3} scale={1.2} noiseIntensity={1.5} rotation={0} />
+        <Silk
+          color={sw.muted}
+          speed={3}
+          scale={1.2}
+          noiseIntensity={1.5}
+          rotation={0}
+        />
       </div>
 
       <div style={{ pointerEvents: "auto" }}>
@@ -629,7 +643,7 @@ function SiteNav() {
           items={cardNavItems}
           baseColor="transparent"
           menuColor={sw.black}
-          buttonBgColor={sw.black}
+          buttonBgColor={sw.red}
           buttonTextColor={sw.white}
         />
       </div>
@@ -796,7 +810,7 @@ function HeroSection() {
                 backgroundColor: sw.red,
               }}
             />
-            Digital Marketing &amp; AI Integration
+            Digital Marketing &amp; System Integrations
           </div>
 
           <h1
@@ -1454,7 +1468,7 @@ function ServicesSection() {
               fontWeight: 700,
               fontSize: "12px",
               color: sw.white,
-              backgroundColor: sw.black,
+              backgroundColor: sw.red,
               padding: "16px 40px",
               textDecoration: "none",
               display: "inline-flex",
@@ -1464,15 +1478,15 @@ function ServicesSection() {
               textTransform: "uppercase" as const,
               minHeight: "52px",
               transition: "background-color 150ms ease",
-              border: `2px solid ${sw.black}`,
+              border: `2px solid ${sw.red}`,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = sw.red;
-              e.currentTarget.style.borderColor = sw.red;
-            }}
-            onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = sw.black;
               e.currentTarget.style.borderColor = sw.black;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = sw.red;
+              e.currentTarget.style.borderColor = sw.red;
             }}
           >
             See All Services <IconArrowRight />
@@ -1673,7 +1687,7 @@ function ResultsSection() {
               fontWeight: 700,
               fontSize: "13px",
               color: sw.white,
-              backgroundColor: sw.black,
+              backgroundColor: sw.red,
               padding: "14px 28px",
               textDecoration: "none",
               display: "inline-flex",
@@ -1685,10 +1699,10 @@ function ResultsSection() {
               transition: "background-color 150ms ease",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = sw.red)
+              (e.currentTarget.style.backgroundColor = sw.black)
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = sw.black)
+              (e.currentTarget.style.backgroundColor = sw.red)
             }
           >
             See if we&apos;re a fit <IconArrowRight />
@@ -1761,21 +1775,15 @@ function HowItWorksSection() {
               }}
             >
               {/* Step number — large typographic anchor */}
-              <div
-                style={{
-                  fontFamily: sw.font,
-                  fontWeight: 900,
-                  fontSize: "80px",
-                  lineHeight: 1,
-                  color: sw.red,
-                  letterSpacing: "-0.04em",
-                  marginBottom: "24px",
-                  display: "block",
-                }}
-                aria-hidden="true"
+              <ScrollFloat
+                animationDuration={1}
+                ease="back.out(2)"
+                scrollStart="5% bottom"
+                stagger={0.15}
+                className="scroll-float-step-number"
               >
                 {step.number}
-              </div>
+              </ScrollFloat>
 
               <h3
                 style={{
@@ -1962,8 +1970,8 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
           fontFamily: sw.font,
           fontWeight: 700,
           fontSize: "12px",
-          color: isFeatured ? sw.black : sw.white,
-          backgroundColor: isFeatured ? sw.white : sw.black,
+          color: sw.white,
+          backgroundColor: sw.red,
           padding: "14px 24px",
           textDecoration: "none",
           display: "flex",
@@ -1975,21 +1983,11 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
           transition: "background-color 150ms ease, color 150ms ease",
         }}
         onMouseEnter={(e) => {
-          if (isFeatured) {
-            e.currentTarget.style.backgroundColor = sw.red;
-            e.currentTarget.style.color = sw.white;
-          } else {
-            e.currentTarget.style.backgroundColor = sw.red;
-          }
+          e.currentTarget.style.backgroundColor = sw.black;
         }}
         onMouseLeave={(e) => {
-          if (isFeatured) {
-            e.currentTarget.style.backgroundColor = sw.white;
-            e.currentTarget.style.color = sw.black;
-          } else {
-            e.currentTarget.style.backgroundColor = sw.black;
-            e.currentTarget.style.color = sw.white;
-          }
+          e.currentTarget.style.backgroundColor = sw.red;
+          e.currentTarget.style.color = sw.white;
         }}
       >
         {plan.cta}
@@ -2218,7 +2216,7 @@ function FaqSection() {
               fontWeight: 700,
               fontSize: "12px",
               color: sw.white,
-              backgroundColor: sw.black,
+              backgroundColor: sw.red,
               padding: "12px 20px",
               textDecoration: "none",
               display: "inline-flex",
@@ -2229,10 +2227,10 @@ function FaqSection() {
               transition: "background-color 150ms ease",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = sw.red)
+              (e.currentTarget.style.backgroundColor = sw.black)
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = sw.black)
+              (e.currentTarget.style.backgroundColor = sw.red)
             }
           >
             Still have questions?
@@ -2332,7 +2330,7 @@ function FinalCtaSection() {
               fontFamily: sw.font,
               fontWeight: 400,
               fontSize: "16px",
-              color: "rgba(255,255,255,0.65)",
+              color: "rgba(0,0,0,0.6)",
               lineHeight: 1.65,
               margin: "0 0 40px",
               maxWidth: "480px",
@@ -2360,8 +2358,8 @@ function FinalCtaSection() {
                 fontFamily: sw.font,
                 fontWeight: 700,
                 fontSize: "13px",
-                color: sw.black,
-                backgroundColor: sw.white,
+                color: sw.white,
+                backgroundColor: sw.red,
                 padding: "16px 32px",
                 textDecoration: "none",
                 display: "inline-flex",
@@ -2370,15 +2368,13 @@ function FinalCtaSection() {
                 minHeight: "52px",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase" as const,
-                transition: "background-color 150ms ease, color 150ms ease",
+                transition: "background-color 150ms ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = sw.red;
-                e.currentTarget.style.color = sw.white;
+                e.currentTarget.style.backgroundColor = sw.black;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = sw.white;
-                e.currentTarget.style.color = sw.black;
+                e.currentTarget.style.backgroundColor = sw.red;
               }}
             >
               Book Your Free Audit Call <IconArrowRight />
@@ -2389,7 +2385,7 @@ function FinalCtaSection() {
                 fontFamily: sw.font,
                 fontWeight: 600,
                 fontSize: "13px",
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(0,0,0,0.45)",
                 textDecoration: "none",
                 display: "inline-flex",
                 alignItems: "center",
@@ -2402,7 +2398,7 @@ function FinalCtaSection() {
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = sw.white)}
               onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
+                (e.currentTarget.style.color = "rgba(0,0,0,0.45)")
               }
             >
               Download AI Readiness Checklist
@@ -2413,7 +2409,7 @@ function FinalCtaSection() {
             style={{
               fontFamily: sw.font,
               fontSize: "12px",
-              color: "rgba(255,255,255,0.3)",
+              color: "rgba(0,0,0,0.4)",
               marginTop: "16px",
               letterSpacing: "0.04em",
             }}
@@ -2602,7 +2598,7 @@ function SiteFooter() {
               style={{
                 fontFamily: sw.font,
                 fontSize: "13px",
-                color: "rgba(255,255,255,0.45)",
+                color: "rgba(0,0,0,0.5)",
                 margin: 0,
                 lineHeight: 1.6,
                 maxWidth: "320px",
@@ -2614,7 +2610,7 @@ function SiteFooter() {
               style={{
                 fontFamily: sw.font,
                 fontSize: "11px",
-                color: "rgba(255,255,255,0.2)",
+                color: "rgba(0,0,0,0.35)",
                 margin: 0,
                 fontStyle: "italic",
               }}
@@ -2644,7 +2640,7 @@ function SiteFooter() {
                       fontFamily: sw.font,
                       fontWeight: 600,
                       fontSize: "11px",
-                      color: "rgba(255,255,255,0.4)",
+                      color: "rgba(0,0,0,0.45)",
                       textDecoration: "none",
                       textTransform: "uppercase" as const,
                       letterSpacing: "0.1em",
@@ -2652,7 +2648,7 @@ function SiteFooter() {
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = sw.red)}
                     onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "rgba(255,255,255,0.4)")
+                      (e.currentTarget.style.color = "rgba(0,0,0,0.45)")
                     }
                   >
                     {link.label}
@@ -2666,7 +2662,7 @@ function SiteFooter() {
         {/* Legal */}
         <div
           style={{
-            borderTop: `1px solid rgba(255,255,255,0.1)`,
+            borderTop: `1px solid rgba(0,0,0,0.12)`,
             paddingTop: "24px",
             display: "flex",
             justifyContent: "space-between",
@@ -2679,7 +2675,7 @@ function SiteFooter() {
             style={{
               fontFamily: sw.font,
               fontSize: "11px",
-              color: "rgba(255,255,255,0.2)",
+              color: "rgba(0,0,0,0.35)",
               margin: 0,
               letterSpacing: "0.08em",
               textTransform: "uppercase" as const,
@@ -2700,7 +2696,7 @@ function SiteFooter() {
                 style={{
                   width: i === 1 ? "16px" : "8px",
                   height: "2px",
-                  backgroundColor: i === 1 ? sw.red : "rgba(255,255,255,0.2)",
+                  backgroundColor: i === 1 ? sw.red : "rgba(0,0,0,0.2)",
                 }}
               />
             ))}
