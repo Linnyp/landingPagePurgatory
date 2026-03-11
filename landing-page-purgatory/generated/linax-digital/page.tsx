@@ -17,6 +17,8 @@
 
 import React, { useState, useEffect } from "react";
 import ScrollFloat from "@/app/components/TextAnimations/ScrollFloat";
+import CardNav from "../../components/CardNav";
+import Silk from "../../components/Silk";
 import PixelBlast from "../../components/PixelBlast";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStack";
 
@@ -556,226 +558,82 @@ function SectionLabel({ number, text }: { number: string; text: string }) {
 // SiteNav — fixed, Swiss style
 // ---------------------------------------------------------------------------
 
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Results", href: "#results" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+const linaxLogoSvg = `data:image/svg+xml,${encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 30"><text x="0" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" letter-spacing="-1.5" fill="#F0F0F0">LINAX</text><text x="114" y="24" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="26" fill="#FF3000">.</text></svg>'
+)}`;
+
+const cardNavItems = [
+  {
+    label: "Services",
+    bgColor: "#0D0D0D",
+    textColor: "#fff",
+    links: [
+      { label: "Services", ariaLabel: "Our Services", href: "#services" },
+      { label: "How It Works", ariaLabel: "How It Works", href: "#how-it-works" },
+    ],
+  },
+  {
+    label: "Results",
+    bgColor: "#1C1C1C",
+    textColor: "#fff",
+    links: [
+      { label: "Results", ariaLabel: "Our Results", href: "#results" },
+      { label: "Pricing", ariaLabel: "Pricing Plans", href: "#pricing" },
+    ],
+  },
+  {
+    label: "Contact",
+    bgColor: "#FF3000",
+    textColor: "#fff",
+    links: [
+      { label: "FAQ", ariaLabel: "Frequently Asked Questions", href: "#faq" },
+      { label: "Book a Free Call", ariaLabel: "Book a Free Discovery Call", href: "#contact" },
+    ],
+  },
 ];
 
 function SiteNav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
+    <div
       style={{
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
+        height: 0,
         zIndex: 50,
-        backgroundColor: sw.white,
-        borderBottom: `4px solid ${sw.black}`,
-        transition: "border-color 150ms ease",
+        pointerEvents: "none",
       }}
     >
+      {/* Silk background — matches .card-nav-container positioning + 60px bar height */}
       <div
         style={{
-          maxWidth: sw.container,
-          margin: "0 auto",
-          padding: `0 ${sw.gutter}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: "64px",
+          position: "absolute",
+          top: "2em",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "90%",
+          maxWidth: "800px",
+          height: "60px",
+          borderRadius: "0.75rem",
+          overflow: "hidden",
         }}
       >
-        {/* Logo */}
-        <a
-          href="/"
-          aria-label="Linax Digital home"
-          style={{
-            fontFamily: sw.font,
-            fontWeight: 900,
-            fontSize: "20px",
-            color: sw.black,
-            textDecoration: "none",
-            letterSpacing: "-0.04em",
-            textTransform: "uppercase" as const,
-          }}
-        >
-          LINAX<span style={{ color: sw.red }}>.</span>
-        </a>
-
-        {/* Desktop nav */}
-        <nav
-          aria-label="Main navigation"
-          className="hidden md:flex"
-          style={{ display: "flex", gap: "32px", alignItems: "center" }}
-        >
-          {navLinks.map((link) => (
-            <div
-              key={link.href}
-              style={{
-                overflow: "hidden",
-                height: "20px",
-                position: "relative",
-              }}
-            >
-              <a
-                href={link.href}
-                style={{
-                  fontFamily: sw.font,
-                  fontWeight: 600,
-                  fontSize: "12px",
-                  color: sw.black,
-                  textDecoration: "none",
-                  textTransform: "uppercase" as const,
-                  letterSpacing: "0.08em",
-                  display: "block",
-                  transition: "transform 150ms ease, color 150ms ease",
-                  lineHeight: "20px",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = sw.red;
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = sw.black;
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
-              >
-                {link.label}
-              </a>
-            </div>
-          ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <a
-          href="#contact"
-          className="hidden md:inline-flex"
-          style={{
-            fontFamily: sw.font,
-            fontWeight: 700,
-            fontSize: "12px",
-            color: sw.white,
-            backgroundColor: sw.black,
-            padding: "12px 24px",
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase" as const,
-            minHeight: "44px",
-            transition: "background-color 150ms ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = sw.red;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = sw.black;
-          }}
-        >
-          Book a Free Call <IconArrowRight />
-        </a>
-
-        {/* Mobile hamburger */}
-        <button
-          className="flex md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          style={{
-            background: "none",
-            border: "none",
-            color: sw.black,
-            cursor: "pointer",
-            padding: "10px",
-            minHeight: "44px",
-            minWidth: "44px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {mobileOpen ? <IconClose /> : <IconMenu />}
-        </button>
+        <Silk color={sw.muted} speed={3} scale={1.2} noiseIntensity={1.5} rotation={0} />
       </div>
 
-      {/* Mobile drawer */}
-      {mobileOpen && (
-        <div
-          style={{
-            position: "fixed",
-            inset: "68px 0 0 0",
-            backgroundColor: sw.white,
-            zIndex: 40,
-            display: "flex",
-            flexDirection: "column",
-            padding: "32px 24px",
-            borderTop: `4px solid ${sw.black}`,
-          }}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                fontFamily: sw.font,
-                fontWeight: 800,
-                fontSize: "24px",
-                color: sw.black,
-                textDecoration: "none",
-                textTransform: "uppercase" as const,
-                letterSpacing: "-0.02em",
-                padding: "16px 0",
-                borderBottom: `2px solid ${sw.black}`,
-                display: "block",
-                transition: "color 150ms ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = sw.red)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = sw.black)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              fontFamily: sw.font,
-              fontWeight: 700,
-              fontSize: "14px",
-              color: sw.white,
-              backgroundColor: sw.black,
-              padding: "16px 32px",
-              textDecoration: "none",
-              textAlign: "center",
-              marginTop: "24px",
-              minHeight: "52px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase" as const,
-            }}
-          >
-            Book a Free Call
-          </a>
-        </div>
-      )}
-    </header>
+      <div style={{ pointerEvents: "auto" }}>
+        <CardNav
+          logo={linaxLogoSvg}
+          logoAlt="Linax Digital"
+          items={cardNavItems}
+          baseColor="transparent"
+          menuColor={sw.black}
+          buttonBgColor={sw.black}
+          buttonTextColor={sw.white}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -1410,6 +1268,8 @@ function ServiceCard({
         display: "flex",
         flexDirection: "column",
         gap: "20px",
+        height: "100%",
+        boxSizing: "border-box",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -1515,25 +1375,33 @@ function ServicesSection() {
             }}
             className="grid-cols-1 lg:grid-cols-[8fr_4fr]"
           >
-            <h2
-              id="services-heading"
-              style={{
-                fontFamily: sw.font,
-                fontWeight: 900,
-                fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                color: sw.black,
-                letterSpacing: "-0.04em",
-                textTransform: "uppercase" as const,
-                lineHeight: 0.95,
-                margin: 0,
-              }}
-            >
-              Every Service Feeds
-              <br />
-              The Same Outcome:
-              <br />
-              <span style={{ color: sw.red }}>More Qualified Leads.</span>
-            </h2>
+            <div id="services-heading">
+              <div
+                style={{
+                  fontFamily: sw.font,
+                  fontWeight: 900,
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  color: sw.black,
+                  letterSpacing: "-0.04em",
+                  textTransform: "uppercase" as const,
+                  lineHeight: 0.95,
+                  margin: 0,
+                }}
+              >
+                Every Service Feeds
+                <br />
+                The Same Outcome:
+              </div>
+              <ScrollFloat
+                animationDuration={1}
+                ease="back.out(2)"
+                scrollStart="5% bottom"
+                stagger={0.05}
+                className="scroll-float-services-lead"
+              >
+                More Qualified Leads.
+              </ScrollFloat>
+            </div>
             <p
               style={{
                 fontFamily: sw.font,
@@ -1563,11 +1431,52 @@ function ServicesSection() {
               style={{
                 marginTop: i >= 3 ? "-2px" : "0",
                 marginLeft: i % 3 !== 0 ? "-2px" : "0",
+                height: "100%",
               }}
             >
               <ServiceCard service={service} index={i} />
             </div>
           ))}
+        </div>
+
+        {/* See all services CTA */}
+        <div
+          style={{
+            marginTop: "48px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <a
+            href="#contact"
+            style={{
+              fontFamily: sw.font,
+              fontWeight: 700,
+              fontSize: "12px",
+              color: sw.white,
+              backgroundColor: sw.black,
+              padding: "16px 40px",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              minHeight: "52px",
+              transition: "background-color 150ms ease",
+              border: `2px solid ${sw.black}`,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = sw.red;
+              e.currentTarget.style.borderColor = sw.red;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = sw.black;
+              e.currentTarget.style.borderColor = sw.black;
+            }}
+          >
+            See All Services <IconArrowRight />
+          </a>
         </div>
       </div>
     </section>
@@ -1926,6 +1835,8 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
         position: "relative",
         transition: "background-color 150ms ease",
         marginLeft: !isFeatured && plan.name === "Growth" ? "0" : "-2px",
+        height: "100%",
+        boxSizing: "border-box",
       }}
       onMouseEnter={() => !isFeatured && setHovered(true)}
       onMouseLeave={() => !isFeatured && setHovered(false)}
@@ -2148,7 +2059,7 @@ function PricingSection() {
         </div>
 
         <div
-          style={{ display: "grid", paddingTop: "24px", alignItems: "start" }}
+          style={{ display: "grid", paddingTop: "24px", alignItems: "stretch" }}
           className="grid-cols-1 md:grid-cols-3"
         >
           {pricingPlans.map((plan) => (
