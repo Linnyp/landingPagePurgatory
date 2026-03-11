@@ -16,15 +16,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import ScrollFloat from "@/app/components/TextAnimations/ScrollFloat";
 
 // ---------------------------------------------------------------------------
 // Swiss Design Tokens
 // ---------------------------------------------------------------------------
 
 const sw = {
-  white: "#FFFFFF",
-  black: "#000000",
-  muted: "#F2F2F2",
+  white: "#0A0A0A",
+  black: "#F0F0F0",
+  muted: "#1A1A1A",
   red: "#FF3000",
   font: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif",
   container: "1200px",
@@ -34,18 +35,18 @@ const sw = {
 // CSS-based texture patterns
 const gridPattern: React.CSSProperties = {
   backgroundImage:
-    "repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(0,0,0,0.03) 23px, rgba(0,0,0,0.03) 24px)," +
-    "repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(0,0,0,0.03) 23px, rgba(0,0,0,0.03) 24px)",
+    "repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(255,255,255,0.05) 23px, rgba(255,255,255,0.05) 24px)," +
+    "repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(255,255,255,0.05) 23px, rgba(255,255,255,0.05) 24px)",
 };
 
 const dotsPattern: React.CSSProperties = {
-  backgroundImage: "radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)",
+  backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)",
   backgroundSize: "16px 16px",
 };
 
 const diagPattern: React.CSSProperties = {
   backgroundImage:
-    "repeating-linear-gradient(45deg, rgba(0,0,0,0.025) 0px, rgba(0,0,0,0.025) 1px, transparent 1px, transparent 10px)",
+    "repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 10px)",
 };
 
 // ---------------------------------------------------------------------------
@@ -97,11 +98,21 @@ interface ProblemItem {
 
 const stats = [
   { value: "4+", label: "Active client engagements" },
-  { value: "Multi", label: "Industries: marine, home services, ecommerce, nonprofit" },
-  { value: "100%", label: "Projects built directly by the founder — no outsourced delivery" },
+  {
+    value: "Multi",
+    label: "Industries: marine, home services, ecommerce, nonprofit",
+  },
+  {
+    value: "100%",
+    label: "Projects built directly by the founder — no outsourced delivery",
+  },
 ];
 
-const clientNames = ["Four Leaf Charters", "Verona Cabinets", "Mycelia Foundation"];
+const clientNames = [
+  "Four Leaf Charters",
+  "Verona Cabinets",
+  "Mycelia Foundation",
+];
 
 const problems: ProblemItem[] = [
   {
@@ -271,12 +282,14 @@ const faqItems: FaqItem[] = [
       "Local service businesses are exactly who we built this for. The SEO strategies, lead automation workflows, and ad campaigns we deploy are built around how people in your market search for and choose a service provider \u2014 not generic templates repurposed from an ecommerce or SaaS playbook.",
   },
   {
-    question: "I\u2019ve worked with agencies before and got burned. Why would this be different?",
+    question:
+      "I\u2019ve worked with agencies before and got burned. Why would this be different?",
     answer:
       "The founder writes the code, runs the campaigns, and builds the systems directly \u2014 there\u2019s no account manager relaying your work to a fulfillment team you\u2019ll never speak with. You communicate with the person doing the work. When something isn\u2019t performing, you hear about it before we ask you to renew.",
   },
   {
-    question: "We\u2019re busy right now \u2014 can this wait until things slow down?",
+    question:
+      "We\u2019re busy right now \u2014 can this wait until things slow down?",
     answer:
       "The businesses that are too busy to fix their marketing are usually busy because of word-of-mouth \u2014 which is fragile. When referrals slow down, as they eventually do, there\u2019s no digital foundation to catch the gap. The best time to build that foundation is when you have some breathing room. The second-best time is now.",
   },
@@ -288,7 +301,13 @@ const faqItems: FaqItem[] = [
 
 function IconMap() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
         fill="currentColor"
@@ -299,86 +318,192 @@ function IconMap() {
 
 function IconBolt() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 function IconGlobe() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-      <path d="M2 12h20M12 2c-2.5 3-4 6.5-4 10s1.5 7 4 10M12 2c2.5 3 4 6.5 4 10s-1.5 7-4 10" stroke="currentColor" strokeWidth="2" />
+      <path
+        d="M2 12h20M12 2c-2.5 3-4 6.5-4 10s1.5 7 4 10M12 2c2.5 3 4 6.5 4 10s-1.5 7-4 10"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
     </svg>
   );
 }
 
 function IconChart() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M3 20h18M7 20V10M12 20V4M17 20v-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 20h18M7 20V10M12 20V4M17 20v-7"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 function IconMessage() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 function IconSettings() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" strokeWidth="2" />
+      <path
+        d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
     </svg>
   );
 }
 
 function IconArrowRight() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M5 12h14M12 5l7 7-7 7"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 function IconMenu() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 12h18M3 6h18M3 18h18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 function IconClose() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M18 6L6 18M6 6l12 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 function IconPlus() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 5v14M5 12h14"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 function ServiceIcon({ icon }: { icon: ServiceItem["icon"] }) {
   switch (icon) {
-    case "map": return <IconMap />;
-    case "bolt": return <IconBolt />;
-    case "globe": return <IconGlobe />;
-    case "chart": return <IconChart />;
-    case "message": return <IconMessage />;
-    case "settings": return <IconSettings />;
+    case "map":
+      return <IconMap />;
+    case "bolt":
+      return <IconBolt />;
+    case "globe":
+      return <IconGlobe />;
+    case "chart":
+      return <IconChart />;
+    case "message":
+      return <IconMessage />;
+    case "settings":
+      return <IconSettings />;
   }
 }
 
@@ -488,9 +613,20 @@ function SiteNav() {
         </a>
 
         {/* Desktop nav */}
-        <nav aria-label="Main navigation" className="hidden md:flex" style={{ display: "flex", gap: "32px", alignItems: "center" }}>
+        <nav
+          aria-label="Main navigation"
+          className="hidden md:flex"
+          style={{ display: "flex", gap: "32px", alignItems: "center" }}
+        >
           {navLinks.map((link) => (
-            <div key={link.href} style={{ overflow: "hidden", height: "20px", position: "relative" }}>
+            <div
+              key={link.href}
+              style={{
+                overflow: "hidden",
+                height: "20px",
+                position: "relative",
+              }}
+            >
               <a
                 href={link.href}
                 style={{
@@ -802,20 +938,28 @@ function HeroSection() {
               fontWeight: 400,
               fontSize: "17px",
               lineHeight: 1.65,
-              color: "#444",
+              color: "#BBBBBB",
               margin: "0 0 40px",
               maxWidth: "520px",
               borderLeft: `4px solid ${sw.black}`,
               paddingLeft: "20px",
             }}
           >
-            Linax Digital helps local service businesses — HVAC, plumbing, landscaping, remodeling — get found online,
-            convert more leads, and automate the repetitive work that&apos;s eating your week. No in-house tech team
-            required.
+            Linax Digital helps local service businesses — HVAC, plumbing,
+            landscaping, remodeling — get found online, convert more leads, and
+            automate the repetitive work that&apos;s eating your week. No
+            in-house tech team required.
           </p>
 
           {/* CTA group */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0", alignItems: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0",
+              alignItems: "center",
+            }}
+          >
             <a
               href="#contact"
               style={{
@@ -834,8 +978,12 @@ function HeroSection() {
                 textTransform: "uppercase" as const,
                 transition: "background-color 150ms ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = sw.black)}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = sw.red)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = sw.black)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = sw.red)
+              }
             >
               Book a Free Discovery Call <IconArrowRight />
             </a>
@@ -876,12 +1024,13 @@ function HeroSection() {
             style={{
               fontFamily: sw.font,
               fontSize: "12px",
-              color: "#888",
+              color: "#AAA",
               marginTop: "16px",
               letterSpacing: "0.02em",
             }}
           >
-            No commitment. 30 minutes. Walk away with a clear picture of where you stand.
+            No commitment. 30 minutes. Walk away with a clear picture of where
+            you stand.
           </p>
         </div>
 
@@ -925,37 +1074,31 @@ function SocialProofBar() {
         }}
       >
         {/* Stats row */}
-        <div
-          style={{ display: "grid" }}
-          className="grid-cols-1 md:grid-cols-3"
-        >
+        <div style={{ display: "grid" }} className="grid-cols-1 md:grid-cols-3">
           {stats.map((stat, i) => (
             <div
               key={stat.value}
               style={{
                 padding: "40px 32px",
-                borderRight: i < stats.length - 1 ? `2px solid ${sw.black}` : "none",
+                borderRight:
+                  i < stats.length - 1 ? `2px solid ${sw.black}` : "none",
               }}
             >
-              <div
-                style={{
-                  fontFamily: sw.font,
-                  fontWeight: 900,
-                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                  color: sw.black,
-                  letterSpacing: "-0.04em",
-                  lineHeight: 1,
-                  marginBottom: "8px",
-                }}
+              <ScrollFloat
+                animationDuration={1}
+                ease="back.out(2)"
+                scrollStart="5% bottom"
+                stagger={0.1}
+                className="scroll-float-stat"
               >
                 {stat.value}
-              </div>
+              </ScrollFloat>
               <div
                 style={{
                   fontFamily: sw.font,
                   fontWeight: 500,
                   fontSize: "13px",
-                  color: "#555",
+                  color: "#AAA",
                   lineHeight: 1.5,
                   maxWidth: "240px",
                 }}
@@ -1008,7 +1151,7 @@ function SocialProofBar() {
             style={{
               fontFamily: sw.font,
               fontSize: "11px",
-              color: "#999",
+              color: "#BBB",
               fontStyle: "italic",
             }}
           >
@@ -1075,21 +1218,26 @@ function ProblemSection() {
               fontFamily: sw.font,
               fontWeight: 400,
               fontSize: "15px",
-              color: "#666",
+              color: "#AAA",
               lineHeight: 1.65,
               margin: 0,
             }}
           >
-            Most local service businesses are losing leads they never knew they had.
-            The problem usually isn&apos;t the quality of your work — it&apos;s everything
-            that happens before a customer calls you.
+            Most local service businesses are losing leads they never knew they
+            had. The problem usually isn&apos;t the quality of your work —
+            it&apos;s everything that happens before a customer calls you.
           </p>
         </div>
 
         {/* Right: problem cards */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
           {problems.map((problem, i) => (
-            <ProblemCard key={problem.name} problem={problem} index={i} total={problems.length} />
+            <ProblemCard
+              key={problem.name}
+              problem={problem}
+              index={i}
+              total={problems.length}
+            />
           ))}
         </div>
       </div>
@@ -1097,7 +1245,15 @@ function ProblemSection() {
   );
 }
 
-function ProblemCard({ problem, index, total }: { problem: ProblemItem; index: number; total: number }) {
+function ProblemCard({
+  problem,
+  index,
+  total,
+}: {
+  problem: ProblemItem;
+  index: number;
+  total: number;
+}) {
   const [hovered, setHovered] = useState(false);
   return (
     <article
@@ -1157,7 +1313,7 @@ function ProblemCard({ problem, index, total }: { problem: ProblemItem; index: n
           fontFamily: sw.font,
           fontSize: "15px",
           lineHeight: 1.7,
-          color: hovered ? "rgba(255,255,255,0.9)" : "#555",
+          color: hovered ? "rgba(255,255,255,0.9)" : "#AAA",
           margin: 0,
           transition: "color 150ms ease",
         }}
@@ -1172,7 +1328,13 @@ function ProblemCard({ problem, index, total }: { problem: ProblemItem; index: n
 // ServicesSection
 // ---------------------------------------------------------------------------
 
-function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: ServiceItem;
+  index: number;
+}) {
   const [hovered, setHovered] = useState(false);
   return (
     <article
@@ -1190,7 +1352,13 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
       onMouseLeave={() => setHovered(false)}
     >
       {/* Number + Icon row */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+        }}
+      >
         <div
           style={{
             width: "44px",
@@ -1211,7 +1379,7 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
             fontFamily: sw.font,
             fontWeight: 900,
             fontSize: "11px",
-            color: hovered ? sw.red : "#ccc",
+            color: hovered ? sw.red : "#555",
             letterSpacing: "0.12em",
             transition: "color 150ms ease",
           }}
@@ -1241,7 +1409,7 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
           fontFamily: sw.font,
           fontSize: "14px",
           lineHeight: 1.7,
-          color: hovered ? "rgba(255,255,255,0.75)" : "#666",
+          color: hovered ? "rgba(0,0,0,0.65)" : "#AAA",
           margin: 0,
           transition: "color 150ms ease",
         }}
@@ -1308,14 +1476,15 @@ function ServicesSection() {
                 fontFamily: sw.font,
                 fontWeight: 400,
                 fontSize: "15px",
-                color: "#555",
+                color: "#AAA",
                 lineHeight: 1.65,
                 margin: 0,
                 paddingBottom: "8px",
               }}
             >
-              We handle the full stack — from your Google presence to the AI workflows running in
-              the background — so you can stay focused on the work.
+              We handle the full stack — from your Google presence to the AI
+              workflows running in the background — so you can stay focused on
+              the work.
             </p>
           </div>
         </div>
@@ -1326,7 +1495,13 @@ function ServicesSection() {
           className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service, i) => (
-            <div key={service.title} style={{ marginTop: i >= 3 ? "-2px" : "0", marginLeft: i % 3 !== 0 ? "-2px" : "0" }}>
+            <div
+              key={service.title}
+              style={{
+                marginTop: i >= 3 ? "-2px" : "0",
+                marginLeft: i % 3 !== 0 ? "-2px" : "0",
+              }}
+            >
               <ServiceCard service={service} index={i} />
             </div>
           ))}
@@ -1399,7 +1574,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
           fontWeight: 400,
           fontSize: "14px",
           lineHeight: 1.75,
-          color: "#444",
+          color: "#BBBBBB",
           margin: 0,
           fontStyle: "normal",
         }}
@@ -1430,7 +1605,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
           style={{
             fontFamily: sw.font,
             fontSize: "12px",
-            color: "#888",
+            color: "#AAA",
             marginTop: "4px",
           }}
         >
@@ -1537,8 +1712,12 @@ function ResultsSection() {
               minHeight: "48px",
               transition: "background-color 150ms ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = sw.red)}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = sw.black)}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = sw.red)
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = sw.black)
+            }
           >
             See if we&apos;re a fit <IconArrowRight />
           </a>
@@ -1645,7 +1824,7 @@ function HowItWorksSection() {
                   fontFamily: sw.font,
                   fontSize: "14px",
                   lineHeight: 1.75,
-                  color: "#666",
+                  color: "#AAA",
                   margin: 0,
                 }}
               >
@@ -1669,8 +1848,8 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
   const isFeatured = plan.featured;
   const bg = isFeatured ? sw.black : hovered ? sw.muted : sw.white;
   const textColor = isFeatured ? sw.white : sw.black;
-  const bodyColor = isFeatured ? "rgba(255,255,255,0.7)" : "#666";
-  const borderColor = isFeatured ? sw.black : sw.black;
+  const bodyColor = isFeatured ? "rgba(0,0,0,0.65)" : "#AAA";
+  const borderColor = isFeatured ? "#111111" : sw.black;
 
   return (
     <article
@@ -1741,7 +1920,7 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
             fontFamily: sw.font,
             fontWeight: 600,
             fontSize: "15px",
-            color: isFeatured ? "rgba(255,255,255,0.6)" : "#888",
+            color: isFeatured ? "rgba(0,0,0,0.55)" : "#AAA",
           }}
         >
           {plan.price}
@@ -1755,7 +1934,7 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
           lineHeight: 1.65,
           color: bodyColor,
           margin: 0,
-          borderTop: `1px solid ${isFeatured ? "rgba(255,255,255,0.2)" : "#ddd"}`,
+          borderTop: `1px solid ${isFeatured ? "rgba(0,0,0,0.15)" : "rgba(255,255,255,0.1)"}`,
           paddingTop: "20px",
         }}
       >
@@ -1892,14 +2071,15 @@ function PricingSection() {
               style={{
                 fontFamily: sw.font,
                 fontSize: "15px",
-                color: "#666",
+                color: "#AAA",
                 lineHeight: 1.65,
                 margin: 0,
                 paddingBottom: "8px",
               }}
             >
-              Custom pricing for your scope. Every engagement starts with a free audit so we can
-              recommend what fits your situation — not the biggest package we can sell you.
+              Custom pricing for your scope. Every engagement starts with a free
+              audit so we can recommend what fits your situation — not the
+              biggest package we can sell you.
             </p>
           </div>
         </div>
@@ -1933,7 +2113,8 @@ function FaqAccordion() {
             key={i}
             style={{
               borderTop: `2px solid ${sw.black}`,
-              borderBottom: i === faqItems.length - 1 ? `2px solid ${sw.black}` : "none",
+              borderBottom:
+                i === faqItems.length - 1 ? `2px solid ${sw.black}` : "none",
             }}
           >
             <button
@@ -2054,8 +2235,7 @@ function FaqSection() {
             We Get
             <br />
             Asked
-            <br />
-            A Lot.
+            <br />A Lot.
           </h2>
           <a
             href="#contact"
@@ -2074,8 +2254,12 @@ function FaqSection() {
               textTransform: "uppercase" as const,
               transition: "background-color 150ms ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = sw.red)}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = sw.black)}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = sw.red)
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = sw.black)
+            }
           >
             Still have questions?
           </a>
@@ -2138,7 +2322,14 @@ function FinalCtaSection() {
               gap: "12px",
             }}
           >
-            <span style={{ display: "inline-block", width: "24px", height: "2px", backgroundColor: sw.red }} />
+            <span
+              style={{
+                display: "inline-block",
+                width: "24px",
+                height: "2px",
+                backgroundColor: sw.red,
+              }}
+            />
             Act Now
           </div>
 
@@ -2175,12 +2366,20 @@ function FinalCtaSection() {
               paddingLeft: "20px",
             }}
           >
-            AI-powered marketing isn&apos;t coming — it&apos;s already here. The businesses that move
-            now will hold a lead advantage that&apos;s very hard to close later. Book a free 30-minute
-            call to find out where you stand.
+            AI-powered marketing isn&apos;t coming — it&apos;s already here. The
+            businesses that move now will hold a lead advantage that&apos;s very
+            hard to close later. Book a free 30-minute call to find out where
+            you stand.
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0", alignItems: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0",
+              alignItems: "center",
+            }}
+          >
             <a
               href="#contact"
               style={{
@@ -2228,7 +2427,9 @@ function FinalCtaSection() {
                 transition: "color 150ms ease",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = sw.white)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
+              }
             >
               Download AI Readiness Checklist
             </a>
@@ -2243,7 +2444,8 @@ function FinalCtaSection() {
               letterSpacing: "0.04em",
             }}
           >
-            No pressure, no pitch deck. Just a clear look at where your business stands online.
+            No pressure, no pitch deck. Just a clear look at where your business
+            stands online.
           </p>
         </div>
 
@@ -2276,14 +2478,86 @@ function FinalCtaSection() {
               }}
             />
             {/* Corner marks */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: "12%", height: "2px", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", top: 0, left: 0, width: "2px", height: "12%", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", top: 0, right: 0, width: "12%", height: "2px", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", top: 0, right: 0, width: "2px", height: "12%", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: "12%", height: "2px", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: "2px", height: "12%", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: "12%", height: "2px", backgroundColor: sw.white }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: "2px", height: "12%", backgroundColor: sw.white }} />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "12%",
+                height: "2px",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "2px",
+                height: "12%",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                width: "12%",
+                height: "2px",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                width: "2px",
+                height: "12%",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                width: "12%",
+                height: "2px",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                width: "2px",
+                height: "12%",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                right: 0,
+                width: "12%",
+                height: "2px",
+                backgroundColor: sw.white,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                right: 0,
+                width: "2px",
+                height: "12%",
+                backgroundColor: sw.white,
+              }}
+            />
           </div>
         </div>
       </div>
@@ -2322,11 +2596,18 @@ function SiteFooter() {
         }}
       >
         <div
-          style={{ display: "grid", gap: "48px", marginBottom: "48px", alignItems: "start" }}
+          style={{
+            display: "grid",
+            gap: "48px",
+            marginBottom: "48px",
+            alignItems: "start",
+          }}
           className="grid-cols-1 md:grid-cols-[1fr_auto]"
         >
           {/* Brand */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+          >
             <a
               href="/"
               aria-label="Linax Digital home"
@@ -2364,7 +2645,8 @@ function SiteFooter() {
                 fontStyle: "italic",
               }}
             >
-              [REPLACE: LinkedIn, Instagram — add handles when social profiles are live]
+              [REPLACE: LinkedIn, Instagram — add handles when social profiles
+              are live]
             </p>
           </div>
 
@@ -2395,7 +2677,9 @@ function SiteFooter() {
                       transition: "color 150ms ease",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = sw.red)}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "rgba(255,255,255,0.4)")
+                    }
                   >
                     {link.label}
                   </a>
