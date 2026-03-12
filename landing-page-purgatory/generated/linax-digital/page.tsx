@@ -135,7 +135,7 @@ interface ProblemItem {
 const stats = [
   { value: "4+", label: "Active client engagements" },
   {
-    value: "Multi",
+    value: "Multi-Industry",
     label: "Industries: marine, home services, ecommerce, nonprofit",
   },
   {
@@ -644,20 +644,8 @@ function SiteNav() {
     >
       {/* Silk background — matches .card-nav-container positioning + 60px bar height */}
       <div
-        style={{
-          position: "absolute",
-          top: "2em",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "90%",
-          maxWidth: "800px",
-          height: "60px",
-          borderRadius: "0.75rem",
-          overflow: "hidden",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          backgroundColor: colors.primaryFrost,
-        }}
+        className="nav-silk-bg"
+        style={{ backgroundColor: colors.primaryFrost }}
       >
         <Silk
           color={colors.primaryLight}
@@ -1011,14 +999,19 @@ function SocialProofBar() {
         }}
       >
         {/* Stats row */}
-        <div style={{ display: "grid" }} className="grid-cols-1 md:grid-cols-3">
+        <div
+          style={{ display: "grid" }}
+          className="grid-cols-1 md:grid-cols-3 stat-grid"
+        >
           {stats.map((stat, i) => (
             <div
               key={stat.value}
+              className="text-center md:text-left"
               style={{
                 padding: "40px 32px",
                 borderRight:
                   i < stats.length - 1 ? `2px solid ${sw.black}` : "none",
+                borderBottom: "none",
               }}
             >
               <ScrollFloat
@@ -1031,6 +1024,7 @@ function SocialProofBar() {
                 {stat.value}
               </ScrollFloat>
               <div
+                className="mx-auto md:mx-0"
                 style={{
                   fontFamily: sw.font,
                   fontWeight: 500,
@@ -1055,6 +1049,7 @@ function SocialProofBar() {
             flexWrap: "wrap",
             gap: "32px",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <span
