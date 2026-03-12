@@ -21,20 +21,50 @@ import CardNav from "../../components/CardNav";
 import Silk from "../../components/Silk";
 import PixelBlast from "../../components/PixelBlast";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStack";
+import RippleGrid from "../../components/RippleGrid";
 import linaxLogo from "./linax-logo.svg";
 
 // ---------------------------------------------------------------------------
-// Swiss Design Tokens
+// Color Palette
 // ---------------------------------------------------------------------------
 
-const sw = {
-  white: "#0A0A0A",
-  black: "#F0F0F0",
-  muted: "#2B2B2B",
-  red: "#FF3000",
+const colors = {
+  // Brand — navy
+  primary: "#1B3A5C",
+  primaryLight: "#2D5A80",
+  primaryFrost: "rgba(45, 90, 128, 0.75)",
+
+  // CTA
+  cta: "#F18F01",
+
+  // Neutrals — updated to navy/blue theme
+  ink: "#1B3A5C", // navy (was near-black)
+  surface: "#112338", // deep navy card bg (was #0D0D0D)
+  surfaceAlt: "#1B3A5C", // navy card bg (was #1C1C1C)
+  gray: "#1B3A5C", // navy muted surface (was #2B2B2B)
+  paper: "#FFFFFF", // white
+  white: "#FFFFFF",
+
+  // Text shades
+  textMuted: "#AAAAAA",
+  textSubtle: "#BBBBBB",
+  textDim: "#555555",
+
+  // Typography / layout
   font: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif",
   container: "1200px",
   gutter: "24px",
+} as const;
+
+// Legacy alias — keeps existing sw.* references working
+const sw = {
+  white: colors.ink,
+  black: colors.paper,
+  muted: colors.gray,
+  red: colors.cta,
+  font: colors.font,
+  container: colors.container,
+  gutter: colors.gutter,
 } as const;
 
 // CSS-based texture patterns
@@ -559,13 +589,13 @@ function SectionLabel({ number, text }: { number: string; text: string }) {
 // SiteNav — fixed, Swiss style
 // ---------------------------------------------------------------------------
 
-const linaxLogoSvg = "/linax-digital-logo.svg";
+const linaxLogoSvg = "/linax-digital-logo.png";
 
 const cardNavItems = [
   {
     label: "Services",
-    bgColor: "#0D0D0D",
-    textColor: "#fff",
+    bgColor: colors.surface,
+    textColor: colors.white,
     links: [
       { label: "Services", ariaLabel: "Our Services", href: "#services" },
       {
@@ -577,8 +607,8 @@ const cardNavItems = [
   },
   {
     label: "Results",
-    bgColor: "#1C1C1C",
-    textColor: "#fff",
+    bgColor: colors.surfaceAlt,
+    textColor: colors.white,
     links: [
       { label: "Results", ariaLabel: "Our Results", href: "#results" },
       { label: "Pricing", ariaLabel: "Pricing Plans", href: "#pricing" },
@@ -586,8 +616,8 @@ const cardNavItems = [
   },
   {
     label: "Contact",
-    bgColor: "#FF3000",
-    textColor: "#fff",
+    bgColor: colors.cta,
+    textColor: colors.white,
     links: [
       { label: "FAQ", ariaLabel: "Frequently Asked Questions", href: "#faq" },
       {
@@ -624,14 +654,18 @@ function SiteNav() {
           height: "60px",
           borderRadius: "0.75rem",
           overflow: "hidden",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          backgroundColor: colors.primaryFrost,
         }}
       >
         <Silk
-          color={sw.muted}
+          color={colors.primaryLight}
           speed={3}
           scale={1.2}
           noiseIntensity={1.5}
           rotation={0}
+          alpha
         />
       </div>
 
@@ -741,10 +775,9 @@ function HeroSection() {
     <section
       aria-label="Hero"
       style={{
-        backgroundColor: sw.white,
+        backgroundColor: colors.primary,
         paddingTop: "128px",
         paddingBottom: "0",
-        ...gridPattern,
         position: "relative",
         overflow: "hidden",
       }}
@@ -753,7 +786,7 @@ function HeroSection() {
         <PixelBlast
           variant="square"
           pixelSize={4}
-          color="#3A3A3A"
+          color={colors.primaryLight}
           patternScale={2}
           patternDensity={1}
           pixelSizeJitter={0}
@@ -839,7 +872,7 @@ function HeroSection() {
               fontWeight: 400,
               fontSize: "17px",
               lineHeight: 1.65,
-              color: "#BBBBBB",
+              color: colors.textSubtle,
               margin: "0 0 40px",
               maxWidth: "520px",
               borderLeft: `4px solid ${sw.black}`,
@@ -928,7 +961,7 @@ function HeroSection() {
             style={{
               fontFamily: sw.font,
               fontSize: "12px",
-              color: "#AAA",
+              color: colors.textMuted,
               marginTop: "16px",
               letterSpacing: "0.02em",
             }}
@@ -964,7 +997,7 @@ function SocialProofBar() {
     <section
       aria-label="Social proof"
       style={{
-        backgroundColor: sw.muted,
+        backgroundColor: colors.primaryLight,
         borderTop: `4px solid ${sw.black}`,
         borderBottom: `4px solid ${sw.black}`,
         ...dotsPattern,
@@ -1002,7 +1035,7 @@ function SocialProofBar() {
                   fontFamily: sw.font,
                   fontWeight: 500,
                   fontSize: "13px",
-                  color: "#AAA",
+                  color: colors.textMuted,
                   lineHeight: 1.5,
                   maxWidth: "240px",
                 }}
@@ -1055,7 +1088,7 @@ function SocialProofBar() {
             style={{
               fontFamily: sw.font,
               fontSize: "11px",
-              color: "#BBB",
+              color: colors.textSubtle,
               fontStyle: "italic",
             }}
           >
@@ -1122,7 +1155,7 @@ function ProblemSection() {
               fontFamily: sw.font,
               fontWeight: 400,
               fontSize: "15px",
-              color: "#AAA",
+              color: colors.textMuted,
               lineHeight: 1.65,
               margin: 0,
             }}
@@ -1250,7 +1283,7 @@ function ProblemCard({
           fontFamily: sw.font,
           fontSize: "15px",
           lineHeight: 1.7,
-          color: hovered ? "rgba(255,255,255,0.9)" : "#AAA",
+          color: hovered ? "rgba(255,255,255,0.9)" : colors.textMuted,
           margin: 0,
           transition: "color 150ms ease",
         }}
@@ -1318,7 +1351,7 @@ function ServiceCard({
             fontFamily: sw.font,
             fontWeight: 900,
             fontSize: "11px",
-            color: hovered ? sw.red : "#555",
+            color: hovered ? sw.red : colors.textDim,
             letterSpacing: "0.12em",
             transition: "color 150ms ease",
           }}
@@ -1348,7 +1381,7 @@ function ServiceCard({
           fontFamily: sw.font,
           fontSize: "14px",
           lineHeight: 1.7,
-          color: hovered ? "rgba(0,0,0,0.65)" : "#AAA",
+          color: hovered ? "rgba(0,0,0,0.65)" : colors.textMuted,
           margin: 0,
           transition: "color 150ms ease",
         }}
@@ -1365,7 +1398,7 @@ function ServicesSection() {
       id="services"
       aria-labelledby="services-heading"
       style={{
-        backgroundColor: sw.muted,
+        backgroundColor: colors.primaryLight,
         paddingTop: "96px",
         paddingBottom: "96px",
         ...diagPattern,
@@ -1423,7 +1456,7 @@ function ServicesSection() {
                 fontFamily: sw.font,
                 fontWeight: 400,
                 fontSize: "15px",
-                color: "#AAA",
+                color: colors.textMuted,
                 lineHeight: 1.65,
                 margin: 0,
                 paddingBottom: "8px",
@@ -1562,7 +1595,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
           fontWeight: 400,
           fontSize: "14px",
           lineHeight: 1.75,
-          color: "#BBBBBB",
+          color: colors.textSubtle,
           margin: 0,
           fontStyle: "normal",
         }}
@@ -1593,7 +1626,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
           style={{
             fontFamily: sw.font,
             fontSize: "12px",
-            color: "#AAA",
+            color: colors.textMuted,
             marginTop: "4px",
           }}
         >
@@ -1725,7 +1758,7 @@ function HowItWorksSection() {
       id="how-it-works"
       aria-labelledby="hiw-heading"
       style={{
-        backgroundColor: sw.muted,
+        backgroundColor: colors.primaryLight,
         paddingTop: "96px",
         paddingBottom: "96px",
         borderTop: `4px solid ${sw.black}`,
@@ -1806,7 +1839,7 @@ function HowItWorksSection() {
                   fontFamily: sw.font,
                   fontSize: "14px",
                   lineHeight: 1.75,
-                  color: "#AAA",
+                  color: colors.textMuted,
                   margin: 0,
                 }}
               >
@@ -1828,10 +1861,10 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
   const [hovered, setHovered] = useState(false);
 
   const isFeatured = plan.featured;
-  const bg = isFeatured ? sw.black : hovered ? sw.muted : sw.white;
-  const textColor = isFeatured ? sw.white : sw.black;
-  const bodyColor = isFeatured ? "rgba(0,0,0,0.65)" : "#AAA";
-  const borderColor = isFeatured ? "#111111" : sw.black;
+  const bg = isFeatured ? colors.primaryLight : hovered ? sw.muted : sw.white;
+  const textColor = isFeatured ? colors.white : sw.black;
+  const bodyColor = isFeatured ? "rgba(255,255,255,0.75)" : colors.textMuted;
+  const borderColor = isFeatured ? colors.primaryLight : sw.black;
 
   return (
     <article
@@ -1904,7 +1937,7 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
             fontFamily: sw.font,
             fontWeight: 600,
             fontSize: "15px",
-            color: isFeatured ? "rgba(0,0,0,0.55)" : "#AAA",
+            color: isFeatured ? "rgba(0,0,0,0.55)" : colors.textMuted,
           }}
         >
           {plan.price}
@@ -2045,7 +2078,7 @@ function PricingSection() {
               style={{
                 fontFamily: sw.font,
                 fontSize: "15px",
-                color: "#AAA",
+                color: colors.textMuted,
                 lineHeight: 1.65,
                 margin: 0,
                 paddingBottom: "8px",
@@ -2148,7 +2181,7 @@ function FaqAccordion() {
                   fontFamily: sw.font,
                   fontSize: "14px",
                   lineHeight: 1.75,
-                  color: "#555",
+                  color: colors.textDim,
                   margin: 0,
                   paddingBottom: "28px",
                   maxWidth: "680px",
@@ -2170,7 +2203,7 @@ function FaqSection() {
       id="faq"
       aria-labelledby="faq-heading"
       style={{
-        backgroundColor: sw.muted,
+        backgroundColor: colors.primaryLight,
         paddingTop: "96px",
         paddingBottom: "96px",
         borderTop: `4px solid ${sw.black}`,
@@ -2267,6 +2300,8 @@ function FinalCtaSection() {
         backgroundColor: sw.black,
         paddingTop: "96px",
         paddingBottom: "96px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <div
@@ -2438,17 +2473,28 @@ function FinalCtaSection() {
                 border: `4px solid ${sw.red}`,
               }}
             />
-            {/* White filled center square */}
+            {/* RippleGrid in place of center square */}
             <div
               style={{
                 position: "absolute",
-                top: "30%",
-                left: "30%",
-                width: "40%",
-                height: "40%",
-                backgroundColor: sw.red,
+                top: "10%",
+                left: "10%",
+                width: "80%",
+                height: "80%",
+                overflow: "hidden",
               }}
-            />
+            >
+              <RippleGrid
+                enableRainbow={false}
+                gridColor="#1B3A5C"
+                rippleIntensity={0.03}
+                gridSize={10}
+                gridThickness={15}
+                mouseInteraction={true}
+                mouseInteractionRadius={1.2}
+                opacity={0.8}
+              />
+            </div>
             {/* Corner marks */}
             <div
               style={{
@@ -2554,7 +2600,7 @@ function SiteFooter() {
   return (
     <footer
       style={{
-        backgroundColor: sw.muted,
+        backgroundColor: colors.primaryLight,
         borderTop: `4px solid ${sw.white}`,
         paddingTop: "64px",
         paddingBottom: "40px",
@@ -2700,8 +2746,7 @@ function SiteFooter() {
                 style={{
                   width: i === 1 ? "16px" : "8px",
                   height: "2px",
-                  backgroundColor:
-                    i === 1 ? sw.red : "rgba(240,240,240,0.4)",
+                  backgroundColor: i === 1 ? sw.red : "rgba(240,240,240,0.4)",
                 }}
               />
             ))}

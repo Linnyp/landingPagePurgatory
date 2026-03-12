@@ -32,6 +32,7 @@ uniform float uSpeed;
 uniform float uScale;
 uniform float uRotation;
 uniform float uNoiseIntensity;
+uniform float uAlphaMode;
 
 const float e = 2.71828182845904523536;
 
@@ -63,7 +64,7 @@ void main() {
                            sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
 
   vec4 col = vec4(uColor, 1.0) * vec4(pattern) - rnd / 15.0 * uNoiseIntensity;
-  col.a = 1.0;
+  col.a = uAlphaMode > 0.5 ? clamp(pattern * 1.5 - 0.6, 0.0, 0.75) : 1.0;
   gl_FragColor = col;
 }
 `;
@@ -90,7 +91,7 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
 });
 SilkPlane.displayName = 'SilkPlane';
 
-const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0 }) => {
+const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0, alpha = false }) => {
   const meshRef = useRef();
 
   const uniforms = useMemo(
@@ -100,13 +101,14 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
       uNoiseIntensity: { value: noiseIntensity },
       uColor: { value: new Color(...hexToNormalizedRGB(color)) },
       uRotation: { value: rotation },
-      uTime: { value: 0 }
+      uTime: { value: 0 },
+      uAlphaMode: { value: alpha ? 1.0 : 0.0 }
     }),
-    [speed, scale, noiseIntensity, color, rotation]
+    [speed, scale, noiseIntensity, color, rotation, alpha]
   );
 
   return (
-    <Canvas dpr={[1, 2]} frameloop="always">
+    <Canvas dpr={[1, 2]} frameloop="always" gl={{ alpha }}>
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
   );
