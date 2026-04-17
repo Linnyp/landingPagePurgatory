@@ -163,9 +163,9 @@ const CardNav = ({
             <div className="hamburger-line" />
           </div>
 
-          <div className="logo-container">
+          <a href="/" className="logo-container" aria-label="Go to homepage">
             <img src={logo} alt={logoAlt} className="logo" />
-          </div>
+          </a>
 
           <button
             type="button"
