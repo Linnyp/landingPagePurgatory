@@ -1098,6 +1098,20 @@ function ProblemSection() {
             had. The problem usually isn&apos;t the quality of your work —
             it&apos;s everything that happens before a customer calls you.
           </p>
+          <img
+            src="/painPointJuggling.png"
+            alt="Illustration of a business owner juggling marketing pain points"
+            className="hidden lg:block"
+            style={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              width: "100%",
+              height: "auto",
+              marginTop: "40px",
+            }}
+          />
         </div>
 
         {/* Right: problem cards — scroll stack */}
@@ -1332,6 +1346,8 @@ function ServicesSection() {
       id="services"
       aria-labelledby="services-heading"
       style={{
+        position: "relative",
+        zIndex: 1,
         backgroundColor: colors.primaryLight,
         paddingTop: "96px",
         paddingBottom: "96px",
