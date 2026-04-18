@@ -1,6 +1,6 @@
 # Linax Digital — Business Context
 
-> **Purpose.** This document is the canonical business context reference for any AI agent designing, building, or writing for Linax Digital's web presence. It is sourced from the _Linax Digital Business & Product Documentation v3.0_ and supplemented with branding, audience, and conversion details defined by the founder. Visual design tokens and component specifications live in `styleguide.md` in this same directory. When this document conflicts with older context files, this document wins.
+> **Purpose.** This document is the canonical business context reference for any AI agent designing, building, or writing for Linax Digital's web presence. It is sourced from the _Linax Digital Business & Product Documentation v3.0_ and supplemented with branding, audience, and conversion details defined by the founder. Visual design tokens and component specifications live in `styleguide.md` in this same directory. The authoritative writing voice reference — including reference writers, concrete rules, before/after examples, and a pre-submission checklist — lives in **`writing-voice.md`** in this same directory; any agent drafting copy must read it before writing. When this document conflicts with older context files, this document wins.
 
 ---
 
@@ -186,10 +186,12 @@ Draft logo exists. Final logo to be confirmed before site launch. Logo should al
 
 ## 7. Tone & Copy Guidance
 
+> **Writing voice reference:** The full writing voice specification — including reference writers (Vonnegut, Hemingway, Twain, Ogilvy, King, Handley, Jarvis, Godin), distilled sentence/vocabulary/tone/structure rules, before-and-after copy examples, and a pre-submission checklist — is documented in **`writing-voice.md`** in this same directory. Any AI agent writing copy for Linax Digital must load and follow `writing-voice.md`. The summary below is supplementary context; `writing-voice.md` is the authority.
+
 - **Voice adjectives:** Direct, knowledgeable, approachable, plainspoken, no-BS, warm, locally grounded.
 - **Formality level:** 2.5 out of 5 — professional but conversational. Speaks like a knowledgeable friend or trusted neighbor, never like a corporate brochure. Easy for non-technical local business owners to follow without ever feeling talked down to.
 - **Humor:** Subtle dry wit. Confident but never trying too hard. No memes, no forced casualness, no "fellow kids" energy.
-- **Words to avoid:** "Synergy," "leverage" (as a verb in marketing-speak), "disrupt," "guru," "ninja," "rockstar," "revolutionary," "game-changer," "unlock," "supercharge," "next-level," "cutting-edge" (as filler), "solutions" (as filler), "empower," "elevate." Avoid empty hype language and AI-marketing clichés. Avoid technical jargon unless it's immediately translated into plain language.
+- **Words to avoid:** "Synergy," "leverage" (as a verb in marketing-speak), "disrupt," "guru," "ninja," "rockstar," "revolutionary," "game-changer," "unlock," "supercharge," "next-level," "cutting-edge" (as filler), "solutions" (as filler), "empower," "elevate." Avoid empty hype language and AI-marketing clichés. Avoid technical jargon unless it's immediately translated into plain language. See `writing-voice.md` for the full never-use list including AI-ese tells (delve, tapestry, myriad, seamless, robust, etc.).
 - **Existing slogans / taglines:** None. To be defined after site copy is drafted.
 - **Key messages to include** (all phrased for the Everyman persona — plain, confident, outcome-focused):
   - **Built to last, not a template.** "Your website is built to work hard and last — not a cookie-cutter template that looks like every other local business in town."
@@ -198,7 +200,7 @@ Draft logo exists. Final logo to be confirmed before site launch. Logo should al
   - **Stop juggling five subscriptions.** "One system handles your reviews, your customer conversations, and your follow-ups. Less software, less headache, one bill."
   - **We're from here.** "We know your customers, your competitors, and your busy season. That's not something a national agency can fake."
   - **Honest pricing.** "Our prices are on the website. No runaround, no 'contact us for a quote' games."
-- **Writing samples:** _To be added. Founder will provide 2–3 paragraphs of personal writing (client email, proposal intro, LinkedIn post, etc.) as voice reference for AI agents._
+- **Writing samples:** _To be added. Founder will provide 2–3 paragraphs of personal writing (client email, proposal intro, LinkedIn post, etc.) as voice reference for AI agents. When added, these will supplement `writing-voice.md`._
 
 ---
 

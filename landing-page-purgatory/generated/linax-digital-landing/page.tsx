@@ -30,25 +30,25 @@ import linaxLogo from "./linax-logo.svg";
 
 const colors = {
   // Brand — Coastal Clay
-  primary: "#FBF8F3",           // sand-50 warm cream — hero / page bg
-  primaryLight: "#F3EEE4",      // sand-100 soft sand — alternate sections
-  primaryFrost: "rgba(251, 248, 243, 0.85)", // cream with transparency for nav
+  primary: "#FBF8F3", // sand-50 warm cream — hero / page bg
+  primaryLight: "#F3EEE4", // sand-100 soft sand — alternate sections
+  primaryFrost: "rgba(42, 37, 29, 0.90)", // sand-900 dark warm brown with transparency for nav
 
   // CTA
-  cta: "#C2552D",               // clay-500 terracotta
+  cta: "#C2552D", // clay-500 terracotta
 
   // Neutrals
-  ink: "#1F1B16",               // sand-950 warm near-black
-  surface: "#2A251D",           // sand-900 dark warm brown
-  surfaceAlt: "#3E372D",        // sand-800
-  gray: "#F3EEE4",              // sand-100 soft sand (muted surface)
-  paper: "#FBF8F3",             // sand-50 warm cream
-  white: "#FFFFFF",             // pure white (emphasis)
+  ink: "#1F1B16", // sand-950 warm near-black
+  surface: "#2A251D", // sand-900 dark warm brown
+  surfaceAlt: "#3E372D", // sand-800
+  gray: "#F3EEE4", // sand-100 soft sand (muted surface)
+  paper: "#FBF8F3", // sand-50 warm cream
+  white: "#FFFFFF", // pure white (emphasis)
 
   // Text shades
-  textMuted: "#78705F",         // sand-600
-  textSubtle: "#5C5449",        // sand-700
-  textDim: "#5C5449",           // sand-700
+  textMuted: "#78705F", // sand-600
+  textSubtle: "#5C5449", // sand-700
+  textDim: "#5C5449", // sand-700
 
   // Typography / layout
   font: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -75,8 +75,7 @@ const gridPattern: React.CSSProperties = {
 };
 
 const dotsPattern: React.CSSProperties = {
-  backgroundImage:
-    "radial-gradient(rgba(31,27,22,0.05) 1px, transparent 1px)",
+  backgroundImage: "radial-gradient(rgba(31,27,22,0.05) 1px, transparent 1px)",
   backgroundSize: "16px 16px",
 };
 
@@ -646,16 +645,7 @@ function SiteNav() {
       <div
         className="nav-silk-bg"
         style={{ backgroundColor: colors.primaryFrost }}
-      >
-        <Silk
-          color={"#C2552D"}
-          speed={3}
-          scale={1.2}
-          noiseIntensity={1.5}
-          rotation={0}
-          alpha
-        />
-      </div>
+      />
 
       <div style={{ pointerEvents: "auto" }}>
         <CardNav
@@ -727,6 +717,26 @@ function HeroSection() {
       >
         {/* Copy */}
         <div style={{ paddingBottom: "80px" }}>
+          {/* Mobile video — above eyebrow, hidden on lg+ */}
+          <div
+            className="block lg:hidden"
+            style={{
+              width: "120%",
+              marginLeft: "-10%",
+              marginBottom: "24px",
+              overflow: "hidden",
+            }}
+          >
+            <video
+              src="/puppetHandsAnimation.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: "100%", display: "block" }}
+            />
+          </div>
+
           <div
             style={{
               fontFamily: sw.font,
@@ -749,7 +759,7 @@ function HeroSection() {
                 backgroundColor: sw.red,
               }}
             />
-            Digital Marketing &amp; System Integrations
+            Local Business Digital Marketing &amp; System Integrations
           </div>
 
           <h1
@@ -764,11 +774,11 @@ function HeroSection() {
               margin: "0 0 32px",
             }}
           >
-            Your Competitors
+            Get Found.
             <br />
-            Are About
+            Get Trusted.
             <br />
-            To Get A Lot
+            Get Booked.
             <br />
             <span style={{ color: sw.red }}>Faster.</span>
           </h1>
@@ -786,10 +796,9 @@ function HeroSection() {
               paddingLeft: "20px",
             }}
           >
-            Linax Digital helps local service businesses — HVAC, plumbing,
-            landscaping, remodeling — get found online, convert more leads, and
-            automate the repetitive work that&apos;s eating your week. No
-            in-house tech team required.
+            Linax Digital is a digital marketing agency in Southwest Florida. We
+            build websites, run SEO, manage ads, and handle your online
+            reputation — all of it done by the person you talked to.
           </p>
 
           {/* CTA group */}
@@ -877,7 +886,6 @@ function HeroSection() {
             you stand.
           </p>
         </div>
-
       </div>
 
       {/* Puppet hands video — absolutely positioned, behind content, bleeds right */}
@@ -1067,13 +1075,14 @@ function ProblemSection() {
               margin: "0 0 24px",
             }}
           >
-            You Know
+            You've Got
             <br />
-            You Need
+            99 Problems
             <br />
-            Better
+            <span className="text-[#c2552d]">Marketing </span>
             <br />
-            Marketing.
+            Shouldn't Be 1
+            <br />
           </h2>
           <p
             style={{
@@ -1786,7 +1795,11 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
   const [hovered, setHovered] = useState(false);
 
   const isFeatured = plan.featured;
-  const bg = isFeatured ? colors.surface : hovered ? colors.primaryLight : colors.white;
+  const bg = isFeatured
+    ? colors.surface
+    : hovered
+      ? colors.primaryLight
+      : colors.white;
   const textColor = isFeatured ? "#FBF8F3" : sw.white;
   const bodyColor = isFeatured ? "rgba(251,248,243,0.75)" : colors.textMuted;
   const borderColor = isFeatured ? colors.surface : sw.white;

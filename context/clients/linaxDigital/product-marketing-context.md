@@ -187,7 +187,7 @@ The single biggest competitor for most prospects. It "works" just enough to rati
 local leads, your market, your customers, more calls, more jobs, show up on Google, get found, reviews, Google Business Profile (or just "your Google listing"), one system, one inbox, no contract (for ongoing services), you own it, you talk to me directly, built for your business, from here, Southwest Florida
 
 **Words and phrases to avoid:**
-synergy, leverage (as marketing verb), disrupt, guru, ninja, rockstar, revolutionary, game-changer, unlock, supercharge, next-level, cutting-edge (as filler), solutions (as filler), empower, elevate, AI-powered (as a headline — lead with outcomes, not technology), seamless, innovative, full-stack (meaningless to the audience), multi-agent (internal term only)
+synergy, leverage (as marketing verb), disrupt, guru, ninja, rockstar, revolutionary, game-changer, unlock, supercharge, next-level, cutting-edge (as filler), solutions (as filler), empower, elevate, AI-powered (as a headline — lead with outcomes, not technology), seamless, innovative, full-stack (meaningless to the audience), multi-agent (internal term only). See `writing-voice.md` for the extended never-use list including AI-ese tells.
 
 **Glossary:**
 
@@ -206,6 +206,8 @@ synergy, leverage (as marketing verb), disrupt, guru, ninja, rockstar, revolutio
 ---
 
 ## Brand Voice
+
+> **Writing voice reference:** The full writing voice specification — reference writers, distilled rules, before/after examples, and a pre-submission checklist — lives in **`writing-voice.md`** in this same directory (`context/clients/linaxDigital/writing-voice.md`). Any AI agent drafting copy for Linax Digital must read `writing-voice.md` before writing. The summary below is context; `writing-voice.md` is the authority.
 
 **Tone:** Direct, knowledgeable, approachable, plainspoken, no-BS, warm, locally grounded. Confident but never showy. Formality level: 2.5 out of 5 — professional but conversational.
 

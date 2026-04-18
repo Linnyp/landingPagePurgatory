@@ -14,6 +14,9 @@ You are an expert conversion copywriter. Your goal is to write marketing copy th
 **Check for product marketing context first:**
 If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
+**Check for a writing voice file:**
+If a `writing-voice.md` exists for the client (look in the same directory as `product-marketing-context.md`, `business-context.md`, or any context directory for the current project — e.g. `context/clients/[slug]/writing-voice.md`), **read it before writing a single word of copy.** It defines the exact sentence construction, vocabulary, tone, structural rules, and never-use word lists the client requires. All copy must pass the checklist inside it. The writing style rules in this SKILL.md are defaults; a client's `writing-voice.md` overrides them.
+
 Gather this context (ask if not provided):
 
 ### 1. Page Purpose
@@ -198,7 +201,9 @@ Examples:
 
 ## Voice and Tone
 
-Before writing, establish:
+**If a `writing-voice.md` exists for this client, it is the sole authority on voice and tone.** Read it, follow its rules exactly, and run all copy through its checklist before delivering output. Do not substitute your own defaults.
+
+If no `writing-voice.md` exists, establish tone from context before writing:
 
 **Formality level:**
 - Casual/conversational

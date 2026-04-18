@@ -231,7 +231,7 @@ Add breadcrumb `BreadcrumbList` schema markup on all breadcrumb instances (see s
 ### 5.1 Homepage (/)
 
 **Conversion goal:** Calendly booking (primary), Audit lead capture (secondary)  
-**Section order (per wireframe):** Nav → Hero → Trust Bar → Problem Agitation → Services Overview → Results Snapshot → Process → Testimonials → Local Proof → FAQ → Final CTA → Footer  
+**Section order (per wireframe):** Nav → Hero → Trust Bar → Problem Agitation → Services Overview → Results Snapshot → Process → Pricing Overview → FAQ → Final CTA → Footer  
 **Ke y internal links to push:** /services/reputation (flagship), /audit (lead magnet), /pricing (transparency differentiator), /about (founder trust)
 
 ### 5.2 Services Hub (/services)

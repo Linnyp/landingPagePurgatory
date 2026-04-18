@@ -13,3 +13,4 @@ Thumbs.db
 
 # Claude Code internal
 .claude/
+.mcp.json
