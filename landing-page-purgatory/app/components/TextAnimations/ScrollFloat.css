@@ -17,10 +17,10 @@
 /* Linax Digital stat variant */
 .scroll-float-stat .scroll-float-text {
   white-space: nowrap;
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #F0F0F0;
+  color: #1f1b16;
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: 8px;
@@ -32,10 +32,10 @@
 }
 
 .scroll-float-step-number .scroll-float-text {
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: 80px;
-  color: #F18F01;
+  color: #f18f01;
   letter-spacing: -0.04em;
   line-height: 1;
   text-align: left;
@@ -43,10 +43,10 @@
 
 /* Linax Digital services heading lead line */
 .scroll-float-services-lead .scroll-float-text {
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  color: #F18F01;
+  color: #c2552d;
   letter-spacing: -0.04em;
   line-height: 0.95;
   text-transform: uppercase;

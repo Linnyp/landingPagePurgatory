@@ -16,12 +16,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ScrollFloat from "@/app/components/TextAnimations/ScrollFloat";
 import CardNav from "../../components/CardNav";
 import Silk from "../../components/Silk";
 import PixelBlast from "../../components/PixelBlast";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStack";
 import RippleGrid from "../../components/RippleGrid";
+import LogoLoop from "../../components/LogoLoop";
 import linaxLogo from "./linax-logo.svg";
 
 // ---------------------------------------------------------------------------
@@ -91,6 +91,7 @@ const diagPattern: React.CSSProperties = {
 interface ServiceItem {
   icon: "map" | "bolt" | "globe" | "chart" | "message" | "settings";
   title: string;
+  hook: string;
   description: string;
 }
 
@@ -125,6 +126,7 @@ interface FaqItem {
 interface ProblemItem {
   name: string;
   body: string;
+  solution: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -132,74 +134,119 @@ interface ProblemItem {
 // ---------------------------------------------------------------------------
 
 const stats = [
-  { value: "4+", label: "Active client engagements" },
   {
-    value: "Multi-Industry",
-    label: "Industries: marine, home services, ecommerce, nonprofit",
+    value: "3+",
+    label:
+      "Years of working directly with local service businesses building digital solutions.",
   },
   {
-    value: "100%",
-    label: "Projects built directly by the founder — no outsourced delivery",
+    value: "Multi-Industry",
+    label:
+      "Including: Home service, construction, health, beauty, finance, and more.",
+  },
+  {
+    value: "Full Service",
+    label:
+      "One stop solution marketing, custom crafted and executed for your local business",
   },
 ];
 
-const clientNames = [
-  "Four Leaf Charters",
-  "Verona Cabinets",
-  "Mycelia Foundation",
+const clientLogos = [
+  {
+    src: "/logos/fourleafLogoNoTitle.png",
+    alt: "Four Leaf Charters",
+    title: "Four Leaf Charters",
+  },
+  {
+    src: "/logos/veronacabinet.png",
+    alt: "Verona Cabinets",
+    title: "Verona Cabinets",
+  },
+  {
+    src: "/logos/mk-kitchen-logo.png",
+    alt: "MK Kitchen",
+    title: "MK Kitchen",
+  },
+  {
+    src: "/logos/ordx-logo-light.webp",
+    alt: "ORDX",
+    title: "ORDX",
+  },
+  {
+    src: "/logos/virtuelogo.png",
+    alt: "Virtue",
+    title: "Virtue",
+  },
+  {
+    src: "/logos/mycelia-logo.svg",
+    alt: "Mycelia Foundation",
+    title: "Mycelia Foundation",
+  },
 ];
 
 const problems: ProblemItem[] = [
   {
     name: "Invisible Online",
-    body: 'When someone searches "HVAC repair near me" or "best landscaper in [your city]," your competitors show up and you don\u2019t. A weak Google Business Profile, no consistent reviews, and a site that loads slowly on mobile means you\u2019re losing jobs to businesses half as good as yours. The referral network that built your business won\u2019t carry you through the next five years.',
+    body: "Your work is better. Your reviews are better. But when someone nearby searches for what you do, three shops with half your reputation rank above you. Being seen online isn\u2019t about who\u2019s best. It\u2019s about who\u2019s set up to be found.",
+    solution:
+      "We get your online presence in order and expand your reach with local SEO and active reputation building. More of the right customers find you — and when they do, what they see earns the call.",
   },
   {
-    name: "Slow Lead Follow-Up",
-    body: "A lead that doesn\u2019t hear back within five minutes is 80% less likely to convert. Most service businesses follow up hours later \u2014 or not at all \u2014 because there\u2019s no system, just someone\u2019s phone and good intentions. Every missed response is a job you paid to lose.",
+    name: "Failed Efforts",
+    body: "You've tried a website. You've tried Instagram. You've run a Google ad or two. You've even paid someone to help. Nothing quite worked, and now you're unsure where to put your time and money next.",
+    solution:
+      "We start by figuring out what your business actually needs — not what every business supposedly needs. Then we build a plan, put it to work, and show you what's moving the needle. Nothing gets spent on marketing that doesn't pay back.",
   },
   {
-    name: "No Time for the Tech",
-    body: "You\u2019ve heard about AI. You\u2019ve maybe even tried a few tools. But between running crews, handling callbacks, and managing the day-to-day, there\u2019s no bandwidth to figure out which tools are worth it. So nothing changes, and the gap between you and your more tech-forward competitors quietly grows.",
+    name: "Spread Thin",
+    body: "Running a business means wearing every hat — president, manager, accountant, recruiter. Adding 'marketing director' on top means juggling accounts across a dozen platforms and paying for tools you barely have time to open. You don't have the hours for it.",
+    solution:
+      "We pull it all under one roof — the tools, the accounts, the work. One point of contact instead of ten. Our packages are built around what you actually need, so you're not paying for parts you won't use.",
   },
 ];
 
 const services: ServiceItem[] = [
   {
-    icon: "map",
-    title: "Local SEO That Drives Calls",
+    icon: "globe",
+    title: "Websites",
+    hook: "A website that works as hard as you do",
     description:
-      "We optimize your Google Business Profile, build local citations, and structure your site so you rank for the searches that bring in paying customers in your area. This isn\u2019t set-it-and-forget-it work \u2014 we track rankings, monitor competitors, and adjust as the algorithm moves.",
+      "Built from scratch — no cookie cutter design or drag-and-drop builder. Fast-loading, mobile friendly, and designed to turn visitors into leads. Yours for a flat fee or a monthly plan that makes it affordable from day one.",
   },
   {
-    icon: "bolt",
-    title: "AI-Powered Lead Automation",
+    icon: "map",
+    title: "Local SEO",
+    hook: "Get found by the customers already searching",
     description:
       "We deploy AI systems that respond to new inquiries instantly, qualify leads through automated follow-up sequences, and book appointments \u2014 without you lifting a finger. The result is a faster response time and fewer leads falling through the cracks at 10pm on a Friday.",
   },
   {
-    icon: "globe",
-    title: "Websites Built to Convert",
+    icon: "chart",
+    title: "Google & Meta Ads",
+    hook: "Ad spend that pays you back, not just the platform",
     description:
       "We build fast, mobile-first websites in Next.js and React that are designed around one goal: turning visitors into calls and form fills. Every page is structured to match how your customers search, think, and decide \u2014 not how you want to describe your business.",
   },
   {
-    icon: "chart",
-    title: "Paid Ads That Pay Back",
+    icon: "bolt",
+    title: "Reputation Management",
+    hook: "Turn happy customers into your best salespeople",
     description:
       "We manage Google Ads and Meta campaigns with a focus on cost-per-lead efficiency for local service budgets \u2014 not vanity metrics. Every campaign is built on keyword-level data and audience targeting specific to your service area and job types.",
   },
   {
     icon: "message",
-    title: "AI Chatbots and Scheduling Tools",
+    title: "Chatbots & Voice Agents",
+    hook: "Answers when you can't pick up",
     description:
-      "We build and deploy custom AI chatbots trained on your services, pricing, and FAQs \u2014 handling incoming questions 24/7 and routing qualified prospects to your calendar. Your front-line response gets faster without adding headcount.",
+      "A trained chatbot or voice agent on your site or dedicated phone line that knows your services, your pricing, and your FAQs — ready to answer questions at 11pm on a Tuesday. When someone sounds serious, it routes them straight to your calendar. Your first reply stops being 'next morning' and starts being 'right now.",
   },
   {
     icon: "settings",
-    title: "Workflow Integration and Automation",
+    title: "Automations",
+    hook: "The busywork, handled.",
     description:
-      "We map your existing operations and identify where manual, repetitive tasks \u2014 estimating follow-ups, review requests, job confirmations \u2014 can be automated with AI tools you already have access to. Less busywork, fewer dropped balls, more consistent customer experience.",
+      "We look at how your day actually runs and find the repeat tasks a machine can do better than a person — follow-up texts, appointment reminders, review requests, lead routing. You stop dropping balls. Your customers get a more consistent experience. You get your evenings back.",
   },
 ];
 
@@ -952,15 +999,9 @@ function SocialProofBar() {
                 borderBottom: "none",
               }}
             >
-              <ScrollFloat
-                animationDuration={1}
-                ease="back.out(2)"
-                scrollStart="5% bottom"
-                stagger={0.1}
-                className="scroll-float-stat"
-              >
-                {stat.value}
-              </ScrollFloat>
+              <h2 className="scroll-float scroll-float-stat">
+                <span className="scroll-float-text">{stat.value}</span>
+              </h2>
               <div
                 className="mx-auto md:mx-0"
                 style={{
@@ -984,49 +1025,68 @@ function SocialProofBar() {
             borderTop: `2px solid ${sw.white}`,
             padding: "20px 32px",
             display: "flex",
-            flexWrap: "wrap",
+            flexWrap: "nowrap",
             gap: "32px",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
           }}
         >
-          <span
+          <div
             style={{
-              fontFamily: sw.font,
-              fontWeight: 700,
-              fontSize: "10px",
-              color: sw.red,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase" as const,
               flexShrink: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              borderRight: `2px solid ${sw.white}`,
+              paddingRight: "24px",
             }}
           >
-            Trusted by
-          </span>
-          {clientNames.map((name) => (
             <span
-              key={name}
               style={{
                 fontFamily: sw.font,
-                fontWeight: 600,
-                fontSize: "13px",
-                color: sw.white,
-                letterSpacing: "0.02em",
+                fontWeight: 700,
+                fontSize: "10px",
+                color: sw.red,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase" as const,
               }}
             >
-              {name}
+              Trusted by
             </span>
-          ))}
-          <span
+            <span
+              style={{
+                fontFamily: sw.font,
+                fontSize: "11px",
+                color: colors.textSubtle,
+                fontStyle: "italic",
+              }}
+            >
+              Southwest Florida
+            </span>
+          </div>
+          <div
             style={{
-              fontFamily: sw.font,
-              fontSize: "11px",
-              color: colors.textSubtle,
-              fontStyle: "italic",
+              flex: "1 1 auto",
+              minWidth: 0,
+              position: "relative",
+              overflow: "hidden",
+              height: "56px",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Southwest Florida
-          </span>
+            <LogoLoop
+              logos={clientLogos}
+              speed={60}
+              direction="left"
+              logoHeight={40}
+              gap={120}
+              scaleOnHover
+              fadeOut
+              fadeOutColor={colors.primaryLight}
+              ariaLabel="Trusted by local Southwest Florida businesses"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -1094,9 +1154,13 @@ function ProblemSection() {
               margin: 0,
             }}
           >
-            Most local service businesses are losing leads they never knew they
-            had. The problem usually isn&apos;t the quality of your work —
-            it&apos;s everything that happens before a customer calls you.
+            Most local service businesses in Southwest Florida have the same
+            problem. Their customers are happy. Their work is solid. But
+            somewhere between the last job they finished and the next one
+            they're trying to book, something's leaking. Leads go to a
+            competitor with worse reviews. Calls don't get returned in time. The
+            website hasn't been touched since 2019. It's not because you don't
+            care. It's because you're running a business.
           </p>
           <img
             src="/painPointJuggling.png"
@@ -1109,7 +1173,6 @@ function ProblemSection() {
               right: 0,
               width: "100%",
               height: "auto",
-              marginTop: "40px",
             }}
           />
         </div>
@@ -1232,11 +1295,32 @@ function ProblemCard({
           fontSize: "15px",
           lineHeight: 1.7,
           color: hovered ? "rgba(255,255,255,0.9)" : colors.textMuted,
-          margin: 0,
+          margin: "0 0 20px",
           transition: "color 150ms ease",
         }}
       >
         {problem.body}
+      </p>
+      <p
+        style={{
+          fontFamily: sw.font,
+          fontSize: "15px",
+          lineHeight: 1.7,
+          color: hovered ? "rgba(255,255,255,0.9)" : colors.textMuted,
+          margin: 0,
+          transition: "color 150ms ease",
+        }}
+      >
+        <span
+          style={{
+            color: hovered ? "#FBF8F3" : sw.red,
+            fontWeight: 700,
+            transition: "color 150ms ease",
+          }}
+        >
+          Solution:
+        </span>{" "}
+        {problem.solution}
       </p>
     </article>
   );
@@ -1264,19 +1348,20 @@ function ServiceCard({
         cursor: "default",
         display: "flex",
         flexDirection: "column",
-        gap: "20px",
+        gap: "24px",
         height: "100%",
         boxSizing: "border-box",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Number + Icon row */}
+      {/* Top row: icon | category label | number */}
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
+          display: "grid",
+          gridTemplateColumns: "1fr auto 1fr",
+          alignItems: "center",
+          gap: "16px",
         }}
       >
         <div
@@ -1297,10 +1382,25 @@ function ServiceCard({
         <span
           style={{
             fontFamily: sw.font,
+            fontWeight: 700,
+            fontSize: "11px",
+            color: hovered ? "#FBF8F3" : sw.white,
+            textTransform: "uppercase" as const,
+            letterSpacing: "0.15em",
+            textAlign: "center",
+            transition: "color 150ms ease",
+          }}
+        >
+          {service.title}
+        </span>
+        <span
+          style={{
+            fontFamily: sw.font,
             fontWeight: 900,
             fontSize: "11px",
             color: hovered ? "#FBF8F3" : colors.textMuted,
             letterSpacing: "0.12em",
+            textAlign: "right",
             transition: "color 150ms ease",
           }}
         >
@@ -1312,16 +1412,16 @@ function ServiceCard({
         style={{
           fontFamily: sw.font,
           fontWeight: 800,
-          fontSize: "16px",
+          fontSize: "22px",
           color: hovered ? "#FBF8F3" : sw.white,
-          textTransform: "uppercase" as const,
-          letterSpacing: "0.02em",
+          letterSpacing: "-0.01em",
+          textAlign: "center",
           margin: 0,
-          lineHeight: 1.3,
+          lineHeight: 1.25,
           transition: "color 150ms ease",
         }}
       >
-        {service.title}
+        {service.hook}
       </h3>
 
       <p
@@ -1336,6 +1436,23 @@ function ServiceCard({
       >
         {service.description}
       </p>
+
+      <a
+        href="#contact"
+        style={{
+          fontFamily: sw.font,
+          fontWeight: 700,
+          fontSize: "14px",
+          color: colors.cta,
+          textDecoration: "underline",
+          textUnderlineOffset: "4px",
+          marginTop: "auto",
+          alignSelf: "flex-start",
+          transition: "color 150ms ease",
+        }}
+      >
+        More about {service.title.toLowerCase()} →
+      </a>
     </article>
   );
 }
@@ -1391,15 +1508,9 @@ function ServicesSection() {
                 <br />
                 The Same Outcome:
               </div>
-              <ScrollFloat
-                animationDuration={1}
-                ease="back.out(2)"
-                scrollStart="5% bottom"
-                stagger={0.05}
-                className="scroll-float-services-lead"
-              >
-                More Qualified Leads.
-              </ScrollFloat>
+              <h2 className="scroll-float scroll-float-services-lead">
+                <span className="scroll-float-text">More Qualified Leads.</span>
+              </h2>
             </div>
             <p
               style={{
@@ -1760,15 +1871,9 @@ function HowItWorksSection() {
               }}
             >
               {/* Step number — large typographic anchor */}
-              <ScrollFloat
-                animationDuration={1}
-                ease="back.out(2)"
-                scrollStart="5% bottom"
-                stagger={0.15}
-                className="scroll-float-step-number"
-              >
-                {step.number}
-              </ScrollFloat>
+              <h2 className="scroll-float scroll-float-step-number">
+                <span className="scroll-float-text">{step.number}</span>
+              </h2>
 
               <h3
                 style={{
