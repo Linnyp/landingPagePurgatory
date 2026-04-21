@@ -108,14 +108,20 @@ interface TestimonialItem {
   resultCallout: string;
 }
 
+interface PricingPlanTier {
+  price: string;
+  priceUnit: string;
+  cadence: string;
+  features: string[];
+}
+
 interface PricingPlanItem {
   name: string;
-  price: string;
-  cadence: string;
   description: string;
-  features: string[];
   cta: string;
   featured: boolean;
+  monthly: PricingPlanTier;
+  lumpSum: PricingPlanTier | null;
 }
 
 interface FaqItem {
@@ -283,74 +289,131 @@ const steps: ProcessStepItem[] = [
   {
     number: "02",
     title: "Build the Right Foundation",
-    body: "Based on the audit, we develop a prioritized roadmap \u2014 whether that\u2019s a website rebuild, a GBP overhaul, a paid ads launch, or an AI workflow deployment. We handle all implementation directly; nothing is handed off to a junior or an offshore team. You get a technical founder doing the actual work.",
+    body: "Based on the audit, we do the work. Website design, SEO setup, ad campaign buildout, reputation management configuration — whatever you're starting with. You approve the strategy. We handle everything else.",
   },
   {
     number: "03",
     title: "Optimize, Automate, Grow",
-    body: "Once the foundation is solid, we layer in automation and AI systems that make your marketing work harder over time \u2014 capturing leads you\u2019d otherwise miss, nurturing prospects while you\u2019re on a job site, and giving you reporting that tells you what\u2019s working. Ongoing retainer clients get monthly check-ins, performance reviews, and continuous iteration.",
+    body: "Marketing isn't a one-time project. We track what's working, adjust what isn't, and report in plain English every month so you always know what you're paying for.",
   },
 ];
 
 const pricingPlans: PricingPlanItem[] = [
   {
-    name: "Foundation",
-    price: "Contact for pricing",
-    cadence: "Monthly retainer",
+    name: "Websites",
     description:
-      "For businesses that need to build a solid digital presence before running paid campaigns or adding AI workflows.",
-    features: [
-      "GBP audit and optimization",
-      "Local SEO (on-page/technical/citations)",
-      "Monthly performance reporting",
-      "Competitor ranking monitoring",
-      "Review generation strategy",
-      "One-time website audit",
-    ],
+      "A fast, custom-built site that turns visitors into calls — no templates, no drag-and-drop.",
     cta: "Book a Discovery Call",
     featured: false,
+    monthly: {
+      price: "$180",
+      priceUnit: "/mo",
+      cadence: "12-month minimum · Website as a service",
+      features: [
+        "Custom design + development",
+        "Hosting, SSL & domain email",
+        "Unlimited content edits",
+        "Analytics setup",
+        "Full ongoing support",
+        "No upfront build cost",
+      ],
+    },
+    lumpSum: {
+      price: "$3,000",
+      priceUnit: "",
+      cadence: "One-time build · $25/mo hosting",
+      features: [
+        "5-page custom design + development",
+        "Full ownership of code & files",
+        "Hosting billed at $25/mo separately",
+        "Content edits available at $25/mo",
+        "Additional pages at $150 each",
+        "Blog system + chatbot as add-ons",
+      ],
+    },
   },
   {
-    name: "Growth",
-    price: "Contact for pricing",
-    cadence: "Monthly retainer",
+    name: "Local SEO",
     description:
-      "For businesses ready to generate consistent leads through search and paid channels while automating the follow-up process.",
-    features: [
-      "Everything in Foundation",
-      "Google Ads or Meta Ads management",
-      "AI-powered lead follow-up automation",
-      "Appointment scheduling integration",
-      "Monthly strategy call",
-      "Quarterly roadmap review",
-    ],
+      "Rank where your customers are already searching — and stay there as competitors react.",
     cta: "Book a Discovery Call",
     featured: true,
+    monthly: {
+      price: "$300",
+      priceUnit: "/mo",
+      cadence: "Ongoing · month-to-month",
+      features: [
+        "Content strategy",
+        "4 blog posts per month",
+        "GBP posts + ongoing optimization",
+        "Strategic backlink building",
+        "Press releases (where applicable)",
+        "No long-term lock-in",
+      ],
+    },
+    lumpSum: {
+      price: "$600",
+      priceUnit: "",
+      cadence: "SEO Foundation · one-time",
+      features: [
+        "Keyword research + mapping",
+        "Local citation building (unified NAP)",
+        "1–2 high-DA foundation backlinks",
+        "Press release (where applicable)",
+        "GBP setup + optimization",
+        "Handoff documentation",
+      ],
+    },
   },
   {
-    name: "Full-Stack",
-    price: "Contact for pricing",
-    cadence: "Monthly retainer + project milestones",
+    name: "Paid Ads",
     description:
-      "For businesses that want a complete digital rebuild — new website, AI workflows, and ongoing marketing under one roof.",
-    features: [
-      "Everything in Growth",
-      "Custom website design and development (Next.js/React)",
-      "AI chatbot build and deployment",
-      "Workflow automation mapping and implementation",
-      "Priority turnaround on all deliverables",
-      "Dedicated founder access",
-    ],
+      "Paid campaigns built around cost-per-lead — and you don't pay if ROAS drops below 2:1.",
     cta: "Book a Discovery Call",
     featured: false,
+    monthly: {
+      price: "$300",
+      priceUnit: "/mo min",
+      cadence: "Management fee · month-to-month",
+      features: [
+        "$300/mo or 10% of ad spend (higher applies)",
+        "Management fee capped at $2,000/mo",
+        "Google + Meta Ads covered",
+        "Active campaign management",
+        "Monthly performance reporting",
+        "2:1 ROAS guarantee or you don't pay",
+      ],
+    },
+    lumpSum: null,
+  },
+  {
+    name: "Reputation",
+    description:
+      "Turn happy customers into a steady stream of five-star reviews that win the next caller.",
+    cta: "Book a Discovery Call",
+    featured: false,
+    monthly: {
+      price: "$195",
+      priceUnit: "/mo",
+      cadence: "Ongoing · month-to-month",
+      features: [
+        "Dedicated Go High Level sub-account",
+        "Review request workflows configured",
+        "Customer engagement automation",
+        "CRM + unified inbox access",
+        "Multi-platform monitoring",
+        "No long-term lock-in",
+      ],
+    },
+    lumpSum: null,
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
-    question: "How do I know this will actually deliver ROI for my business?",
+    question: "How quickly will I see results?",
     answer:
-      "We start every engagement with an audit so we can show you exactly where you\u2019re losing leads before asking you to spend anything. Ongoing services are measured against benchmarks we define together \u2014 organic ranking movement, cost per lead, call volume \u2014 not vanity metrics. If we\u2019re not moving the numbers that matter to your business, we talk about it directly.",
+      "Ads can start generating calls within 1–2 weeks. A new website typically launches in 2–4 weeks. SEO takes 3–6 months to build — it compounds over time and doesn't stop paying when you turn off the spend. Reputation Management usually starts producing new reviews within the first few weeks of setup.We\u2019ll give you honest timelines based on where your business actually is, not optimistic projections.",
   },
   {
     question: "How much time will this take on my end?",
@@ -364,10 +427,9 @@ const faqItems: FaqItem[] = [
       "Local service businesses are exactly who we built this for. The SEO strategies, lead automation workflows, and ad campaigns we deploy are built around how people in your market search for and choose a service provider \u2014 not generic templates repurposed from an ecommerce or SaaS playbook.",
   },
   {
-    question:
-      "I\u2019ve worked with agencies before and got burned. Why would this be different?",
+    question: "How is Linax Digital different from the agency I already tried?",
     answer:
-      "The founder writes the code, runs the campaigns, and builds the systems directly \u2014 there\u2019s no account manager relaying your work to a fulfillment team you\u2019ll never speak with. You communicate with the person doing the work. When something isn\u2019t performing, you hear about it before we ask you to renew.",
+      "The main difference is who does the work. At most agencies, you talk to an account manager and the actual work gets handed off to someone you've never met. Here, you talk to me — the same person who built your strategy, wrote your code, and runs your campaigns. If something isn't right, I'm the one who fixes it.",
   },
   {
     question:
@@ -378,123 +440,6 @@ const faqItems: FaqItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Inline SVG Icons (from original, reused)
-// ---------------------------------------------------------------------------
-
-function IconMap() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function IconBolt() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconGlobe() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M2 12h20M12 2c-2.5 3-4 6.5-4 10s1.5 7 4 10M12 2c2.5 3 4 6.5 4 10s-1.5 7-4 10"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-    </svg>
-  );
-}
-
-function IconChart() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M3 20h18M7 20V10M12 20V4M17 20v-7"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconMessage() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconSettings() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-    </svg>
-  );
-}
-
 function IconArrowRight() {
   return (
     <svg
@@ -574,18 +519,66 @@ function IconPlus() {
 
 function ServiceIcon({ icon }: { icon: ServiceItem["icon"] }) {
   switch (icon) {
-    case "map":
-      return <IconMap />;
-    case "bolt":
-      return <IconBolt />;
     case "globe":
-      return <IconGlobe />;
+      return (
+        <img
+          src="/websiteIcon.png"
+          alt="Websites"
+          width={44}
+          height={44}
+          style={{ objectFit: "contain" }}
+        />
+      );
+    case "map":
+      return (
+        <img
+          src="/seoIcon.png"
+          alt="Local SEO"
+          width={44}
+          height={44}
+          style={{ objectFit: "contain" }}
+        />
+      );
     case "chart":
-      return <IconChart />;
+      return (
+        <img
+          src="/adsIcon.png"
+          alt="Google & Meta Ads"
+          width={44}
+          height={44}
+          style={{ objectFit: "contain" }}
+        />
+      );
+    case "bolt":
+      return (
+        <img
+          src="/reputationIcon.png"
+          alt="Reputation Management"
+          width={44}
+          height={44}
+          style={{ objectFit: "contain" }}
+        />
+      );
     case "message":
-      return <IconMessage />;
+      return (
+        <img
+          src="/chatbotIcon.png"
+          alt="Chatbots & Voice Agents"
+          width={44}
+          height={44}
+          style={{ objectFit: "contain" }}
+        />
+      );
     case "settings":
-      return <IconSettings />;
+      return (
+        <img
+          src="/automationIcon.png"
+          alt="Automations"
+          width={44}
+          height={44}
+          style={{ objectFit: "contain" }}
+        />
+      );
   }
 }
 
@@ -1368,12 +1361,9 @@ function ServiceCard({
           style={{
             width: "44px",
             height: "44px",
-            backgroundColor: hovered ? sw.red : sw.muted,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: hovered ? "#FBF8F3" : sw.white,
-            transition: "background-color 150ms ease, color 150ms ease",
             flexShrink: 0,
           }}
         >
@@ -1912,10 +1902,19 @@ function HowItWorksSection() {
 // PricingSection
 // ---------------------------------------------------------------------------
 
-function PricingCard({ plan }: { plan: PricingPlanItem }) {
+function PricingCard({
+  plan,
+  mode,
+}: {
+  plan: PricingPlanItem;
+  mode: "monthly" | "lumpSum";
+}) {
   const [hovered, setHovered] = useState(false);
 
-  const isFeatured = plan.featured;
+  const subscriptionOnly = mode === "lumpSum" && plan.lumpSum === null;
+  const tier =
+    (mode === "monthly" ? plan.monthly : plan.lumpSum) ?? plan.monthly;
+  const isFeatured = plan.name === "Websites";
   const bg = isFeatured
     ? colors.surface
     : hovered
@@ -1936,13 +1935,34 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
         gap: "28px",
         position: "relative",
         transition: "background-color 150ms ease",
-        marginLeft: !isFeatured && plan.name === "Growth" ? "0" : "-2px",
+        marginLeft: "-2px",
         height: "100%",
         boxSizing: "border-box",
       }}
       onMouseEnter={() => !isFeatured && setHovered(true)}
       onMouseLeave={() => !isFeatured && setHovered(false)}
     >
+      {/* Subscription only badge */}
+      {subscriptionOnly && (
+        <div
+          style={{
+            position: "absolute",
+            top: "-18px",
+            left: "40px",
+            backgroundColor: colors.surfaceAlt,
+            color: "rgba(251,248,243,0.7)",
+            fontFamily: sw.font,
+            fontWeight: 700,
+            fontSize: "10px",
+            padding: "5px 14px",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase" as const,
+          }}
+        >
+          Subscription only
+        </div>
+      )}
+
       {/* Most popular badge */}
       {isFeatured && (
         <div
@@ -1965,41 +1985,50 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
       )}
 
       <div>
-        <div
-          style={{
-            fontFamily: sw.font,
-            fontWeight: 700,
-            fontSize: "10px",
-            color: isFeatured ? sw.red : sw.red,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase" as const,
-            marginBottom: "8px",
-          }}
-        >
-          {plan.cadence}
-        </div>
         <h3
           style={{
             fontFamily: sw.font,
             fontWeight: 900,
-            fontSize: "28px",
+            fontSize: "26px",
             color: textColor,
             textTransform: "uppercase" as const,
             letterSpacing: "-0.03em",
-            margin: "0 0 4px",
+            margin: "0 0 12px",
           }}
         >
           {plan.name}
         </h3>
         <div
           style={{
-            fontFamily: sw.font,
-            fontWeight: 600,
-            fontSize: "15px",
-            color: isFeatured ? "rgba(251,248,243,0.6)" : colors.textMuted,
+            display: "flex",
+            alignItems: "baseline",
+            gap: "6px",
           }}
         >
-          {plan.price}
+          <span
+            style={{
+              fontFamily: sw.font,
+              fontWeight: 900,
+              fontSize: "44px",
+              color: textColor,
+              letterSpacing: "-0.04em",
+              lineHeight: 1,
+            }}
+          >
+            {tier.price}
+          </span>
+          {tier.priceUnit && (
+            <span
+              style={{
+                fontFamily: sw.font,
+                fontWeight: 600,
+                fontSize: "16px",
+                color: isFeatured ? "rgba(251,248,243,0.6)" : colors.textMuted,
+              }}
+            >
+              {tier.priceUnit}
+            </span>
+          )}
         </div>
       </div>
 
@@ -2028,7 +2057,7 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
           flex: 1,
         }}
       >
-        {plan.features.map((feature) => (
+        {tier.features.map((feature) => (
           <li
             key={feature}
             style={{
@@ -2043,7 +2072,7 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
           >
             <span
               style={{
-                color: isFeatured ? sw.red : sw.red,
+                color: sw.red,
                 fontWeight: 900,
                 fontSize: "16px",
                 lineHeight: 1,
@@ -2090,7 +2119,66 @@ function PricingCard({ plan }: { plan: PricingPlanItem }) {
   );
 }
 
+function BillingToggle({
+  mode,
+  setMode,
+}: {
+  mode: "monthly" | "lumpSum";
+  setMode: (m: "monthly" | "lumpSum") => void;
+}) {
+  const options: { id: "monthly" | "lumpSum"; label: string }[] = [
+    { id: "monthly", label: "Monthly" },
+    { id: "lumpSum", label: "Lump Sum" },
+  ];
+
+  return (
+    <div
+      role="tablist"
+      aria-label="Billing mode"
+      style={{
+        display: "inline-flex",
+        alignSelf: "flex-end",
+        width: "fit-content",
+        border: `2px solid ${sw.white}`,
+        padding: "4px",
+        gap: "4px",
+        backgroundColor: colors.white,
+      }}
+    >
+      {options.map((opt) => {
+        const active = mode === opt.id;
+        return (
+          <button
+            key={opt.id}
+            role="tab"
+            aria-selected={active}
+            onClick={() => setMode(opt.id)}
+            style={{
+              fontFamily: sw.font,
+              fontWeight: 700,
+              fontSize: "12px",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase" as const,
+              padding: "10px 20px",
+              minHeight: "40px",
+              cursor: "pointer",
+              border: "none",
+              backgroundColor: active ? sw.red : "transparent",
+              color: active ? "#FBF8F3" : sw.white,
+              transition: "background-color 150ms ease, color 150ms ease",
+            }}
+          >
+            {opt.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function PricingSection() {
+  const [mode, setMode] = useState<"monthly" | "lumpSum">("monthly");
+
   return (
     <section
       id="pricing"
@@ -2127,35 +2215,44 @@ function PricingSection() {
                 margin: 0,
               }}
             >
-              Straightforward
+              Pricing Built
               <br />
-              Pricing Based on
+              Around the Service
               <br />
-              What You Need.
+              You Actually Need.
             </h2>
-            <p
+            <div
               style={{
-                fontFamily: sw.font,
-                fontSize: "15px",
-                color: colors.textMuted,
-                lineHeight: 1.65,
-                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
                 paddingBottom: "8px",
               }}
             >
-              Custom pricing for your scope. Every engagement starts with a free
-              audit so we can recommend what fits your situation — not the
-              biggest package we can sell you.
-            </p>
+              <p
+                style={{
+                  fontFamily: sw.font,
+                  fontSize: "15px",
+                  color: colors.textMuted,
+                  lineHeight: 1.65,
+                  margin: 0,
+                }}
+              >
+                Pick the service you need. Pay a flat monthly fee — or a
+                one-time lump sum. No bundles, no bloat, no paying for things
+                you won't use.
+              </p>
+              <BillingToggle mode={mode} setMode={setMode} />
+            </div>
           </div>
         </div>
 
         <div
           style={{ display: "grid", paddingTop: "24px", alignItems: "stretch" }}
-          className="grid-cols-1 md:grid-cols-3"
+          className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
         >
           {pricingPlans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} />
+            <PricingCard key={plan.name} plan={plan} mode={mode} />
           ))}
         </div>
       </div>
