@@ -707,17 +707,119 @@ function SiteNav() {
 }
 
 // ---------------------------------------------------------------------------
-// HeroSection — asymmetric layout with puppet hands video
+// HeroSection — centered text stack with scattered service icons
 // ---------------------------------------------------------------------------
+
+// Staggered row of service icons. Currently unused; kept for future placements.
+function HeroMobileIconStrip() {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "32px",
+        paddingTop: "20px",
+        paddingBottom: "20px",
+        width: "100%",
+      }}
+    >
+      <img
+        src="/websiteIcon.png"
+        alt=""
+        style={{
+          width: "76px",
+          transform: "translateY(-18px) rotate(-24deg)",
+          userSelect: "none",
+        }}
+      />
+      <img
+        src="/seoIcon.png"
+        alt=""
+        style={{
+          width: "76px",
+          transform: "translateY(18px) rotate(28deg)",
+          userSelect: "none",
+        }}
+      />
+      <img
+        src="/adsIcon.png"
+        alt=""
+        style={{
+          width: "76px",
+          transform: "translateY(-18px) rotate(-32deg)",
+          userSelect: "none",
+        }}
+      />
+      <img
+        src="/reputationIcon.png"
+        alt=""
+        style={{
+          width: "76px",
+          transform: "translateY(18px) rotate(22deg)",
+          userSelect: "none",
+        }}
+      />
+    </div>
+  );
+}
+
+const heroMobileCornerIcons: Array<{
+  src: string;
+  style: React.CSSProperties;
+}> = [
+  {
+    src: "/websiteIcon.png",
+    style: {
+      bottom: "100%",
+      right: "100%",
+      marginBottom: "-28px",
+      marginRight: "-28px",
+      transform: "rotate(-24deg)",
+    },
+  },
+  {
+    src: "/seoIcon.png",
+    style: {
+      bottom: "100%",
+      left: "100%",
+      marginBottom: "-28px",
+      marginLeft: "-28px",
+      transform: "rotate(22deg)",
+    },
+  },
+  {
+    src: "/adsIcon.png",
+    style: {
+      top: "100%",
+      right: "100%",
+      marginTop: "-28px",
+      marginRight: "-28px",
+      transform: "rotate(28deg)",
+    },
+  },
+  {
+    src: "/reputationIcon.png",
+    style: {
+      top: "100%",
+      left: "100%",
+      marginTop: "-52px",
+      marginLeft: "-28px",
+      transform: "rotate(-18deg)",
+    },
+  },
+];
 
 function HeroSection() {
   return (
     <section
       aria-label="Hero"
-      className="pb-24 md:pb-0"
       style={{
         backgroundColor: colors.primary,
         paddingTop: "128px",
+        paddingBottom: "96px",
         position: "relative",
         overflowX: "clip",
       }}
@@ -745,57 +847,84 @@ function HeroSection() {
           style={{}}
         />
       </div>
+
+      {/* Centered text stack */}
       <div
         style={{
           maxWidth: sw.container,
           margin: "0 auto",
-          paddingLeft: sw.gutter,
-          paddingRight: 0,
-          display: "grid",
-          gap: "32px",
-          alignItems: "stretch",
+          padding: `0 ${sw.gutter} 0px`,
           position: "relative",
           zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
         }}
-        className="grid-cols-1"
       >
-        {/* Copy */}
-        <div className=" pb-4 md:pb-24">
-          <div
+        {/* <div
+          style={{
+            fontFamily: sw.font,
+            fontWeight: 700,
+            fontSize: "11px",
+            color: sw.red,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase" as const,
+            marginBottom: "20px",
+            paddingLeft: "38px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "left",
+            gap: "10px",
+          }}
+        >
+          <span
             style={{
-              fontFamily: sw.font,
-              fontWeight: 700,
-              fontSize: "11px",
-              color: sw.red,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase" as const,
-              marginBottom: "20px",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
+              display: "inline-block",
+              width: "24px",
+              height: "2px",
+              backgroundColor: sw.red,
             }}
-          >
-            <span
+          />
+          Local Business Digital Marketing &amp; System Integrations
+        </div> */}
+
+        <div
+          style={{
+            width: "85%",
+            maxWidth: "640px",
+            containerType: "inline-size",
+            margin: "0 0 32px",
+            position: "relative",
+          }}
+        >
+          {heroMobileCornerIcons.map((icon, i) => (
+            <img
+              key={i}
+              src={icon.src}
+              alt=""
+              aria-hidden="true"
               style={{
-                display: "inline-block",
-                width: "24px",
-                height: "2px",
-                backgroundColor: sw.red,
+                position: "absolute",
+                width: "clamp(110px, 9vw, 150px)",
+                pointerEvents: "none",
+                userSelect: "none",
+                ...icon.style,
               }}
             />
-            Local Business Digital Marketing &amp; System Integrations
-          </div>
-
+          ))}
           <h1
             style={{
               fontFamily: sw.font,
               fontWeight: 900,
-              fontSize: "clamp(3rem, 7vw, 6rem)",
+              fontSize: "clamp(2.25rem, 15.5cqi, 6rem)",
               lineHeight: 0.95,
               color: sw.white,
               letterSpacing: "-0.04em",
               textTransform: "uppercase" as const,
-              margin: "0 0 32px",
+              margin: 0,
+              whiteSpace: "nowrap",
             }}
           >
             Get Found.
@@ -806,163 +935,109 @@ function HeroSection() {
             <br />
             <span style={{ color: sw.red }}>Faster.</span>
           </h1>
-
-          <p
-            style={{
-              fontFamily: sw.font,
-              fontWeight: 400,
-              fontSize: "17px",
-              lineHeight: 1.65,
-              color: colors.textSubtle,
-              margin: "0 0 40px",
-              maxWidth: "520px",
-              borderLeft: `4px solid ${sw.white}`,
-              paddingLeft: "20px",
-            }}
-          >
-            Linax Digital is a digital marketing agency in Southwest Florida. We
-            build websites, run SEO, manage ads, and handle your online
-            reputation — all of it done by the person you talked to.
-          </p>
-
-          {/* CTA group */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0",
-              alignItems: "stretch",
-            }}
-          >
-            <a
-              href="#contact"
-              style={{
-                fontFamily: sw.font,
-                fontWeight: 700,
-                fontSize: "13px",
-                color: "#FBF8F3",
-                backgroundColor: sw.red,
-                padding: "16px 32px",
-                border: "2px solid transparent",
-                boxSizing: "border-box",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                minHeight: "52px",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase" as const,
-                transition: "background-color 150ms ease",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = "#A3431F")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = sw.red)
-              }
-            >
-              Book a Free Discovery Call <IconArrowRight />
-            </a>
-            <a
-              href="#services"
-              style={{
-                fontFamily: sw.font,
-                fontWeight: 700,
-                fontSize: "13px",
-                boxSizing: "border-box",
-                color: sw.white,
-                backgroundColor: "transparent",
-                padding: "16px 32px",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                minHeight: "52px",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase" as const,
-                border: `2px solid ${sw.white}`,
-                marginLeft: "-2px",
-                transition: "background-color 150ms ease, color 150ms ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = colors.primaryLight;
-                e.currentTarget.style.color = sw.white;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = sw.white;
-              }}
-            >
-              See What We Do
-            </a>
-          </div>
-
-          <p
-            style={{
-              fontFamily: sw.font,
-              fontSize: "12px",
-              color: colors.textMuted,
-              marginTop: "16px",
-              letterSpacing: "0.02em",
-            }}
-          >
-            No commitment. 30 minutes. Walk away with a clear picture of where
-            you stand.
-          </p>
         </div>
-      </div>
 
-      {/* Puppet hands video — absolutely positioned, behind content, bleeds right */}
-      <style>{`
-        .hero-video-desktop {
-          top: 50%;
-          transform: translateY(-50%);
-        }
-        @media (min-width: 640px) and (max-width: 1279px) {
-          .hero-video-desktop {
-            top: 168px;
-            transform: none;
-          }
-        }
-      `}</style>
-      <div
-        className="hero-video-desktop hidden sm:block"
-        style={{
-          position: "absolute",
-          right: "-6vw",
-          width: "60vw",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <video
-          src="/puppetHandsAnimation.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{ width: "100%", display: "block" }}
-        />
-      </div>
+        <p
+          className="px-[59px] md:px-[40px]"
+          style={{
+            fontFamily: sw.font,
+            fontWeight: 400,
+            fontSize: "17px",
+            lineHeight: 1.65,
+            color: colors.textSubtle,
+            margin: "0 0 40px",
+            maxWidth: "640px",
+          }}
+        >
+          Linax Digital is a digital marketing agency in Southwest Florida. We
+          build websites, run SEO, manage ads, and handle your online reputation
+          — all of it done by the person you talked to.
+        </p>
 
-      {/* Mobile animation — bottom of hero, hidden on sm+ */}
-      <div
-        className="block sm:hidden"
-        style={{
-          overflow: "hidden",
-          pointerEvents: "none",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <video
-          src="/puppetHandsAnimation.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{ width: "100%", display: "block" }}
-        />
+        {/* CTA group */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "12px",
+            alignItems: "stretch",
+          }}
+        >
+          <a
+            href="#contact"
+            style={{
+              fontFamily: sw.font,
+              fontWeight: 700,
+              fontSize: "13px",
+              color: "#FBF8F3",
+              backgroundColor: sw.red,
+              padding: "16px 32px",
+              border: "2px solid transparent",
+              boxSizing: "border-box",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              minHeight: "52px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              transition: "background-color 150ms ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#A3431F")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = sw.red)
+            }
+          >
+            Book a Free Discovery Call <IconArrowRight />
+          </a>
+          <a
+            href="#services"
+            style={{
+              fontFamily: sw.font,
+              fontWeight: 700,
+              fontSize: "13px",
+              boxSizing: "border-box",
+              color: sw.white,
+              backgroundColor: "transparent",
+              padding: "16px 32px",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              minHeight: "52px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              border: `2px solid ${sw.white}`,
+              transition: "background-color 150ms ease, color 150ms ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = colors.primaryLight;
+              e.currentTarget.style.color = sw.white;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = sw.white;
+            }}
+          >
+            See What We Do
+          </a>
+        </div>
+
+        <p
+          style={{
+            fontFamily: sw.font,
+            fontSize: "12px",
+            color: colors.textMuted,
+            marginTop: "16px",
+            letterSpacing: "0.02em",
+          }}
+        >
+          No commitment. 30 minutes. Walk away with a clear picture of where you
+          stand.
+        </p>
       </div>
     </section>
   );

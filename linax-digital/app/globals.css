@@ -1,28 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  /* Coastal Clay palette */
+@theme {
+  /* ----- Coastal Clay palette ----- */
   --color-cream:      #FBF8F3;
   --color-sand-25:    #FFFFFF;
-  --color-sand-50:    #FBF8F3;
-  --color-sand-100:   #F5F0E8;
+  --color-sand-50:    #fbf8f3;
+  --color-sand-100:   #f3eee4;
   --color-sand-200:   #EDE6D6;
-  --color-sand-600:   #78705F;
-  --color-sand-700:   #8A7B6A;
-  --color-sand-950:   #1F1B16;
+  --color-sand-600:   #78705f;
+  --color-sand-700:   #5c5449;
+  --color-sand-800:   #3e372d;
+  --color-sand-900:   #2a251d;
+  --color-sand-950:   #1f1b16;
+
   --color-clay:       #C2552D;
-  --color-clay-500:   #C2552D;
+  --color-clay-500:   #c2552d;
   --color-clay-600:   #A3431F;
+  --color-clay-700:   #a3431f;
+
   --color-brown-900:  #2A1F14;
   --color-navy:       #1A2B4A;
   --color-sage:       #6B8F71;
 
+  /* Translucent sand for fixed nav */
+  --color-sand-frost: rgba(42, 37, 29, 0.9);
+
+  /* ----- Typography ----- */
   --font-display: "Fraunces", Georgia, serif;
   --font-body:    "Inter", system-ui, sans-serif;
+  --font-brand:   "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* ----- Layout ----- */
+  --container-brand: 1200px;
+  --spacing-gutter:  24px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-brown-900);
+  background-color: var(--color-sand-50);
+  color: var(--color-sand-950);
   font-family: var(--font-body);
+}
+
+/* ----- Reusable background patterns -------------------------------------
+ * Used across sections for Swiss-style grid/dot/diagonal textures.
+ * ----------------------------------------------------------------------- */
+
+.bg-grid-pattern {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 23px,
+      rgba(31, 27, 22, 0.06) 23px,
+      rgba(31, 27, 22, 0.06) 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 23px,
+      rgba(31, 27, 22, 0.06) 23px,
+      rgba(31, 27, 22, 0.06) 24px
+    );
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(31, 27, 22, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.bg-diag-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(31, 27, 22, 0.04) 0px,
+    rgba(31, 27, 22, 0.04) 1px,
+    transparent 1px,
+    transparent 10px
+  );
 }

@@ -2,6 +2,38 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* ----- Linax Digital brand tokens (mirrored from generated/linax-digital/styles/brand.css)
+ * Keeping these inline ensures Tailwind's source scanner picks them up
+ * reliably in this multi-app workspace. When linax-digital is extracted
+ * to its own repo, drop this block — brand.css alone is sufficient.
+ * --------------------------------------------------------------------- */
+@theme {
+  --color-sand-50: #fbf8f3;
+  --color-sand-100: #f3eee4;
+  --color-sand-600: #78705f;
+  --color-sand-700: #5c5449;
+  --color-sand-800: #3e372d;
+  --color-sand-900: #2a251d;
+  --color-sand-950: #1f1b16;
+  --color-clay-500: #c2552d;
+  --color-clay-700: #a3431f;
+  --color-sand-frost: rgba(42, 37, 29, 0.9);
+  --font-brand: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.bg-grid-pattern {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(31, 27, 22, 0.06) 23px, rgba(31, 27, 22, 0.06) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(31, 27, 22, 0.06) 23px, rgba(31, 27, 22, 0.06) 24px);
+}
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(31, 27, 22, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.bg-diag-pattern {
+  background-image: repeating-linear-gradient(45deg, rgba(31, 27, 22, 0.04) 0px, rgba(31, 27, 22, 0.04) 1px, transparent 1px, transparent 10px);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

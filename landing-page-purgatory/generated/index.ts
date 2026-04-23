@@ -32,6 +32,12 @@ export const generatedPages: GeneratedPage[] = [
     generatedAt: "2026-04-17",
     archetype: "tech-saas / professional-services hybrid",
   },
+  {
+    slug: "linax-digital-4",
+    businessName: "Linax Digital",
+    generatedAt: "2026-04-22",
+    archetype: "tech-saas / professional-services hybrid",
+  },
 ];
 
 export const pageComponents: Record<
@@ -42,4 +48,5 @@ export const pageComponents: Record<
   "linax-digital-2": () => import("./linax-digital-2/page"),
   "linax-digital-3": () => import("./linax-digital-3/page"),
   "linax-digital-landing-blue": () => import("./linax-digital-landing-blue/page"),
+  "linax-digital-4": () => import("./linax-digital-4/page"),
 };

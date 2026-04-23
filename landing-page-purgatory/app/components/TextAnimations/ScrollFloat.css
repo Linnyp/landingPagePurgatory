@@ -16,7 +16,8 @@
 
 /* Linax Digital stat variant */
 .scroll-float-stat .scroll-float-text {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -24,6 +25,22 @@
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: 8px;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .scroll-float-stat .scroll-float-text {
+    line-height: 0.95;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 1280px) {
+  .scroll-float-stat .scroll-float-text {
+    white-space: nowrap;
+  }
 }
 
 /* Linax Digital method step numbers */
