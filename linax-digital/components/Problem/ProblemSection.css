@@ -1,28 +1,6 @@
-/* ProblemSection — heading scale + ScrollStack overrides so cards lay out
-   normally instead of using ScrollStack's default scroller. */
-
 .problem-heading {
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.04em;
   line-height: 0.95;
   margin: 0 0 24px;
-}
-
-.scroll-stack-scroller.problem-stack {
-  overflow: visible !important;
-  height: auto !important;
-}
-
-.problem-stack .scroll-stack-inner {
-  padding: 0 !important;
-  min-height: auto !important;
-}
-
-.problem-card-item {
-  height: auto !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  margin: 0 !important;
 }

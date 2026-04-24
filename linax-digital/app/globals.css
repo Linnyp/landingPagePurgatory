@@ -35,10 +35,6 @@
   --spacing-gutter:  24px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background-color: var(--color-sand-50);
   color: var(--color-sand-950);

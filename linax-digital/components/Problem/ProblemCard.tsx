@@ -8,13 +8,10 @@ interface ProblemCardProps {
   total: number;
 }
 
-export function ProblemCard({ problem, index, total }: ProblemCardProps) {
-  const isLast = index === total - 1;
+export function ProblemCard({ problem, index, total: _total }: ProblemCardProps) {
   return (
     <article
-      className={`group cursor-default border-x-4 border-t-4 border-sand-950 bg-white p-10 transition-colors duration-150 hover:bg-clay-500 ${
-        isLast ? "border-b-4" : ""
-      } ${index > 0 ? "-mt-1" : ""}`}
+      className="group h-full cursor-default border-4 border-sand-950 bg-white p-10 transition-colors duration-150 hover:bg-clay-500"
     >
       <div className="mb-4 flex items-start justify-between gap-4">
         <h3 className="font-brand text-[20px] font-extrabold uppercase tracking-[-0.02em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
