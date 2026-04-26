@@ -10,7 +10,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
-    <article className="group flex h-full cursor-default flex-col gap-6 border-2 border-sand-950 bg-white p-9 transition-colors duration-150 hover:bg-sand-950">
+    <article className="group flex h-full cursor-default flex-col gap-6 border-2 border-sand-950 bg-sand-50 p-9 transition-colors duration-150 hover:bg-sand-950">
       {/* Top row: icon | title | number */}
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center">

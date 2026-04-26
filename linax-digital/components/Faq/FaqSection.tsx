@@ -28,7 +28,7 @@ export function FaqSection() {
           </a>
         </div>
 
-        <div className="border-2 border-sand-950 bg-white px-10 py-2 lg:order-1">
+        <div className="border-2 border-sand-950 bg-sand-50 px-10 py-2 lg:order-1">
           <FaqAccordion />
         </div>
 

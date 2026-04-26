@@ -28,7 +28,7 @@ export function HowItWorksSection() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`relative overflow-hidden border-t-4 border-sand-950 bg-white px-10 py-12 ${
+              className={`relative overflow-hidden border-t-4 border-sand-950 bg-sand-50 px-10 py-12 ${
                 i > 0 ? "lg:border-l-2 lg:border-l-sand-950" : ""
               }`}
             >

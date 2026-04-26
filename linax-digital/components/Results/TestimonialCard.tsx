@@ -2,9 +2,13 @@
 
 import type { TestimonialItem } from "../../types";
 
-export function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
+export function TestimonialCard({
+  testimonial,
+}: {
+  testimonial: TestimonialItem;
+}) {
   return (
-    <article className="group flex cursor-default flex-col gap-6 border border-[#E5DCC9] border-t-4 border-t-clay-500 bg-white p-10 transition-[border-top-color,transform] duration-150 hover:-translate-y-0.5 hover:border-t-clay-700">
+    <article className="group flex cursor-default flex-col gap-6 border border-[#E5DCC9] border-t-4 border-t-clay-500 bg-sand-100 p-10 transition-[border-top-color,transform] duration-150 hover:-translate-y-0.5 hover:border-t-clay-700">
       {/* Result callout */}
       <div className="inline-flex self-start bg-sand-950 px-3.5 py-1.5 font-brand text-[10px] font-bold uppercase tracking-[0.12em] text-sand-50">
         {testimonial.resultCallout}

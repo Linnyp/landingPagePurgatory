@@ -36,8 +36,8 @@ export function ResultsSection() {
         </div>
 
         {/* Mid-page CTA banner */}
-        <div className="mt-16 flex flex-col items-center gap-5 border-4 border-sand-950 bg-sand-100 bg-dots-pattern p-12 text-center">
-          <p className="results-cta-line m-0 font-brand font-black uppercase text-sand-950">
+        <div className="mt-16 flex flex-col items-center gap-5 border-4 border-sand-950 bg-sand-900 bg-dots-pattern p-12 text-center">
+          <p className="results-cta-line m-0 font-brand font-black uppercase text-sand-50">
             Ready to find out where you stand?
           </p>
           <a

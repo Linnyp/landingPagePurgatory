@@ -17,7 +17,7 @@ export function BillingToggle({ mode, setMode }: BillingToggleProps) {
     <div
       role="tablist"
       aria-label="Billing mode"
-      className="inline-flex w-fit gap-1 self-end border-2 border-sand-950 bg-white p-1"
+      className="inline-flex w-fit gap-1 self-end border-2 border-sand-950 bg-sand-50 p-1"
     >
       {OPTIONS.map((opt) => {
         const active = mode === opt.id;

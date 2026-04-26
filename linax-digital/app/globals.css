@@ -2,37 +2,37 @@
 
 @theme {
   /* ----- Coastal Clay palette ----- */
-  --color-cream:      #FBF8F3;
-  --color-sand-25:    #FFFFFF;
-  --color-sand-50:    #fbf8f3;
-  --color-sand-100:   #f3eee4;
-  --color-sand-200:   #EDE6D6;
-  --color-sand-600:   #78705f;
-  --color-sand-700:   #5c5449;
-  --color-sand-800:   #3e372d;
-  --color-sand-900:   #2a251d;
-  --color-sand-950:   #1f1b16;
+  --color-cream: #fbf8f3;
+  --color-sand-25: #ffffff;
+  --color-sand-50: #fbf8f3;
+  --color-sand-100: #f3eee4;
+  --color-sand-200: #ede6d6;
+  --color-sand-600: #78705f;
+  --color-sand-700: #5c5449;
+  --color-sand-800: #3e372d;
+  --color-sand-900: #2a251d;
+  --color-sand-950: #1f1b16;
 
-  --color-clay:       #C2552D;
-  --color-clay-500:   #c2552d;
-  --color-clay-600:   #A3431F;
-  --color-clay-700:   #a3431f;
+  --color-clay: #c2552d;
+  --color-clay-500: #c2552d;
+  --color-clay-600: #a3431f;
+  --color-clay-700: #a3431f;
 
-  --color-brown-900:  #2A1F14;
-  --color-navy:       #1A2B4A;
-  --color-sage:       #6B8F71;
+  --color-brown-900: #2a1f14;
+  --color-navy: #1a2b4a;
+  --color-sage: #6b8f71;
 
   /* Translucent sand for fixed nav */
   --color-sand-frost: rgba(42, 37, 29, 0.9);
 
   /* ----- Typography ----- */
   --font-display: "Fraunces", Georgia, serif;
-  --font-body:    "Inter", system-ui, sans-serif;
-  --font-brand:   "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-brand: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* ----- Layout ----- */
   --container-brand: 1200px;
-  --spacing-gutter:  24px;
+  --spacing-gutter: 24px;
 }
 
 body {
@@ -64,7 +64,10 @@ body {
 }
 
 .bg-dots-pattern {
-  background-image: radial-gradient(rgba(31, 27, 22, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(251, 248, 243, 0.12) 1px,
+    transparent 1px
+  );
   background-size: 16px 16px;
 }
 

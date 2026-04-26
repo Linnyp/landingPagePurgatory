@@ -18,7 +18,7 @@ export function PricingCard({ plan, mode, setMode }: PricingCardProps) {
     "group relative -ml-0.5 box-border flex h-full flex-col gap-7 p-10 transition-colors duration-150",
     isFeatured
       ? "border-4 border-sand-900 bg-sand-900"
-      : "border-2 border-sand-950 bg-white hover:bg-sand-100",
+      : "border-2 border-sand-950 bg-sand-50 hover:bg-sand-100",
   ].join(" ");
 
   const heading = isFeatured ? "text-sand-50" : "text-sand-950";
@@ -129,7 +129,7 @@ function MiniBillingToggle({
   isFeatured: boolean;
 }) {
   const wrapperBorder = isFeatured ? "border-sand-50/30" : "border-sand-950";
-  const wrapperBg = isFeatured ? "bg-sand-800" : "bg-white";
+  const wrapperBg = isFeatured ? "bg-sand-800" : "bg-sand-50";
   const inactiveText = isFeatured ? "text-sand-50/70" : "text-sand-950";
 
   return (
