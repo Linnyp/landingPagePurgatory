@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/Hero/HeroSection";
-import { SocialProofBar } from "@/components/SocialProof/SocialProofBar";
 import { ProblemSection } from "@/components/Problem/ProblemSection";
 import { ServicesSection } from "@/components/Services/ServicesSection";
 import { ResultsSection } from "@/components/Results/ResultsSection";
@@ -19,7 +18,6 @@ export default function HomePage() {
   return (
     <main>
       <HeroSection />
-      <SocialProofBar />
       <ProblemSection />
       <ServicesSection />
       <ResultsSection />

@@ -19,9 +19,6 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         <span className="text-center font-brand text-[11px] font-bold uppercase tracking-[0.15em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
           {service.title}
         </span>
-        <span className="text-right font-brand text-[11px] font-black tracking-[0.12em] text-sand-600 transition-colors duration-150 group-hover:text-sand-50">
-          0{index + 1}
-        </span>
       </div>
 
       <h3 className="m-0 text-center font-brand text-[22px] font-extrabold leading-[1.25] tracking-[-0.01em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">

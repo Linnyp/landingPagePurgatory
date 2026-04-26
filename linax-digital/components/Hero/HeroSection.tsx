@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import PixelBlast from "@/components/PixelBlast";
+import LogoLoop from "@/components/LogoLoop";
+import { clientLogos } from "../../data/clientLogos";
 import { IconArrowRight } from "../shared/icons";
 import "./HeroSection.css";
 
@@ -22,14 +24,14 @@ const cornerIcons = [
   },
   {
     src: "/adsIcon.png",
-    className: "top-full right-full -mt-7 -mr-7",
+    className: "top-full right-full mt-24 md:mt-20 -mr-7",
     rotate: 28,
     duration: 3.5,
     delay: 1.8,
   },
   {
     src: "/reputationIcon.png",
-    className: "top-full left-full -mt-[52px] -ml-7",
+    className: "top-full left-full mt-20 md:mt-12 -ml-7",
     rotate: -18,
     duration: 4.6,
     delay: 2.6,
@@ -40,7 +42,7 @@ export function HeroSection() {
   return (
     <section
       aria-label="Hero"
-      className="hero relative overflow-x-clip bg-sand-50 pt-46 pb-24"
+      className="hero relative overflow-x-clip bg-sand-50 pt-48 md:pt-42 pb-9 border-b-4 border-black"
     >
       <div className="pointer-events-none absolute inset-0 z-0">
         <PixelBlast
@@ -67,7 +69,7 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col items-center px-6 text-center">
-        <div className="hero-title-wrap relative mx-0 mb-8 w-[85%] max-w-[640px]">
+        <div className="hero-title-wrap relative mx-0 mb-4 w-[85%] max-w-[640px]">
           {cornerIcons.map((icon, i) => (
             <motion.img
               key={i}
@@ -96,13 +98,13 @@ export function HeroSection() {
           </h1>
         </div>
 
-        <p className="mb-10 max-w-[640px] px-[59px] md:px-[40px] font-brand text-[17px] font-normal leading-[1.65] text-sand-700">
-          Linax Digital is a digital marketing agency in Southwest Florida. We
-          build websites, run SEO, manage ads, and handle your online reputation
-          — all of it done by the person you talked to.
+        <p className="mb-10 max-w-[640px]  md:px-[40px] font-brand text-sm md:text-[16px]  font-normal leading-[1.65] text-sand-700">
+          Linax Digital is a digital marketing agency based in South Florida.
+          Websites, SEO, paid ads, and online reputation management - Everything
+          to grow your business, done for you in one place.
         </p>
 
-        <div className="flex flex-wrap items-stretch justify-center gap-3">
+        <div className="relative z-20 flex flex-col items-center justify-center gap-3 min-[740px]:flex-row min-[740px]:items-stretch">
           <motion.a
             href="#contact"
             className="inline-flex min-h-[52px] items-center gap-2.5 border-2 border-transparent bg-clay-500 px-8 py-4 font-brand text-[13px] font-bold uppercase tracking-[0.08em] text-sand-50 no-underline transition-colors duration-150 hover:bg-clay-700"
@@ -123,10 +125,28 @@ export function HeroSection() {
           </motion.a>
         </div>
 
-        <p className="mt-4 font-brand text-[12px] tracking-[0.02em] text-sand-600 px-[59px]">
-          No commitment. 30 minutes. Walk away with a clear picture of where you
-          stand.
-        </p>
+        <div className="mt-20 w-full">
+          <div className="flex w-screen items-center gap-6 ml-[calc(50%-50vw)]">
+            <div className="h-[3px] flex-1 bg-black" />
+            <span className="font-brand text-[12px] font-bold uppercase tracking-[0.2em] text-clay-500">
+              Trusted by
+            </span>
+            <div className="h-[3px] flex-1 bg-black" />
+          </div>
+          <div className="relative mt-8 flex h-14 items-center overflow-hidden">
+            <LogoLoop
+              logos={clientLogos}
+              speed={60}
+              direction="left"
+              logoHeight={48}
+              gap={120}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#fbf8f3"
+              ariaLabel="Trusted by local Southwest Florida businesses"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -14,9 +14,11 @@ export function ServicesSection() {
       <div className="mx-auto w-full max-w-[1200px] px-6">
         {/* Section header */}
         <div className="mb-16">
-          <SectionLabel text="Services" />
-          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[8fr_4fr]">
-            <div id="services-heading">
+          <div className="flex justify-end">
+            <SectionLabel text="Services" />
+          </div>
+          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[4fr_8fr]">
+            <div id="services-heading" className="text-right lg:order-2">
               <div className="services-headline font-brand font-black uppercase text-sand-950">
                 Every Service Feeds
                 <br />
@@ -26,7 +28,7 @@ export function ServicesSection() {
                 More Qualified Leads.
               </div>
             </div>
-            <p className="m-0 pb-2 font-brand text-[15px] leading-[1.65] text-sand-600">
+            <p className="m-0 pb-2 font-brand text-[15px] leading-[1.65] text-sand-600 lg:order-1">
               We handle the full stack — from your Google presence to the AI
               workflows running in the background — so you can stay focused on
               the work.

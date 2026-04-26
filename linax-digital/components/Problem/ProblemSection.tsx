@@ -69,8 +69,7 @@ export function ProblemSection() {
       const heading = mobileHeadingRef.current;
       if (!cards || !heading) return;
       const pin = STICKY_TOP_PX + heading.offsetHeight + 16;
-      const lastCardOffset =
-        (problems.length - 1) * CARD_HEIGHT_PX - pin;
+      const lastCardOffset = (problems.length - 1) * CARD_HEIGHT_PX - pin;
       const cardsTop = cards.getBoundingClientRect().top;
       setMobileSticky(cardsTop > -lastCardOffset);
     };
@@ -88,7 +87,7 @@ export function ProblemSection() {
       ref={sectionRef}
       id="problem"
       aria-label="The Problem"
-      className="bg-sand-50 py-24"
+      className="bg-sand-100 py-24"
     >
       {showNavCover && (
         <div
@@ -104,7 +103,7 @@ export function ProblemSection() {
 
         <div
           ref={mobileHeadingRef}
-          className={`${mobileSticky ? "sticky top-20" : ""} z-20 -mx-6 bg-sand-50 px-6 lg:hidden`}
+          className={`${mobileSticky ? "sticky top-20" : ""} z-20 -mx-6 px-6 lg:hidden bg-sand-100`}
         >
           <h2 className="problem-heading font-brand font-black uppercase text-sand-950">
             You&apos;ve Got
@@ -120,7 +119,7 @@ export function ProblemSection() {
             src="/painPointJuggling.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-2.5 right-6 h-full w-auto max-w-[45%] select-none object-contain"
+            className="pointer-events-none absolute -bottom-2.5 right-[-15px] md:right-6 h-[150%] w-auto max-w-[45%] select-none object-contain"
           />
         </div>
 
@@ -140,15 +139,15 @@ export function ProblemSection() {
                   <br />
                 </h2>
               </div>
-              <p className="font-brand text-[15px] leading-[1.65] text-sand-600">
-                Most local service businesses in Southwest Florida have the
-                same problem. Their customers are happy. Their work is solid.
-                But somewhere between the last job they finished and the next
-                one they&apos;re trying to book, something&apos;s leaking.
-                Leads go to a competitor with worse reviews. Calls don&apos;t
-                get returned in time. The website hasn&apos;t been touched
-                since 2019. It&apos;s not because you don&apos;t care.
-                It&apos;s because you&apos;re running a business.
+              <p className="font-brand text-[15px] leading-[1.65] text-sand-600 mb-10">
+                Most local service businesses in Southwest Florida have the same
+                problem. Their customers are happy. Their work is solid. But
+                somewhere between the last job they finished and the next one
+                they&apos;re trying to book, something&apos;s leaking. Leads go
+                to a competitor with worse reviews. Calls don&apos;t get
+                returned in time. The website hasn&apos;t been touched since
+                2019. It&apos;s not because you don&apos;t care. It&apos;s
+                because you&apos;re running a business.
               </p>
               <img
                 src="/painPointJuggling.png"
@@ -160,17 +159,14 @@ export function ProblemSection() {
           </div>
 
           <div ref={cardsRef}>
-            <StackingCards
-              totalCards={problems.length}
-              scaleMultiplier={0.03}
-            >
+            <StackingCards totalCards={problems.length} scaleMultiplier={0.03}>
               {problems.map((problem, i) => (
                 <StackingCardItem
                   key={problem.name}
                   index={i}
                   topPosition={`${i * 3}%`}
-                  className="problem-card-item"
-                  style={{ height: 460, top: stackPin }}
+                  className="problem-card-item h-[490px]! md:h-[290px]! lg:h-[360px]!"
+                  style={{ top: stackPin }}
                 >
                   <ProblemCard
                     problem={problem}

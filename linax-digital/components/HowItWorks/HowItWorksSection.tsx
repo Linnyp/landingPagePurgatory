@@ -10,8 +10,10 @@ export function HowItWorksSection() {
       className="border-y-4 border-sand-950 bg-sand-100 bg-grid-pattern py-24"
     >
       <div className="mx-auto w-full max-w-[1200px] px-6">
-        <div className="mb-16">
-          <SectionLabel text="Method" />
+        <div className="mb-16 text-right">
+          <div className="flex justify-end">
+            <SectionLabel text="Method" />
+          </div>
           <h2
             id="hiw-heading"
             className="hiw-heading font-brand font-black uppercase text-sand-950"
