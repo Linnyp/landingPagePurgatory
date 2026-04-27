@@ -11,7 +11,7 @@ export function ResultsSection() {
     <section
       id="results"
       aria-labelledby="results-heading"
-      className="bg-sand-50 py-24"
+      className="bg-sand-50 py-28"
     >
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <div className="mb-16">

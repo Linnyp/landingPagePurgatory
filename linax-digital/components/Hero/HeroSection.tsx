@@ -69,7 +69,7 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col items-center px-6 text-center">
-        <div className="hero-title-wrap relative mx-0 mb-4 w-[85%] max-w-[640px]">
+        <div className="hero-title-wrap relative z-30 mx-0 mb-4 w-[85%] max-w-[640px]">
           {cornerIcons.map((icon, i) => (
             <motion.img
               key={i}
@@ -133,7 +133,7 @@ export function HeroSection() {
             </span>
             <div className="h-[3px] flex-1 bg-black" />
           </div>
-          <div className="relative mt-8 flex h-14 items-center overflow-hidden">
+          <div className="relative z-0 mt-8 flex h-14 items-center overflow-hidden">
             <LogoLoop
               logos={clientLogos}
               speed={60}

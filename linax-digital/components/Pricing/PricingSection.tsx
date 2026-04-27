@@ -15,7 +15,7 @@ export function PricingSection() {
     <section
       id="pricing"
       aria-labelledby="pricing-heading"
-      className="bg-sand-50 py-24"
+      className="bg-sand-50 py-28"
     >
       <div className="mx-auto w-full max-w-brand px-6">
         <div className="mb-16">

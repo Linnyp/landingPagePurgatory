@@ -8,11 +8,13 @@ interface ProblemCardProps {
   total: number;
 }
 
-export function ProblemCard({ problem, index, total: _total }: ProblemCardProps) {
+export function ProblemCard({
+  problem,
+  index,
+  total: _total,
+}: ProblemCardProps) {
   return (
-    <article
-      className="group h-full cursor-default border-4 border-sand-950 bg-sand-50 p-10 transition-colors duration-150 hover:bg-sand-950"
-    >
+    <article className="group h-full cursor-default border-4 border-sand-950 bg-sand-100 p-10 transition-colors duration-150 hover:bg-sand-950">
       <div className="mb-4 flex items-start justify-between gap-4">
         <h3 className="font-brand text-[20px] font-extrabold uppercase tracking-[-0.02em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
           {problem.name}

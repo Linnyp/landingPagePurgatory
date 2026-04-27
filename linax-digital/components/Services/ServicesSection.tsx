@@ -9,7 +9,7 @@ export function ServicesSection() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="services-section relative z-10 border-y-4 border-sand-950 bg-sand-100 bg-diag-pattern py-24"
+      className="services-section relative z-10 border-y-4 border-sand-950 bg-sand-100 bg-grid-pattern py-28"
     >
       <div className="mx-auto w-full max-w-[1200px] px-6">
         {/* Section header */}

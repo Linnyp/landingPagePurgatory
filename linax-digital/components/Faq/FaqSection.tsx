@@ -7,7 +7,7 @@ export function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="border-t-4 border-sand-950 bg-sand-100 bg-diag-pattern py-24"
+      className="border-t-4 border-sand-950 bg-sand-100 bg-grid-pattern py-24"
     >
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 px-6 lg:grid-cols-[8fr_4fr]">
         <div className="text-center lg:order-2">

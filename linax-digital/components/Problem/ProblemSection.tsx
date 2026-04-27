@@ -87,7 +87,7 @@ export function ProblemSection() {
       ref={sectionRef}
       id="problem"
       aria-label="The Problem"
-      className="bg-sand-100 py-24"
+      className="bg-sand-50 py-28"
     >
       {showNavCover && (
         <div
@@ -103,7 +103,7 @@ export function ProblemSection() {
 
         <div
           ref={mobileHeadingRef}
-          className={`${mobileSticky ? "sticky top-20" : ""} z-20 -mx-6 px-6 lg:hidden bg-sand-100`}
+          className={`${mobileSticky ? "sticky top-20" : ""} z-20 -mx-6 px-6 lg:hidden bg-sand-50`}
         >
           <h2 className="problem-heading font-brand font-black uppercase text-sand-950">
             You&apos;ve Got
