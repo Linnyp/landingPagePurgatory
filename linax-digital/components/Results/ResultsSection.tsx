@@ -22,7 +22,7 @@ export function ResultsSection() {
           >
             Real Results from
             <br />
-            Real Local Businesses.
+            Real <span className="text-clay-500">local businesses.</span>
           </h2>
         </div>
 

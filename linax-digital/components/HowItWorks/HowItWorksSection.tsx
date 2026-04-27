@@ -20,7 +20,7 @@ export function HowItWorksSection() {
           >
             From Audit to Results
             <br />
-            In Three Stages.
+            In <span className="text-clay-500">three stages.</span>
           </h2>
         </div>
 

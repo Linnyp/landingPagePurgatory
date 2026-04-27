@@ -10,28 +10,28 @@ import "./HeroSection.css";
 const cornerIcons = [
   {
     src: "/websiteIcon.png",
-    className: "bottom-full right-full -mb-7 -mr-7",
+    className: "bottom-full right-full -mb-7 -mr-7 lg:mr-24",
     rotate: -24,
     duration: 3.0,
     delay: 0,
   },
   {
     src: "/seoIcon.png",
-    className: "bottom-full left-full -mb-7 -ml-7",
+    className: "bottom-full left-full -mb-7 -ml-7 lg:ml-24",
     rotate: 22,
     duration: 4.2,
     delay: 0.9,
   },
   {
     src: "/adsIcon.png",
-    className: "top-full right-full mt-24 md:mt-20 -mr-7",
+    className: "top-full right-full mt-58 md:mt-20 -mr-10 lg:mr-24",
     rotate: 28,
     duration: 3.5,
     delay: 1.8,
   },
   {
     src: "/reputationIcon.png",
-    className: "top-full left-full mt-20 md:mt-12 -ml-7",
+    className: "top-full left-full mt-52 md:mt-12 -ml-7 lg:ml-24",
     rotate: -18,
     duration: 4.6,
     delay: 2.6,
