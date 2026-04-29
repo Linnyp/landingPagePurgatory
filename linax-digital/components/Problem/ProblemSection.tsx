@@ -40,8 +40,8 @@ export function ProblemSection() {
     if (!el) return;
 
     const measure = () => {
-      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
-      if (!isMobile) {
+      const isSmall = window.matchMedia("(max-width: 767px)").matches;
+      if (!isSmall) {
         setStackPin(DESKTOP_PIN_PX);
         return;
       }
@@ -103,9 +103,14 @@ export function ProblemSection() {
 
         <div
           ref={mobileHeadingRef}
-          className={`${mobileSticky ? "sticky top-20" : ""} z-20 -mx-6 px-6 lg:hidden bg-sand-50`}
+          className={`${mobileSticky ? "sticky top-20" : ""} md:relative! md:top-auto! z-20 -mx-6 px-6 lg:hidden bg-sand-50`}
         >
-          <h2 className="problem-heading font-brand font-black uppercase text-sand-950">
+          <h2 className="problem-heading font-brand font-black uppercase text-sand-950 md:hidden">
+            You&apos;ve Got 99 Problems
+            <br />
+            <span className="text-clay-500">Marketing</span> Shouldn&apos;t Be 1
+          </h2>
+          <h2 className="problem-heading font-brand font-black uppercase text-sand-950 hidden md:block">
             You&apos;ve Got
             <br />
             99 Problems
@@ -113,13 +118,12 @@ export function ProblemSection() {
             <span className="text-clay-500">Marketing </span>
             <br />
             Shouldn&apos;t Be 1
-            <br />
           </h2>
           <img
-            src="/painPointJuggling.png"
+            src="/jugglingPain.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-2.5 right-[-15px] md:right-6 h-[150%] w-auto max-w-[45%] select-none object-contain"
+            className="pointer-events-none hidden md:block absolute top-0 right-6 h-auto w-auto max-w-[40%] select-none object-contain"
           />
         </div>
 
@@ -139,7 +143,7 @@ export function ProblemSection() {
                   <br />
                 </h2>
               </div>
-              <p className="font-brand text-[15px] leading-[1.65] text-sand-600 mb-10">
+              <p className="font-brand text-[15px] leading-[1.65] text-sand-600 mb-10 md:w-1/2 lg:w-auto">
                 Most local service businesses in Southwest Florida have the same
                 problem. Their customers are happy. Their work is solid. But
                 somewhere between the last job they finished and the next one
@@ -150,7 +154,13 @@ export function ProblemSection() {
                 because you&apos;re running a business.
               </p>
               <img
-                src="/painPointJuggling.png"
+                src="/jugglingPain.png"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none mx-auto block h-auto w-full max-w-[380px] select-none object-contain md:hidden"
+              />
+              <img
+                src="/jugglingPain.png"
                 alt="Illustration of a business owner juggling marketing pain points"
                 className="absolute left-0 right-0 top-full hidden h-auto w-full lg:block"
               />

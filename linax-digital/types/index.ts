@@ -24,7 +24,11 @@ export interface TestimonialItem {
   quote: string;
   name: string;
   titleAndCompany: string;
-  resultCallout: string;
+  avatarSrc: string;
+  avatarAlt: string;
+  avatarWidthPx?: number;
+  ownerPhotoSrc: string;
+  ownerPhotoAlt: string;
 }
 
 export interface PricingPlanTier {

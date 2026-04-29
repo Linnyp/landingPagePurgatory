@@ -24,14 +24,14 @@ const cornerIcons = [
   },
   {
     src: "/adsIcon.png",
-    className: "top-full right-full mt-58 md:mt-20 -mr-10 lg:mr-24",
+    className: "top-full right-full mt-58 min-[668px]:mt-20 -mr-10 lg:mr-24",
     rotate: 28,
     duration: 3.5,
     delay: 1.8,
   },
   {
     src: "/reputationIcon.png",
-    className: "top-full left-full mt-52 md:mt-12 -ml-7 lg:ml-24",
+    className: "top-full left-full mt-52 min-[668px]:mt-12 -ml-7 lg:ml-24",
     rotate: -18,
     duration: 4.6,
     delay: 2.6,

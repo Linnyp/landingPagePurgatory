@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { IconArrowRight } from "@/components/shared/icons";
 import { WebsitesFaq } from "./WebsitesFaq";
+import { HeroAnimation } from "./HeroAnimation";
 import "./websites.css";
 
 export const metadata: Metadata = {
@@ -16,31 +17,37 @@ const includedItems = [
     no: "01",
     title: "Custom Design",
     body: "Every page drawn around your business — your services, your customers, your market. No drag-and-drop templates that look like the four shops down the road.",
+    icon: "/logos/webdesignlogo.png",
   },
   {
     no: "02",
     title: "Modern Build",
     body: "Built on Next.js and React. Fast on a phone, fast on a slow connection, fast on a search engine's crawl. The same stack the big national sites run on.",
+    icon: "/logos/webdevlogo.png",
   },
   {
     no: "03",
     title: "Hosting & Email",
     body: "Domain email, SSL, daily backups, and hosting that doesn't go down on a Saturday. Subscription clients get this baked in.",
+    icon: "/logos/hostingemailLogo.png",
   },
   {
     no: "04",
     title: "Local Search Setup",
     body: "Schema markup, sitemaps, page speed, and on-page SEO done right at launch — so the site starts ranking without a rebuild six months in.",
+    icon: "/logos/formsLogo.png",
   },
   {
     no: "05",
     title: "Analytics That Make Sense",
     body: "Google Analytics 4 and call tracking installed and configured. We tell you which pages actually book calls — in plain English, every month.",
+    icon: "/logos/anayzeLogo.png",
   },
   {
     no: "06",
     title: "Edits & Support",
     body: "Need a new service page? A price update? A photo swapped? Text us. Subscription clients get unlimited edits, usually same day.",
+    icon: "/logos/editsupportLogo.png",
   },
 ];
 
@@ -68,8 +75,12 @@ const processSteps = [
 ];
 
 const stats = [
-  { value: "2–4", label: "Weeks to launch", unit: "wks" },
-  { value: "<2", label: "Seconds to load on mobile", unit: "s" },
+  { value: "4 – 6", label: "Weeks until you're online", unit: "wks" },
+  {
+    value: "90%",
+    label: "Page speed scores for lightning fast websites",
+    unit: "+",
+  },
   { value: "5", label: "Pages in a standard build", unit: "pgs" },
   { value: "$0", label: "Upfront cost on the subscription plan", unit: "" },
 ];
@@ -110,14 +121,8 @@ export default function WebsitesPage() {
           </nav>
 
           {/* Asymmetric grid: numbered label + headline | meta column */}
-          <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-[8fr_4fr] lg:gap-16">
-            <div>
-              <div className="mb-6 flex items-center gap-3 font-brand text-[11px] font-bold uppercase tracking-[0.15em]">
-                <span className="text-clay-500">01 / Service</span>
-                <span className="inline-block h-0.5 w-12 bg-clay-500" />
-                <span className="text-sand-950">Websites</span>
-              </div>
-
+          <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-[8fr_4fr] lg:gap-16">
+            <div className="flex flex-col">
               <h1 className="websites-hero-title m-0 font-brand font-black uppercase leading-[0.95] tracking-[-0.04em] text-sand-950">
                 A Site Built
                 <br />
@@ -134,7 +139,7 @@ export default function WebsitesPage() {
                 Designed around one job: turning a search into a booked call.
               </p>
 
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch">
+              <div className="mt-auto flex flex-col gap-3 pt-10 sm:flex-row sm:items-stretch">
                 <a
                   href="#contact"
                   className="inline-flex min-h-[52px] items-center gap-2.5 border-2 border-clay-500 bg-clay-500 px-8 py-4 font-brand text-[13px] font-bold uppercase tracking-[0.08em] text-sand-50 no-underline transition-colors duration-150 hover:border-clay-700 hover:bg-clay-700"
@@ -150,30 +155,40 @@ export default function WebsitesPage() {
               </div>
             </div>
 
-            {/* Meta column — facts pinned right, very Swiss */}
-            <aside
-              aria-label="At a glance"
-              className="flex flex-col gap-0 border-l-2 border-sand-950 lg:gap-0"
-            >
-              {[
-                ["Format", "Custom · 5-page baseline"],
-                ["Stack", "Next.js · React · TypeScript"],
-                ["Pricing", "$3,000 lump · or $180/mo"],
-                ["Launch", "2–4 weeks"],
-              ].map(([k, v]) => (
+            {/* Right column — animation on top, meta facts pinned below */}
+            <div className="relative flex flex-col gap-8">
+              <div className="relative aspect-3/2 overflow-hidden">
+                <HeroAnimation />
                 <div
-                  key={k}
-                  className="flex items-baseline justify-between gap-6 border-b-2 border-sand-950 px-5 py-4 last:border-b-0"
-                >
-                  <span className="font-brand text-[10px] font-bold uppercase tracking-[0.18em] text-sand-600">
-                    {k}
-                  </span>
-                  <span className="text-right font-brand text-[14px] font-bold uppercase tracking-[-0.01em] text-sand-950">
-                    {v}
-                  </span>
-                </div>
-              ))}
-            </aside>
+                  aria-hidden
+                  className="absolute inset-0 bg-sand-50/65 lg:hidden"
+                />
+              </div>
+
+              <aside
+                aria-label="At a glance"
+                className="absolute inset-0 z-10 flex flex-col justify-center lg:relative lg:inset-auto lg:z-auto lg:justify-start lg:border-l-2 lg:border-sand-950"
+              >
+                {[
+                  ["Format", "Custom · 5-page baseline"],
+                  ["Stack", "Next.js · React · TypeScript"],
+                  ["Pricing", "$3,000 lump · or $180/mo"],
+                  ["Launch", "2–4 weeks"],
+                ].map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="flex items-baseline justify-between gap-6 border-b-2 border-sand-950 px-5 py-4 last:border-b-0"
+                  >
+                    <span className="font-brand text-[10px] font-bold uppercase tracking-[0.18em] text-sand-600">
+                      {k}
+                    </span>
+                    <span className="text-right font-brand text-[14px] font-bold uppercase tracking-[-0.01em] text-sand-950">
+                      {v}
+                    </span>
+                  </div>
+                ))}
+              </aside>
+            </div>
           </div>
         </div>
       </section>
@@ -201,8 +216,8 @@ export default function WebsitesPage() {
             </div>
             <p className="m-0 font-brand text-[15px] leading-[1.7] text-sand-700">
               You get the full build, the hosting, the edits, and the support
-              under one fee. The list below is what comes with every site —
-              not a starting point you upgrade your way out of.
+              under one fee. The list below is what comes with every site — not
+              a starting point you upgrade your way out of.
             </p>
           </div>
 
@@ -217,11 +232,16 @@ export default function WebsitesPage() {
                   i >= 3 ? "lg:-mt-0.5" : ""
                 } ${i >= 2 ? "sm:-mt-0.5 lg:mt-0" : ""}`}
               >
-                <div className="flex items-baseline justify-between">
+                <div className="flex items-start justify-between">
                   <span className="font-brand text-[11px] font-bold uppercase tracking-[0.18em] text-clay-500 transition-colors duration-150 group-hover:text-clay-300">
                     {item.no}
                   </span>
-                  <span className="block h-0.5 w-10 bg-sand-950 transition-colors duration-150 group-hover:bg-clay-500" />
+                  <img
+                    src={item.icon}
+                    alt=""
+                    aria-hidden
+                    className="h-14 w-14 shrink-0 object-contain"
+                  />
                 </div>
                 <h3 className="m-0 font-brand text-[20px] font-extrabold uppercase leading-[1.2] tracking-[-0.01em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
                   {item.title}
@@ -255,9 +275,9 @@ export default function WebsitesPage() {
               </h2>
             </div>
             <p className="m-0 font-brand text-[15px] leading-[1.7] text-sand-700">
-              Pay once and own the build, or spread it across a flat monthly
-              fee that bundles hosting, edits, and support. Same custom site —
-              two ways to fit the budget.
+              Pay once and own the build, or spread it across a flat monthly fee
+              that bundles hosting, edits, and support. Same custom site — two
+              ways to fit the budget.
             </p>
           </div>
 
@@ -351,7 +371,10 @@ export default function WebsitesPage() {
                 </div>
               </div>
 
-              <p className="m-0 border-t pt-5 font-brand text-[13px] leading-[1.65] text-sand-50/75" style={{ borderColor: "rgba(251,248,243,0.15)" }}>
+              <p
+                className="m-0 border-t pt-5 font-brand text-[13px] leading-[1.65] text-sand-50/75"
+                style={{ borderColor: "rgba(251,248,243,0.15)" }}
+              >
                 Website-as-a-service. No upfront build cost. Hosting, email,
                 edits, and support roll into one flat monthly fee. Best if you
                 want a modern site without writing a $3,000 check on day one.
@@ -387,18 +410,41 @@ export default function WebsitesPage() {
             </article>
           </div>
 
-          <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t-2 border-sand-950 pt-6 sm:flex-row sm:items-center">
-            <p className="m-0 max-w-[560px] font-brand text-[13px] leading-[1.6] text-sand-600">
-              Add-ons (blog, chatbot, extra pages, ongoing edits on lump-sum
-              builds) are quoted clearly up front. Nothing is hidden in a
-              footnote.
-            </p>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-1.5 font-brand text-[12px] font-bold uppercase tracking-[0.12em] text-clay-500 underline underline-offset-4 hover:text-clay-700"
-            >
-              See full pricing for every service <IconArrowRight />
-            </Link>
+          <div className="mt-10 border-t-2 border-sand-950 pt-7">
+            <div className="flex flex-col gap-x-8 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <span className="font-brand text-[13px] font-bold uppercase tracking-[0.12em] text-sand-950">
+                Add-Ons Include:
+              </span>
+              {[
+                { label: "Blog System", price: "$250" },
+                { label: "Chatbot Subscription", price: "" },
+                { label: "Additional pages", price: "$150/per page" },
+              ].map((a) => (
+                <span
+                  key={a.label}
+                  className="inline-flex items-center gap-2 font-brand text-[13px]"
+                >
+                  <span
+                    aria-hidden
+                    className="block h-2.5 w-2.5 shrink-0 bg-clay-500"
+                  />
+                  <span className="font-semibold text-sand-950">{a.label}</span>
+                  {a.price && <span className="text-sand-600">{a.price}</span>}
+                </span>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+              <p className="m-0 font-brand text-[12px] leading-[1.6] text-sand-600">
+                All add-ons rates and prices are quoted clearly up front. No
+                hidden fees.
+              </p>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-1.5 font-brand text-[12px] font-bold uppercase tracking-[0.12em] text-clay-500 underline underline-offset-4 hover:text-clay-700"
+              >
+                See full pricing for every service <IconArrowRight />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -442,11 +488,8 @@ export default function WebsitesPage() {
                   i >= 1 ? "lg:-ml-0.5" : ""
                 }`}
               >
-                <span className="font-brand text-[11px] font-bold uppercase tracking-[0.18em] text-clay-500">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-brand text-[44px] font-black leading-none tracking-[-0.04em] text-sand-950 md:text-[56px]">
+                <div className="m-auto flex items-baseline gap-2">
+                  <span className=" font-brand text-[44px] font-black leading-none tracking-[-0.04em] text-sand-950 md:text-[56px]">
                     {s.value}
                   </span>
                   {s.unit && (
@@ -469,9 +512,9 @@ export default function WebsitesPage() {
                 Case study
               </span>
               <p className="m-0 max-w-[640px] font-brand text-[20px] font-semibold leading-[1.4] text-sand-50 md:text-[24px]">
-                &ldquo;The new site loads in under a second on my phone. I&apos;m
-                getting calls from people who said they found us on Google for
-                the first time.&rdquo;
+                &ldquo;The new site loads in under a second on my phone.
+                I&apos;m getting calls from people who said they found us on
+                Google for the first time.&rdquo;
               </p>
               <p className="mt-3 font-brand text-[12px] uppercase tracking-[0.12em] text-sand-50/60">
                 Verona Cabinets · Cape Coral
@@ -506,8 +549,7 @@ export default function WebsitesPage() {
             >
               From Kickoff
               <br />
-              To Launch In{" "}
-              <span className="text-clay-500">3–4 Weeks.</span>
+              To Launch In <span className="text-clay-500">3–4 Weeks.</span>
             </h2>
           </div>
 
@@ -545,31 +587,33 @@ export default function WebsitesPage() {
         aria-labelledby="faq-heading"
         className="border-b-4 border-sand-950 bg-sand-100 bg-grid-pattern py-24"
       >
-        <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 px-6 lg:grid-cols-[8fr_4fr]">
-          <div className="border-2 border-sand-950 bg-sand-50 px-10 py-2">
-            <WebsitesFaq />
-          </div>
-
-          <div className="lg:order-first lg:sticky lg:top-32">
-            <SectionLabel text="06 / Questions" />
-            <h2
-              id="faq-heading"
-              className="websites-faq-heading m-0 mb-6 font-brand font-black uppercase text-sand-950"
-            >
-              Honest Answers
-              <br />
-              About <span className="text-clay-500">Your Site.</span>
-            </h2>
-            <p className="m-0 mb-8 max-w-[320px] font-brand text-[14px] leading-[1.65] text-sand-600">
-              The questions every business owner asks before they sign — answered
-              the way I&apos;d answer them on a call.
-            </p>
+        <div className="mx-auto w-full max-w-brand px-6">
+          <div className="mb-12 grid grid-cols-1 items-end gap-8 lg:grid-cols-[1fr_auto]">
+            <div>
+              <SectionLabel text="06 / Questions" />
+              <h2
+                id="faq-heading"
+                className="websites-faq-heading m-0 mb-4 font-brand font-black uppercase text-sand-950"
+              >
+                Honest Answers
+                <br />
+                About <span className="text-clay-500">Your Site.</span>
+              </h2>
+              <p className="m-0 max-w-[560px] font-brand text-[14px] leading-[1.65] text-sand-600">
+                The questions every business owner asks before they sign —
+                answered the way I&apos;d answer them on a call.
+              </p>
+            </div>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-clay-500 px-5 py-3 font-brand text-[12px] font-bold uppercase tracking-[0.08em] text-sand-50 no-underline transition-colors duration-150 hover:bg-clay-700"
+              className="inline-flex items-center gap-2 self-start bg-clay-500 px-5 py-3 font-brand text-[12px] font-bold uppercase tracking-[0.08em] text-sand-50 no-underline transition-colors duration-150 hover:bg-clay-700 lg:self-end"
             >
               Still have questions? <IconArrowRight />
             </a>
+          </div>
+
+          <div className="border-2 border-sand-950 bg-sand-50 px-10 py-2">
+            <WebsitesFaq />
           </div>
         </div>
       </section>
@@ -600,8 +644,8 @@ export default function WebsitesPage() {
 
             <p className="m-0 mb-10 max-w-[480px] border-l-4 border-clay-500 pl-5 font-brand text-[16px] leading-[1.65] text-sand-50/75">
               30-minute discovery call. No pitch deck, no upsell. Just an honest
-              read on whether a new site would actually move the needle for
-              your business — and what it would cost.
+              read on whether a new site would actually move the needle for your
+              business — and what it would cost.
             </p>
 
             <div className="flex flex-wrap items-center gap-0">
