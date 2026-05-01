@@ -7,6 +7,7 @@ export const pricingPlans: PricingPlanItem[] = [
       "A fast, custom-built site that turns visitors into calls — no templates, no drag-and-drop.",
     cta: "Book a Call",
     featured: false,
+    breakdownHref: "/services/websites#pricing",
     monthly: {
       price: "$180",
       priceUnit: "/mo",
@@ -40,6 +41,7 @@ export const pricingPlans: PricingPlanItem[] = [
       "Rank where your customers are already searching — and stay there as competitors react.",
     cta: "Book a Call",
     featured: true,
+    breakdownHref: "/services/seo#pricing",
     monthly: {
       price: "$300",
       priceUnit: "/mo",
@@ -73,6 +75,7 @@ export const pricingPlans: PricingPlanItem[] = [
       "Paid campaigns built around cost-per-lead — and you don't pay if ROAS drops below 2:1.",
     cta: "Book a Call",
     featured: false,
+    breakdownHref: "/services/ads#pricing",
     monthly: {
       price: "$300",
       priceUnit: "/mo min",
@@ -94,6 +97,7 @@ export const pricingPlans: PricingPlanItem[] = [
       "Turn happy customers into a steady stream of five-star reviews that win the next caller.",
     cta: "Book a Call",
     featured: false,
+    breakdownHref: "/services/reputation#pricing",
     monthly: {
       price: "$195",
       priceUnit: "/mo",

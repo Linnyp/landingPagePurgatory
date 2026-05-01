@@ -29,18 +29,4 @@ export const services: ServiceItem[] = [
     description:
       "We manage Google Ads and Meta campaigns with a focus on cost-per-lead efficiency for local service budgets \u2014 not vanity metrics. Every campaign is built on keyword-level data and audience targeting specific to your service area and job types.",
   },
-  {
-    icon: "message",
-    title: "Chatbots & Voice Agents",
-    hook: "Answers when you can't pick up",
-    description:
-      "A trained chatbot or voice agent on your site or dedicated phone line that knows your services, your pricing, and your FAQs — ready to answer questions at 11pm on a Tuesday. When someone sounds serious, it routes them straight to your calendar. Your first reply stops being 'next morning' and starts being 'right now.",
-  },
-  {
-    icon: "settings",
-    title: "Automations",
-    hook: "The busywork, handled.",
-    description:
-      "We look at how your day actually runs and find the repeat tasks a machine can do better than a person — follow-up texts, appointment reminders, review requests, lead routing. You stop dropping balls. Your customers get a more consistent experience. You get your evenings back.",
-  },
 ];

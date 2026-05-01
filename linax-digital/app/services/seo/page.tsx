@@ -159,7 +159,7 @@ export default function SeoPage() {
             >
               {[
                 ["Format", "Foundation + Ongoing"],
-                ["Coverage", "Lee · Collier · Charlotte"],
+                ["Coverage", "Lee · Collier · Charlotte · Dade · Broward"],
                 ["Pricing", "$600 setup · or $300/mo"],
                 ["Lock-in", "None · month-to-month"],
               ].map(([k, v]) => (
@@ -541,7 +541,7 @@ export default function SeoPage() {
                       {step.no}
                     </span>
                     <span className="mt-3 font-brand text-[11px] font-bold uppercase tracking-[0.18em] text-sand-600 transition-colors duration-150 group-hover:text-sand-50/60">
-                      Step
+                      Stage
                     </span>
                   </div>
                   <h3 className="m-0 font-brand text-[16px] font-extrabold uppercase leading-[1.3] tracking-[0.04em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">

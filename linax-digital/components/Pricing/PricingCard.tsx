@@ -1,6 +1,7 @@
 "use client";
 
 import type { BillingMode, PricingPlanItem } from "../../types";
+import { IconArrowRight } from "../shared/icons";
 
 interface PricingCardProps {
   plan: PricingPlanItem;
@@ -74,19 +75,17 @@ export function PricingCard({ plan, mode, setMode }: PricingCardProps) {
         {plan.description}
       </p>
 
-      <ul className="m-0 flex flex-1 list-none flex-col gap-3 p-0">
-        {tier.features.map((feature) => (
-          <li
-            key={feature}
-            className={`flex items-start gap-3 font-brand text-[13px] leading-[1.5] ${body}`}
-          >
-            <span className="mt-px shrink-0 text-[16px] font-black leading-none text-clay-500">
-              —
-            </span>
-            {feature}
-          </li>
-        ))}
-      </ul>
+      <div className="flex flex-1 items-start">
+        <a
+          href={plan.breakdownHref}
+          className="group/link inline-flex items-center gap-1.5 font-brand text-[13px] font-semibold leading-[1.5] text-clay-500 underline underline-offset-4 transition-colors duration-150 hover:text-clay-700"
+        >
+          Full {plan.name} Breakdown
+          <span className="transition-transform duration-150 group-hover/link:translate-x-0.5">
+            <IconArrowRight />
+          </span>
+        </a>
+      </div>
 
       <a
         href="#contact"

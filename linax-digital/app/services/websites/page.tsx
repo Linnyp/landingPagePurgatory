@@ -157,7 +157,7 @@ export default function WebsitesPage() {
 
             {/* Right column — animation on top, meta facts pinned below */}
             <div className="relative flex flex-col gap-8">
-              <div className="relative aspect-3/2 overflow-hidden">
+              <div className="relative aspect-4/3 lg:aspect-10/9 overflow-hidden">
                 <HeroAnimation />
                 <div
                   aria-hidden
@@ -170,8 +170,8 @@ export default function WebsitesPage() {
                 className="absolute inset-0 z-10 flex flex-col justify-center lg:relative lg:inset-auto lg:z-auto lg:justify-start lg:border-l-2 lg:border-sand-950"
               >
                 {[
-                  ["Format", "Custom · 5-page baseline"],
-                  ["Stack", "Next.js · React · TypeScript"],
+                  ["Format", "Custom · Static · 5-page "],
+                  ["Stack", "Next.js · TypeScript · TailwindCSS"],
                   ["Pricing", "$3,000 lump · or $180/mo"],
                   ["Launch", "2–4 weeks"],
                 ].map(([k, v]) => (

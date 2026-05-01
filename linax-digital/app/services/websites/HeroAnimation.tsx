@@ -9,6 +9,8 @@ export function HeroAnimation() {
     const video = ref.current;
     if (!video) return;
 
+    video.playbackRate = 2;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

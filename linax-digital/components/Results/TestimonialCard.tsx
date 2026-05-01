@@ -8,7 +8,7 @@ export function TestimonialCard({
   testimonial: TestimonialItem;
 }) {
   return (
-    <article className="group flex h-full cursor-default flex-col gap-6 border border-[#E5DCC9] bg-sand-100 p-10 transition-transform duration-150 hover:-translate-y-0.5">
+    <article className="group flex h-full cursor-default flex-col gap-6 border-2 border-sand-950 bg-sand-100 p-10 transition-transform duration-150 hover:-translate-y-0.5">
       <div className="flex items-start justify-between gap-6">
         <img
           src={testimonial.avatarSrc}
@@ -36,7 +36,7 @@ export function TestimonialCard({
         {testimonial.quote}
       </blockquote>
 
-      <footer className="mt-auto flex items-center gap-4 border-t border-[#E5DCC9] pt-4">
+      <footer className="mt-auto flex items-center gap-4 border-t-2 border-sand-950 pt-4">
         <img
           src={testimonial.ownerPhotoSrc}
           alt={testimonial.ownerPhotoAlt}

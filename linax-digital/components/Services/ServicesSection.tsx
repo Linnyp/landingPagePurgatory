@@ -37,12 +37,12 @@ export function ServicesSection() {
         </div>
 
         {/* Service grid (negative margins overlap borders into a single grid) */}
-        <div className="grid grid-cols-1 gap-0 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-0 sm:grid-cols-2">
           {services.map((service, i) => (
             <div
               key={service.title}
-              className={`h-full ${i >= 3 ? "-mt-0.5" : ""} ${
-                i % 3 !== 0 ? "-ml-0.5" : ""
+              className={`h-full ${i >= 2 ? "-mt-0.5" : ""} ${
+                i % 2 !== 0 ? "-ml-0.5" : ""
               }`}
             >
               <ServiceCard service={service} index={i} />

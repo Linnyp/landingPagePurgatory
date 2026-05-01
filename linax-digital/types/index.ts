@@ -43,6 +43,7 @@ export interface PricingPlanItem {
   description: string;
   cta: string;
   featured: boolean;
+  breakdownHref: string;
   monthly: PricingPlanTier;
   lumpSum: PricingPlanTier | null;
 }
