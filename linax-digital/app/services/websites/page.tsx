@@ -4,6 +4,7 @@ import { SectionLabel } from "@/components/shared/SectionLabel";
 import { IconArrowRight } from "@/components/shared/icons";
 import { WebsitesFaq } from "./WebsitesFaq";
 import { HeroAnimation } from "./HeroAnimation";
+import { IncludedSelector } from "./IncludedSelector";
 import "./websites.css";
 
 export const metadata: Metadata = {
@@ -18,36 +19,42 @@ const includedItems = [
     title: "Custom Design",
     body: "Every page drawn around your business — your services, your customers, your market. No drag-and-drop templates that look like the four shops down the road.",
     icon: "/logos/webdesignlogo.png",
+    bullets: ["Brand Voice", "Local Imagery", "Service Pages"],
   },
   {
     no: "02",
     title: "Modern Build",
     body: "Built on Next.js and React. Fast on a phone, fast on a slow connection, fast on a search engine's crawl. The same stack the big national sites run on.",
     icon: "/logos/webdevlogo.png",
+    bullets: ["Next.js & React", "Mobile-First", "Sub-Second Loads"],
   },
   {
     no: "03",
     title: "Hosting & Email",
     body: "Domain email, SSL, daily backups, and hosting that doesn't go down on a Saturday. Subscription clients get this baked in.",
     icon: "/logos/hostingemailLogo.png",
+    bullets: ["Domain Email", "SSL & Backups", "Uptime Monitoring"],
   },
   {
     no: "04",
     title: "Local Search Setup",
     body: "Schema markup, sitemaps, page speed, and on-page SEO done right at launch — so the site starts ranking without a rebuild six months in.",
     icon: "/logos/formsLogo.png",
+    bullets: ["Schema Markup", "Sitemaps", "Page Speed"],
   },
   {
     no: "05",
     title: "Analytics That Make Sense",
     body: "Google Analytics 4 and call tracking installed and configured. We tell you which pages actually book calls — in plain English, every month.",
     icon: "/logos/anayzeLogo.png",
+    bullets: ["GA4 Setup", "Call Tracking", "Monthly Reports"],
   },
   {
     no: "06",
     title: "Edits & Support",
     body: "Need a new service page? A price update? A photo swapped? Text us. Subscription clients get unlimited edits, usually same day.",
     icon: "/logos/editsupportLogo.png",
+    bullets: ["Same-Day Fixes", "Unlimited Edits", "Direct Text Line"],
   },
 ];
 
@@ -197,61 +204,28 @@ export default function WebsitesPage() {
       <section
         id="whats-included"
         aria-labelledby="included-heading"
-        className="border-b-4 border-sand-950 bg-sand-100 bg-grid-pattern py-24"
+        className="border-b-4 border-sand-950 bg-sand-100 py-24"
       >
         <div className="mx-auto w-full max-w-[1200px] px-6">
-          <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-[5fr_7fr]">
+          <div className="mb-16 grid grid-cols-1 items-start gap-6 lg:grid-cols-[7fr_5fr]">
             <div>
               <SectionLabel text="02 / Included" />
               <h2
                 id="included-heading"
                 className="websites-section-heading m-0 font-brand font-black uppercase text-sand-950"
               >
-                Everything In
-                <br />
-                <span className="text-clay-500">One Box.</span>
-                <br />
-                No Add-On Traps.
+                Sites That Earn Back The{" "}
+                <span className="text-clay-500">Build.</span>
               </h2>
             </div>
-            <p className="m-0 font-brand text-[15px] leading-[1.7] text-sand-700">
-              You get the full build, the hosting, the edits, and the support
-              under one fee. The list below is what comes with every site — not
-              a starting point you upgrade your way out of.
+            <p className="m-0 font-brand text-[15px] leading-[1.7] text-sand-700 lg:pt-[37px]">
+              We don&apos;t ship slow sites and we don&apos;t ship sites that
+              sit there. Here&apos;s what a Linax build looks like by the
+              numbers — and what to expect after launch.
             </p>
           </div>
 
-          {/* Edge-collapsed grid (negative margin overlap, like Services) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {includedItems.map((item, i) => (
-              <article
-                key={item.no}
-                className={`group flex h-full cursor-default flex-col gap-4 border-2 border-sand-950 bg-sand-50 p-9 transition-colors duration-150 hover:bg-sand-950 ${
-                  i % 3 !== 0 ? "lg:-ml-0.5" : ""
-                } ${i % 2 !== 0 ? "sm:-ml-0.5 lg:ml-0" : ""} ${
-                  i >= 3 ? "lg:-mt-0.5" : ""
-                } ${i >= 2 ? "sm:-mt-0.5 lg:mt-0" : ""}`}
-              >
-                <div className="flex items-start justify-between">
-                  <span className="font-brand text-[11px] font-bold uppercase tracking-[0.18em] text-clay-500 transition-colors duration-150 group-hover:text-clay-300">
-                    {item.no}
-                  </span>
-                  <img
-                    src={item.icon}
-                    alt=""
-                    aria-hidden
-                    className="h-14 w-14 shrink-0 object-contain"
-                  />
-                </div>
-                <h3 className="m-0 font-brand text-[20px] font-extrabold uppercase leading-[1.2] tracking-[-0.01em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
-                  {item.title}
-                </h3>
-                <p className="m-0 font-brand text-[14px] leading-[1.7] text-sand-600 transition-colors duration-150 group-hover:text-sand-50/80">
-                  {item.body}
-                </p>
-              </article>
-            ))}
-          </div>
+          <IncludedSelector items={includedItems} />
         </div>
       </section>
 
@@ -456,11 +430,12 @@ export default function WebsitesPage() {
         className="border-b-4 border-sand-950 bg-sand-100 py-24"
       >
         <div className="mx-auto w-full max-w-[1200px] px-6">
-          <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-[5fr_7fr]">
-            <div className="lg:order-2 lg:text-right">
-              <div className="lg:flex lg:justify-end">
-                <SectionLabel text="04 / By the Numbers" />
-              </div>
+          {/* Desktop: 2×2 stat grid on the left, heading + copy on the right.
+              Mobile: heading first, then 2×2 stats below. */}
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Heading + copy — mobile first, desktop right */}
+            <div className="lg:order-2">
+              <SectionLabel text="04 / By the Numbers" />
               <h2
                 id="results-heading"
                 className="websites-section-heading m-0 font-brand font-black uppercase text-sand-950"
@@ -469,40 +444,38 @@ export default function WebsitesPage() {
                 <br />
                 Back The <span className="text-clay-500">Build.</span>
               </h2>
+              <p className="mt-6 m-0 max-w-[440px] font-brand text-[15px] leading-[1.7] text-sand-700">
+                We don&apos;t ship slow sites and we don&apos;t ship sites that
+                sit there. Here&apos;s what a Linax build looks like by the
+                numbers — and what to expect after launch.
+              </p>
             </div>
-            <p className="m-0 font-brand text-[15px] leading-[1.7] text-sand-700 lg:order-1">
-              We don&apos;t ship slow sites and we don&apos;t ship sites that
-              sit there. Here&apos;s what a Linax build looks like by the
-              numbers — and what to expect after launch.
-            </p>
-          </div>
 
-          {/* Stat row — collapsing borders for crisp Swiss feel */}
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`flex flex-col gap-3 border-2 border-sand-950 bg-sand-50 p-8 lg:p-10 ${
-                  i % 2 !== 0 ? "-ml-0.5" : ""
-                } ${i >= 2 ? "-mt-0.5 lg:mt-0" : ""} ${
-                  i >= 1 ? "lg:-ml-0.5" : ""
-                }`}
-              >
-                <div className="m-auto flex items-baseline gap-2">
-                  <span className=" font-brand text-[44px] font-black leading-none tracking-[-0.04em] text-sand-950 md:text-[56px]">
-                    {s.value}
-                  </span>
-                  {s.unit && (
-                    <span className="font-brand text-[18px] font-bold text-clay-500">
-                      {s.unit}
+            {/* Stat grid — always 2 columns, collapsing borders for crisp Swiss feel */}
+            <div className="grid grid-cols-2 lg:order-1">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`flex flex-col gap-3 border-2 border-sand-950 bg-sand-50 p-8 lg:p-10 ${
+                    i % 2 !== 0 ? "-ml-0.5" : ""
+                  } ${i >= 2 ? "-mt-0.5" : ""}`}
+                >
+                  <div className="m-auto flex items-baseline gap-2">
+                    <span className="font-brand text-[44px] font-black leading-none tracking-[-0.04em] text-sand-950 md:text-[56px]">
+                      {s.value}
                     </span>
-                  )}
+                    {s.unit && (
+                      <span className="font-brand text-[18px] font-bold text-clay-500">
+                        {s.unit}
+                      </span>
+                    )}
+                  </div>
+                  <p className="m-0 font-brand text-[13px] leading-[1.5] text-sand-600">
+                    {s.label}
+                  </p>
                 </div>
-                <p className="m-0 font-brand text-[13px] leading-[1.5] text-sand-600">
-                  {s.label}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Mini case study teaser — dark callout */}
@@ -585,7 +558,7 @@ export default function WebsitesPage() {
       <section
         id="faq"
         aria-labelledby="faq-heading"
-        className="border-b-4 border-sand-950 bg-sand-100 bg-grid-pattern py-24"
+        className="border-b-4 border-sand-950 bg-sand-100 py-24"
       >
         <div className="mx-auto w-full max-w-brand px-6">
           <div className="mb-12 grid grid-cols-1 items-end gap-8 lg:grid-cols-[1fr_auto]">
