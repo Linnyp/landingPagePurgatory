@@ -1,7 +1,3 @@
-/* HeroSection — container-query sized title + scattered corner icons.
-   Container queries let the h1 scale against its own 85% wrapper rather
-   than the viewport, so the four corner icons keep hugging the headline. */
-
 .hero-title-wrap {
   container-type: inline-size;
 }
@@ -11,8 +7,4 @@
   line-height: 0.95;
   letter-spacing: -0.04em;
   margin: 0;
-}
-
-.hero-corner-icon {
-  width: clamp(110px, 9vw, 150px);
 }

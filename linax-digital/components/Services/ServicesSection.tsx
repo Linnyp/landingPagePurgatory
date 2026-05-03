@@ -1,7 +1,6 @@
-import { services } from "../../data/services";
 import { SectionLabel } from "../shared/SectionLabel";
 import { IconArrowRight } from "../shared/icons";
-import { ServiceCard } from "./ServiceCard";
+import { ServicesTabs } from "./ServicesTabs";
 import "./ServicesSection.css";
 
 export function ServicesSection() {
@@ -36,19 +35,7 @@ export function ServicesSection() {
           </div>
         </div>
 
-        {/* Service grid (negative margins overlap borders into a single grid) */}
-        <div className="grid grid-cols-1 gap-0 sm:grid-cols-2">
-          {services.map((service, i) => (
-            <div
-              key={service.title}
-              className={`h-full ${i >= 2 ? "-mt-0.5" : ""} ${
-                i % 2 !== 0 ? "-ml-0.5" : ""
-              }`}
-            >
-              <ServiceCard service={service} index={i} />
-            </div>
-          ))}
-        </div>
+        <ServicesTabs />
 
         <div className="mt-12 flex justify-center">
           <a
