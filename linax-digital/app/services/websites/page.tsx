@@ -40,6 +40,7 @@ const includedItems = [
     title: "Local Search Setup",
     body: "Schema markup, sitemaps, page speed, and on-page SEO done right at launch — so the site starts ranking without a rebuild six months in.",
     icon: "/logos/formsLogo.png",
+    iconTranslateClass: "translate-y-[55%]",
     bullets: ["Schema Markup", "Sitemaps", "Page Speed"],
   },
   {

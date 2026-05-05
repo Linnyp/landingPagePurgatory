@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  FaGoogle,
-  FaBolt,
-  FaLocationDot,
-  FaFacebookF,
-  FaPenNib,
-  FaChartLine,
-} from "react-icons/fa6";
-import type { IconType } from "react-icons";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { IconArrowRight } from "@/components/shared/icons";
 import { AdsFaq } from "./AdsFaq";
+import { IncludedSelector } from "./IncludedSelector";
 import "./ads.css";
 
 export const metadata: Metadata = {
@@ -20,49 +12,42 @@ export const metadata: Metadata = {
     "Google Ads and Meta Ads management for local service businesses in Southwest Florida. Transparent pricing, 2:1 ROAS guarantee, no long-term lock-in.",
 };
 
-type IncludedItem = {
-  no: string;
-  title: string;
-  body: string;
-  Icon: IconType;
-};
-
-const includedItems: IncludedItem[] = [
+const includedItems = [
   {
     no: "01",
     title: "Google Search Ads",
     body: "The high-intent stuff. People searching 'roof repair Cape Coral' at 2pm on a Tuesday are ready to buy — we put your business at the top before they scroll to your competitor.",
-    Icon: FaGoogle,
+    icon: "/adIcons/googleSearch.png",
   },
   {
     no: "02",
     title: "Performance Max",
     body: "Google's automated multi-channel campaigns — Search, Display, YouTube, Maps, Gmail — running in one. Best for businesses ready to scale beyond pure search.",
-    Icon: FaBolt,
+    icon: "/adIcons/googleMax.png",
   },
   {
     no: "03",
     title: "Local Services Ads",
     body: "Pay-per-lead, not pay-per-click. Google-verified, sits above the regular search ads, and only charges when a real customer actually contacts you. Ideal for home services.",
-    Icon: FaLocationDot,
+    icon: "/adIcons/localService.png",
   },
   {
     no: "04",
     title: "Meta (FB & IG) Ads",
     body: "Audience-driven campaigns on Facebook and Instagram for awareness, retargeting, and visual sells. Useful when your customers are scrolling, not searching.",
-    Icon: FaFacebookF,
+    icon: "/adIcons/metaFb.png",
   },
   {
     no: "05",
     title: "Ad Copy & Creative",
     body: "Headlines, descriptions, and assets written for your business and tested against each other every week. We rotate the winners up and the losers out — not once a quarter, every week.",
-    Icon: FaPenNib,
+    icon: "/adIcons/copy.png",
   },
   {
     no: "06",
     title: "Tracking & Reporting",
     body: "Conversion tracking, call tracking, and a monthly report in plain English. Cost per lead, ROAS, what's working, what we changed — no 40-tab dashboard you'll never open.",
-    Icon: FaChartLine,
+    icon: "/adIcons/reporting.png",
   },
 ];
 
@@ -225,39 +210,7 @@ export default function AdsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {includedItems.map((item, i) => {
-              const Icon = item.Icon;
-              return (
-                <article
-                  key={item.no}
-                  className={`group flex h-full cursor-default flex-col gap-4 border-2 border-sand-950 bg-sand-50 p-9 transition-colors duration-150 hover:bg-sand-950 ${
-                    i % 3 !== 0 ? "lg:-ml-0.5" : ""
-                  } ${i % 2 !== 0 ? "sm:-ml-0.5 lg:ml-0" : ""} ${
-                    i >= 3 ? "lg:-mt-0.5" : ""
-                  } ${i >= 2 ? "sm:-mt-0.5 lg:mt-0" : ""}`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-brand text-[11px] font-bold uppercase tracking-[0.18em] text-clay-500 transition-colors duration-150 group-hover:text-clay-300">
-                      {item.no}
-                    </span>
-                    <span
-                      aria-hidden
-                      className="flex h-12 w-12 items-center justify-center text-sand-950 transition-colors duration-150 group-hover:text-clay-500"
-                    >
-                      <Icon className="h-7 w-7" />
-                    </span>
-                  </div>
-                  <h3 className="m-0 font-brand text-[20px] font-extrabold uppercase leading-[1.2] tracking-[-0.01em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
-                    {item.title}
-                  </h3>
-                  <p className="m-0 font-brand text-[14px] leading-[1.7] text-sand-600 transition-colors duration-150 group-hover:text-sand-50/80">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
+          <IncludedSelector items={includedItems} />
         </div>
       </section>
 

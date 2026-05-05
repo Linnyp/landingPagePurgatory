@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { IconArrowRight } from "@/components/shared/icons";
 import { SeoFaq } from "./SeoFaq";
+import { IncludedSelector } from "./IncludedSelector";
 import "./seo.css";
 
 export const metadata: Metadata = {
@@ -116,12 +117,6 @@ export default function SeoPage() {
 
           <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-[8fr_4fr] lg:gap-16">
             <div>
-              <div className="mb-6 flex items-center gap-3 font-brand text-[11px] font-bold uppercase tracking-[0.15em]">
-                <span className="text-clay-500">02 / Service</span>
-                <span className="inline-block h-0.5 w-12 bg-clay-500" />
-                <span className="text-sand-950">Local SEO</span>
-              </div>
-
               <h1 className="seo-hero-title m-0 font-brand font-black uppercase leading-[0.95] tracking-[-0.04em] text-sand-950">
                 Show Up When
                 <br />
@@ -209,36 +204,7 @@ export default function SeoPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {includedItems.map((item, i) => (
-              <article
-                key={item.no}
-                className={`group flex h-full cursor-default flex-col gap-4 border-2 border-sand-950 bg-sand-50 p-9 transition-colors duration-150 hover:bg-sand-950 ${
-                  i % 3 !== 0 ? "lg:-ml-0.5" : ""
-                } ${i % 2 !== 0 ? "sm:-ml-0.5 lg:ml-0" : ""} ${
-                  i >= 3 ? "lg:-mt-0.5" : ""
-                } ${i >= 2 ? "sm:-mt-0.5 lg:mt-0" : ""}`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-brand text-[11px] font-bold uppercase tracking-[0.18em] text-clay-500 transition-colors duration-150 group-hover:text-clay-300">
-                    {item.no}
-                  </span>
-                  <img
-                    src={item.icon}
-                    alt=""
-                    aria-hidden="true"
-                    className="h-12 w-12 select-none object-contain"
-                  />
-                </div>
-                <h3 className="m-0 font-brand text-[20px] font-extrabold uppercase leading-[1.2] tracking-[-0.01em] text-sand-950 transition-colors duration-150 group-hover:text-sand-50">
-                  {item.title}
-                </h3>
-                <p className="m-0 font-brand text-[14px] leading-[1.7] text-sand-600 transition-colors duration-150 group-hover:text-sand-50/80">
-                  {item.body}
-                </p>
-              </article>
-            ))}
-          </div>
+          <IncludedSelector items={includedItems} />
         </div>
       </section>
 

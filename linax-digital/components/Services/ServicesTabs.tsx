@@ -5,10 +5,10 @@ import type { ServiceIconKey } from "../../types";
 import { IconArrowRight } from "../shared/icons";
 
 const ICON_SRC: Record<ServiceIconKey, string> = {
-  globe: "/websiteIcon.png",
-  map: "/seoIcon.png",
-  chart: "/adsIcon.png",
-  bolt: "/reputationIcon.png",
+  globe: "/websitewireframe-sm.png",
+  map: "/handMagnifying.png",
+  chart: "/handMicrophone.png",
+  bolt: "/handReviews.png",
   message: "/chatbotIcon.png",
   settings: "/automationIcon.png",
 };
@@ -73,7 +73,11 @@ export function ServicesTabs() {
   return (
     <div className="border-2 border-sand-950 bg-sand-50">
       {/* Tab strip */}
-      <div role="tablist" aria-label="Services" className="grid grid-cols-2 lg:grid-cols-4">
+      <div
+        role="tablist"
+        aria-label="Services"
+        className="grid grid-cols-2 lg:grid-cols-4"
+      >
         {tabs.map((tab, i) => {
           const isActive = tab.id === activeId;
           const isLastInRow = (i + 1) % 2 === 0; // sm/md
@@ -146,8 +150,10 @@ export function ServicesTabs() {
           src={ICON_SRC[active.icon]}
           alt={active.tabLabel}
           className={[
-            "h-full max-h-full w-full self-stretch object-contain",
-            active.id !== "reputation" ? "max-w-[400px] mx-auto lg:max-w-none lg:mx-0" : "",
+            "-mb-10 h-full max-h-[400px] w-full self-end object-contain object-bottom sm:-mb-12 lg:-mb-14",
+            active.id !== "reputation"
+              ? "max-w-[400px] mx-auto lg:max-w-none lg:mx-0"
+              : "",
           ].join(" ")}
         />
       </div>

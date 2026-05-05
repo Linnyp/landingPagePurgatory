@@ -8,8 +8,6 @@ export type IncludedItem = {
   title: string;
   body: string;
   icon: string;
-  iconTranslateClass?: string;
-  bullets: string[];
 };
 
 export function IncludedSelector({ items }: { items: IncludedItem[] }) {
@@ -53,7 +51,7 @@ export function IncludedSelector({ items }: { items: IncludedItem[] }) {
             ref={(el) => {
               cardRefs.current[i] = el;
             }}
-            className={`group relative flex aspect-380/457 flex-col overflow-hidden border-2 border-sand-950 bg-sand-50 p-10 transition-colors duration-150 md:hover:bg-sand-900 max-md:data-[active=true]:bg-sand-900 ${
+            className={`group relative flex flex-col overflow-hidden border-2 border-sand-950 bg-sand-50 p-10 transition-colors duration-150 max-md:max-h-[460px] md:aspect-380/457 md:hover:bg-sand-900 max-md:data-[active=true]:bg-sand-900 ${
               col > 0 ? "lg:-ml-0.5" : ""
             } ${i % 2 !== 0 ? "md:-ml-0.5 lg:ml-0" : ""} ${
               row > 0 ? "lg:-mt-0.5" : ""
@@ -73,9 +71,7 @@ export function IncludedSelector({ items }: { items: IncludedItem[] }) {
 
             <div
               aria-hidden
-              className={`pointer-events-none absolute bottom-0 left-1/2 w-[88%] -translate-x-1/2 opacity-55 transition-opacity duration-150 md:group-hover:opacity-100 max-md:group-data-[active=true]:opacity-100 ${
-                item.iconTranslateClass ?? "translate-y-[32%]"
-              }`}
+              className="pointer-events-none mx-auto mt-8 w-full max-w-[300px] flex-none opacity-55 transition-opacity duration-150 md:group-hover:opacity-100 max-md:group-data-[active=true]:opacity-100"
             >
               <Image
                 src={item.icon}
