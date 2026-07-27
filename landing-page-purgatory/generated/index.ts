@@ -38,6 +38,30 @@ export const generatedPages: GeneratedPage[] = [
     generatedAt: "2026-04-22",
     archetype: "tech-saas / professional-services hybrid",
   },
+  {
+    slug: "keylime-revenue-calculator",
+    businessName: "KeyLime Marketing",
+    generatedAt: "2026-05-17",
+    archetype: "professional-services / Citrus & Charcoal (Agencia X)",
+  },
+  {
+    slug: "keylime-homepage-hero",
+    businessName: "KeyLime Marketing",
+    generatedAt: "2026-05-18",
+    archetype: "professional-services / Citrus & Charcoal (Agencia X)",
+  },
+  {
+    slug: "keylime-missed-call-widget",
+    businessName: "KeyLime Marketing",
+    generatedAt: "2026-05-18",
+    archetype: "professional-services / Citrus & Charcoal (Agencia X)",
+  },
+  {
+    slug: "keylime-problem-agitation",
+    businessName: "KeyLime Marketing",
+    generatedAt: "2026-05-20",
+    archetype: "professional-services / Citrus & Charcoal (Agencia X)",
+  },
 ];
 
 export const pageComponents: Record<
@@ -49,4 +73,11 @@ export const pageComponents: Record<
   "linax-digital-3": () => import("./linax-digital-3/page"),
   "linax-digital-landing-blue": () => import("./linax-digital-landing-blue/page"),
   "linax-digital-4": () => import("./linax-digital-4/page"),
+  "keylime-revenue-calculator": () =>
+    import("./keylime-revenue-calculator/page"),
+  "keylime-homepage-hero": () => import("./keylime-homepage-hero/page"),
+  "keylime-missed-call-widget": () =>
+    import("./keylime-missed-call-widget/page"),
+  "keylime-problem-agitation": () =>
+    import("./keylime-problem-agitation/page"),
 };

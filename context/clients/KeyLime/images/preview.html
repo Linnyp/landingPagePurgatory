@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KeyLime logo preview</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font: 14px/1.4 system-ui, sans-serif; }
+    .row { display: flex; align-items: stretch; min-height: 320px; }
+    .panel { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 32px; gap: 16px; }
+    .light { background: #FBFBF7; color: #1C1E1A; }
+    .dark  { background: #1C1E1A; color: #FBFBF7; }
+    .label { font-weight: 600; letter-spacing: -0.02em; opacity: 0.7; }
+    img { width: min(100%, 520px); height: auto; display: block; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="panel light">
+      <div class="label">Logo Default — on Primary/05 (#FBFBF7)</div>
+      <img src="./keylimelogo.svg" alt="KeyLime logo, dark variant">
+    </div>
+    <div class="panel dark">
+      <div class="label">Logo White — on Neutral/800 (#1C1E1A)</div>
+      <img src="./keylimelogo-white.svg" alt="KeyLime logo, white variant">
+    </div>
+  </div>
+</body>
+</html>

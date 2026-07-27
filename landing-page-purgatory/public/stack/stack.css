@@ -1,0 +1,42 @@
+/* Card Stack - drop-in styles. Selector hooks are data-attributes so it
+   won't collide with Webflow class names. */
+
+[data-stack] {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 600px;
+}
+
+[data-stack-card] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  will-change: transform;
+}
+
+[data-stack-card].cs-grabbing {
+  cursor: grabbing;
+}
+
+[data-stack-card] img,
+[data-stack-card] video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}

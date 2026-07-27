@@ -113,9 +113,17 @@ export function ServicesTabs() {
         role="tabpanel"
         id={`services-pane-${active.id}`}
         aria-labelledby={`services-tab-${active.id}`}
-        className="grid grid-cols-1 gap-12 p-10 sm:p-12 lg:grid-cols-[7fr_5fr] lg:gap-16 lg:p-14"
+        className="relative grid grid-cols-1 gap-12 overflow-hidden p-10 sm:p-12 lg:grid-cols-[7fr_5fr] lg:gap-16 lg:p-14"
       >
-        <div className="flex flex-col items-start justify-center gap-8">
+        {/* Mobile-only faint background illustration */}
+        <img
+          src={ICON_SRC[active.icon]}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 h-full w-full object-contain object-center opacity-25 lg:hidden"
+        />
+
+        <div className="relative z-10 flex flex-col items-start justify-center gap-8">
           <div className="flex flex-col gap-4">
             <span className="font-brand text-[12px] font-bold uppercase tracking-[0.12em] text-clay-500">
               {active.tagline}
@@ -150,10 +158,8 @@ export function ServicesTabs() {
           src={ICON_SRC[active.icon]}
           alt={active.tabLabel}
           className={[
-            "-mb-10 h-full max-h-[400px] w-full self-end object-contain object-bottom sm:-mb-12 lg:-mb-14",
-            active.id !== "reputation"
-              ? "max-w-[400px] mx-auto lg:max-w-none lg:mx-0"
-              : "",
+            "hidden h-full max-h-[400px] w-full self-end object-contain object-bottom lg:-mb-14 lg:block",
+            active.id !== "reputation" ? "lg:max-w-none lg:mx-0" : "",
           ].join(" ")}
         />
       </div>
