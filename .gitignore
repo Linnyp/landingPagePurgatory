@@ -1,6 +1,10 @@
 # Next.js
+.next/
 landing-page-purgatory/.next/
 landing-page-purgatory/node_modules/
+
+# Firecrawl scratch output
+.firecrawl/
 
 # OS
 .DS_Store
