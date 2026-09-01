@@ -59,24 +59,37 @@ export function HeroSection() {
 
           {/* Missed-call revenue widget — the hero's conversion centerpiece.
               Desktop (441×435 comp): estimator card floating in front of the
-              hero iPhone, which rises behind it and bleeds to the panel edge. */}
+              hero iPhone, which rises behind it and bleeds to the panel edge.
+              Below lg the phone drops out entirely and the card owns the column
+              at full width — the old side-by-side arrangement left it around
+              240px on a 375px screen, which crowded the fields. */}
           <div className="relative mx-auto mt-4 w-full max-w-[480px] lg:mx-0 lg:mt-0 lg:aspect-[441/435] lg:max-w-none">
-            {/* Hero iPhone rising behind the card. */}
-            <div className="absolute right-0 bottom-0 aspect-[268/425] w-[56%] overflow-hidden lg:top-[19.3%] lg:aspect-auto lg:w-[60.8%]">
-              <img
-                src="/heroiphone.webp"
-                alt=""
-                width={554}
-                height={1147}
-                fetchPriority="high"
-                decoding="async"
-                className="w-full"
-              />
+            {/* Hero iPhone rising behind the card — desktop only. The <source>
+                hands mobile a 1x1 placeholder instead: a `hidden` wrapper alone
+                would still pull the 49KB webp down, and it's a high-priority
+                fetch competing with LCP on exactly the connections that can
+                least afford it. */}
+            <div className="hidden lg:absolute lg:top-[19.3%] lg:right-0 lg:bottom-0 lg:block lg:w-[60.8%] lg:overflow-hidden">
+              <picture>
+                <source
+                  media="(max-width: 1023.98px)"
+                  srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                />
+                <img
+                  src="/heroiphone.webp"
+                  alt=""
+                  width={554}
+                  height={1147}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="w-full"
+                />
+              </picture>
             </div>
 
             {/* Card — anchored to the bottom-left of the media box on desktop,
                 overlapping the phone. */}
-            <div className="relative mt-[5%] w-[74%] lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:w-[68%]">
+            <div className="relative w-full lg:absolute lg:bottom-0 lg:left-0 lg:w-[68%]">
               <MissedCallWidget />
             </div>
           </div>
